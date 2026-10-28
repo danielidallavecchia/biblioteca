@@ -1,0 +1,48 @@
+
+<div class="index-corpo-padrao">
+    <div class="index-titulo">
+        <p class="index-titulo">Gêneros</p>
+        <p class="index-subtitulo">Consulte os gêneros cadastrados e adicione novos ao seu acervo.</p>
+    </div>
+
+    <div class="index-topo">
+        <div class="index-busca">
+            <%= form_tag generos_path, method: :get do %>
+                <%= text_field_tag :busca, params[:busca], placeholder: "Buscar por nome", class: "index-busca-input" %>
+                <%= hidden_field_tag :filtrar, params[:filtrar] %>
+                <%= submit_tag "Buscar", name: nil, class: "index-busca-buscar" %>
+                <%= link_to "Limpar", generos_path, class: "index-busca-limpar" %>
+            <% end %>
+        </div>
+
+        <div class="index-botao-novo">
+            <%= link_to "Novo gênero", new_genero_path, class: "index-botao-novo" %>
+        </div>
+    </div>
+
+    <div class="index-tabela">
+        <% if @generos.empty? %>
+            <p>Nenhum gênero encontrado.</p>
+        <% else %>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="coluna-id">ID</th>
+                        <th>Nome</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @generos.each do |genero| %>
+                    <tr>
+                        <td class="text-align-center"><%= genero.id %></td>
+                        <td><%= genero.nome %> </td>
+                        <td class="text-align-center"><%= link_to "Ver registro", genero_path(genero) %> </td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        <% end %>
+    </div>
+
+</div>

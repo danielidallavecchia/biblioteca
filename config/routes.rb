@@ -1,4 +1,17 @@
 Biblioteca::Application.routes.draw do
+
+  # Prefixo usado para todas as rotas
+  prefixo = "/biblioteca"
+
+  # Generos
+  get    "#{prefixo}/generos"          => "generos#index",   :as => :generos
+  post   "#{prefixo}/generos"          => "generos#create"
+  get    "#{prefixo}/generos/new"      => "generos#new",     :as => :new_genero
+  get    "#{prefixo}/generos/:id/edit" => "generos#edit",    :as => :edit_genero
+  get    "#{prefixo}/generos/:id"      => "generos#show",    :as => :genero
+  put    "#{prefixo}/generos/:id"      => "generos#update"
+  delete "#{prefixo}/generos/:id"      => "generos#destroy"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
