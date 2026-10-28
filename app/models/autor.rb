@@ -1,6 +1,6 @@
 class Autor < ActiveRecord::Base 
   attr_accessible :nome, :data_nasc, :data_obito
-  has_many :livro
+  has_many :livros
 
   validates :nome, presence :true
   validates :data_nasc, presence :true
