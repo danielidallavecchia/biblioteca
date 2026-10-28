@@ -1,6 +1,6 @@
 class Genero < ActiveRecord::Base
   attr_accessible :nome
-  has_many :livro
+  has_many :livros
 
   validates :nome, presence: true
 end
