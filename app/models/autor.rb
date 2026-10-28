@@ -7,11 +7,11 @@ class Autor < ActiveRecord::Base
   validate :valida_datas_futuro
 
   def valida_datas_futuro
-    if !data_nasc.blank && data_nasc > Date.today
+    if !data_nasc.blank? && data_nasc > Date.today
       errors.add(:data_nasc, "não pode ser no futuro")
     end
 
-    if !data_obito.blank && data_obito > Date.today
+    if !data_obito.blank? && data_obito > Date.today
       errors.add(:data_obito, "não pode ser no futuro")
     end
   end
