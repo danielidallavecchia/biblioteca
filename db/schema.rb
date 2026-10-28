@@ -21,10 +21,30 @@ ActiveRecord::Schema.define(:version => 20261028134144) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "emprestimos", :force => true do |t|
+    t.integer  "livro_id"
+    t.integer  "usuario_id"
+    t.datetime "data_prevista_devolucao"
+    t.datetime "data_devolucao"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
   create_table "generos", :force => true do |t|
     t.string   "nome"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "livros", :force => true do |t|
+    t.string   "titulo"
+    t.string   "sinopse"
+    t.date     "ano_publicacao"
+    t.integer  "qtd_paginas"
+    t.integer  "autor_id"
+    t.integer  "genero_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "reservas", :force => true do |t|
