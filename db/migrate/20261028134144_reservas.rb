@@ -7,6 +7,7 @@ class Reservas < ActiveRecord::Migration
       t.integer :posicao
       t.date :data_expiracao
       t.timestamps
+    end
   end
 
   def down
