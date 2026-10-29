@@ -4,24 +4,24 @@
     <%= render "voltar" %>
 
     <div class="show-titulo">
-        <p class="show-texto-titulo">Detalhes do gênero</p>
-        <p class="show-texto-subtitulo">Consulte as informações do gênero cadastrado no seu acervo.</p>
+        <p class="show-texto-titulo">Detalhes do autor</p>
+        <p class="show-texto-subtitulo">Consulte as informações do autor cadastrado no seu acervo.</p>
     </div>
 
     <div class="show-card">
         <div class="show-campo">
             <p class="show-rotulo">ID</p>
-            <p class="show-valor"><%= @genero.id %> </p> 
+            <p class="show-valor"><%= @autor.id %> </p> 
         </div>
 
         <div class="show-campo">
             <p class="show-rotulo">Nome</p>
-            <p class="show-valor"><%= @genero.nome %> </p>
+            <p class="show-valor"><%= @autor.nome %> </p>
         </div>
 
         <div class="show-botoes">
-            <%= link_to "Editar", edit_genero_path(@genero), class: "show-botao-editar" %> 
-            <%= link_to "Excluir", genero_path(@genero), data: { method: :delete, confirm: "Tem certeza?" }, class: "show-botao-excluir" %>
+            <%= link_to "Editar", edit_autor_path(@autor), class: "show-botao-editar" %> 
+            <%= link_to "Excluir", autor_path(@autor), data: { method: :delete, confirm: "Tem certeza?" }, class: "show-botao-excluir" %>
         </div>
     </div>
 
