@@ -22,8 +22,8 @@
     </div>
 
     <div class="index-tabela">
-        <% if @generos.empty? %>
-            <p class="tabela-sem-registros">Nenhum gênero encontrado.</p>
+        <% if @generos.blank? %>
+            <p class="tabela-sem-registros">Ainda não existem gêneros. Cadastre o primeiro gênero.</p>
         <% else %>
             <table>
                 <thead>
