@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Biblioteca</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+    <title>Biblioteca</title>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= csrf_meta_tags %>
+
+    <script src="<%= javascript_path 'application' %>"></script>
+
 </head>
 <body>
-
-<div class="body-corpo">
-  <%= yield %>
-</div>
-
+    <header>
+        <div>
+            <div>Biblioteca</div>
+            <div>Meu perfil</div>
+        </div>
+        <nav>
+            <%= link_to 'Livros', '#' %>
+            <%= link_to 'Autores', '#' %>
+            <%= link_to 'Gêneros', '#' %>
+            <%= link_to 'Usuários', usuarios_path %>
+            <%= link_to 'Empréstimos', '#' %>
+            <%= link_to 'Reservas', '#' %>
+        </nav>
+    </header>
+  
+    <div class="body-corpo">
+      <%= yield %>
+    </div>
 </body>
 </html>

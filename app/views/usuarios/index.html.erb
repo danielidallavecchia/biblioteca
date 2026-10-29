@@ -1,0 +1,46 @@
+<div>
+    <div>
+        <h1>Usuários</h1>
+        <p>Consulte os usuários existentes e cadastre novos nomes ao sistema</p>
+        <%= link_to '+ Cadastrar usuário', new_usuario_path, class: "btn" %>
+    </div>
+</div>
+
+<div>
+    <form action="<%= usuarios_path %>" method="get">
+        <input type="search" name="busca" value="<%= params[:busca] %>" placeholder="Buscar por nome, login ou e-mail">
+    </form>
+    <span><%= pluralize(@usuarios.length, 'usuário cadastrado', 'usuários cadastrados') %></span>
+</div>
+
+<div>
+    <% if @usuarios.blank? %>
+        <p>Ainda não existem usuários. Cadastre o primeiro usuário.</p>
+    <% else %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Login</th>
+                    <th>E-mail</th>
+                    <th>Cadastro</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @usuarios.each do |usuario| %>
+                    <tr>
+                        <td><%= usuario.nome %></td>
+                        <td><%= usuario.login %></td>
+                        <td><%= usuario.email %></td>
+                        <td><%= usuario.created_at.strftime("%d/%m/%Y") if usuario.created_at %></td>
+                        <td>
+                            <%= link_to "Editar", edit_usuario_path(usuario) %> |
+                            <%= link_to "Excluir", usuario_path(usuario), method: :delete, data: { confirm: "Você tem certeza que deseja excluir?" } %>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    <% end %>
+</div>
