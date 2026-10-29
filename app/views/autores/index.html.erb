@@ -1,0 +1,52 @@
+
+<div class="index-topo-padrao">
+    <div class="index-titulo">
+        <p class="index-texto-titulo">Autores</p>
+        <p class="index-texto-subtitulo">Consulte os autores cadastrados e adicione novos ao seu acervo.</p>
+    </div>
+
+    <div class="index-botao">
+        <%= link_to "Cadastrar autor", new_autor_path, class: "index-botao-novo" %>
+    </div>
+</div>
+
+<div class="index-corpo-padrao">
+    
+    <div class="index-busca">
+        <%= form_tag autores_path, method: :get do %>
+            <%= text_field_tag :busca, params[:busca], placeholder: "Buscar por nome ou ano de nascimento", class: "index-busca-input" %>
+            <%= hidden_field_tag :filtrar, params[:filtrar] %>
+            <%= submit_tag "Buscar", name: nil, class: "index-busca-buscar" %>
+            <%= link_to "Limpar", autores_path, class: "index-busca-limpar" %>
+        <% end %>
+    </div>
+
+    <div class="index-tabela">
+        <% if @autores.blank? %>
+            <p class="tabela-sem-registros">Ainda não existem autores. Cadastre o primeiro autor.</p>
+        <% else %>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="coluna-id">ID</th>
+                        <th>Nome</th>
+                        <th class="coluna-acoes text-align-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @autores.each do |autor| %>
+                    <tr>
+                        <td class="text-align-center"><%= autor.id %></td>
+                        <td><%= autor.nome %> </td>
+                        <td class="text-align-center tabela-acoes">
+                            <%= link_to "Ver registro", autor_path(autor), class: "tabela-botao-acao" %>  |  
+                            <%= link_to "Excluir", autor_path(autor), data: { method: :delete, confirm: "Tem certeza?" }, class: "tabela-botao-acao" %>
+                        </td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        <% end %>
+    </div>
+
+</div>
