@@ -83,10 +83,16 @@ header {
     border: 1px solid lightgray;
 }
 
+.index-qtd-registros {
+    color: gray;
+    text-align: right;
+}
+
 .index-busca {
     padding: 15px;
     font-size: 13px;
     display: flex;
+    justify-content: space-between;
 }
 .index-busca-input {
     border-radius: 5px;
