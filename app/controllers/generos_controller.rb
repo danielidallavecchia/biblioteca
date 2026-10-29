@@ -1,7 +1,11 @@
 class GenerosController < ApplicationController
 
   def index
-    @generos = Genero.order(:id)
+    if !params[:busca].blank?
+      @generos = Genero.where("nome ILIKE ?", "%#{params[:busca]}%").order("id desc")
+    else
+      @generos = Genero.order("id asc")
+    end
   end
 
   def show
