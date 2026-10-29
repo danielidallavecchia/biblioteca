@@ -14,13 +14,11 @@
     <%= f.email_field :email %>
   </div>
 
-  <div>
-    <%= f.label :senha, "Senha" %>
-    <%= f.password_field :senha %>
-    <% if @usuario.persisted? %>
-      <small>Deixe em branco para manter a senha atual</small>
-    <% end %>
-  </div>
+<div>
+  <%= f.label :senha, "Senha" %>
+  <%= f.password_field :senha, placeholder: (@usuario.persisted? ? "Deixe em branco para manter a senha atual" : nil) %>
+</div>
+
 
   <div>
     <%= link_to "Voltar", usuarios_path %>

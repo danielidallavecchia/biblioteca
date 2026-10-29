@@ -1,46 +1,54 @@
-<div>
-    <div>
-        <h1>Usuários</h1>
-        <p>Consulte os usuários existentes e cadastre novos nomes ao sistema</p>
-        <%= link_to '+ Cadastrar usuário', new_usuario_path, class: "btn" %>
+<div class="index-topo-padrao">
+    <div class="index-titulo">
+        <p class="index-texto-titulo">Usuários</p>
+        <p class="index-texto-subtitulo">Consulte os usuários existentes e cadastre novos nomes ao sistema.</p>
+    </div>
+
+    <div class="index-botao">
+        <%= link_to "Cadastrar usuário", new_usuario_path, class: "index-botao-novo" %>
     </div>
 </div>
 
-<div>
-    <form action="<%= usuarios_path %>" method="get">
-        <input type="search" name="busca" value="<%= params[:busca] %>" placeholder="Buscar por nome, login ou e-mail">
-    </form>
-    <span><%= pluralize(@usuarios.length, 'usuário cadastrado', 'usuários cadastrados') %></span>
-</div>
+<div class="index-corpo-padrao">
 
-<div>
-    <% if @usuarios.blank? %>
-        <p>Ainda não existem usuários. Cadastre o primeiro usuário.</p>
-    <% else %>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Login</th>
-                    <th>E-mail</th>
-                    <th>Cadastro</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @usuarios.each do |usuario| %>
+    <div class="index-busca">
+        <%= form_tag usuarios_path, method: :get do %>
+            <%= text_field_tag :busca, params[:busca], placeholder: "Buscar por nome, login ou e-mail", class: "index-busca-input" %>
+            <%= submit_tag "Buscar", name: nil, class: "index-busca-buscar" %>
+            <%= link_to "Limpar", usuarios_path, class: "index-busca-limpar" %>
+        <% end %>
+    </div>
+
+    <div class="index-tabela">
+        <% if @usuarios.blank? %>
+            <p class="tabela-sem-registros">Ainda não existem usuários. Cadastre o primeiro usuário.</p>
+        <% else %>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Login</th>
+                        <th>E-mail</th>
+                        <th class="text-align-center">Cadastro</th>
+                        <th class="coluna-acoes text-align-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @usuarios.each do |usuario| %>
                     <tr>
                         <td><%= usuario.nome %></td>
                         <td><%= usuario.login %></td>
                         <td><%= usuario.email %></td>
-                        <td><%= usuario.created_at.strftime("%d/%m/%Y") if usuario.created_at %></td>
-                        <td>
-                            <%= link_to "Editar", edit_usuario_path(usuario) %> |
-                            <%= link_to "Excluir", usuario_path(usuario), method: :delete, data: { confirm: "Você tem certeza que deseja excluir?" } %>
+                        <td class="text-align-center"><%= usuario.created_at.strftime("%d/%m/%Y") if usuario.created_at %></td>
+                        <td class="text-align-center tabela-acoes">
+                            <%= link_to "Ver registro", usuario_path(usuario), class: "tabela-botao-acao" %>  |
+                            <%= link_to "Excluir", usuario_path(usuario), data: { method: :delete, confirm: "Tem certeza?" }, class: "tabela-botao-acao" %>
                         </td>
                     </tr>
-                <% end %>
-            </tbody>
-        </table>
-    <% end %>
+                    <% end %>
+                </tbody>
+            </table>
+        <% end %>
+    </div>
+
 </div>
