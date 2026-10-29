@@ -263,3 +263,93 @@ header {
 .show-botao-excluir:hover {
     background-color: rgb(234, 198, 198);
 }
+
+/********************* CSS para form *********************/
+
+.campo-required {
+    color: red;
+}
+
+.form-corpo-padrao {
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+.form-padrao {
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    padding: 30px;
+    gap: 30px;
+    font-size: 14px;
+}
+
+.form-campo {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 25px;
+}
+.form-nome {
+    width: 120px;
+    color: gray;
+    padding-bottom: 5px;
+}
+.form-input {
+    padding: 3px 5px 3px 8px;
+    font-size: 14px;
+    color: #333;
+    background-color: #f9f9f9;
+    border: 1px solid rgb(199, 199, 199);
+    border-radius: 5px;
+    height: 25px;
+}
+.form-texto-id {
+    color: gray;
+    font-size: 14px;
+}
+
+.form-botao {
+    display: flex;
+    gap: 10px;
+}
+
+.form-botao-cancelar {
+    color: #3f3f3f;
+    border: 1px solid rgb(210, 208, 208);
+    width: 90px;
+    height: 30px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-botao-cancelar:hover {
+    background-color: rgb(229, 228, 228);
+}
+
+.form-botao-cadastrar {
+    background-color: #357657;
+    width: 90px;
+    height: 30px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 14px;
+    Color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-botao-cadastrar:hover {
+    background-color: #204935;
+}
+
+.erro-form {
+    color: red;
+    padding-top: 10px;
+    font-size: 14px;
+}
+
