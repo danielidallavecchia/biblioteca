@@ -3,6 +3,16 @@
 
     <%= form_for(@genero) do |f| %>
 
+        <% if !@genero.id.blank? %>
+            <!-- somente exibir no edit -->
+            <div class="form-campo">
+                <p class="form-texto-id">
+                    <span>ID do registro:</span>
+                    <span><%= @genero.id %></span>
+                </p>
+            </div>
+        <% end %>
+
         <div class="form-campo">
             <p class="form-nome">
             <%= f.label :nome do %>

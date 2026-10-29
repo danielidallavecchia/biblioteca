@@ -19,6 +19,9 @@
             <%= submit_tag "Buscar", name: nil, class: "index-busca-buscar" %>
             <%= link_to "Limpar", generos_path, class: "index-busca-limpar" %>
         <% end %>
+        <span class="index-qtd-registros">
+            <%= pluralize(@generos.length, "gênero cadastrado", "gêneros cadastrados") %>
+        </span>
     </div>
 
     <div class="index-tabela">
