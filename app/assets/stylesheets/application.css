@@ -83,10 +83,16 @@ header {
     border: 1px solid lightgray;
 }
 
+.index-qtd-registros {
+    color: gray;
+    text-align: right;
+}
+
 .index-busca {
     padding: 15px;
     font-size: 13px;
     display: flex;
+    justify-content: space-between;
 }
 .index-busca-input {
     border-radius: 5px;
@@ -321,38 +327,92 @@ header {
     font-weight: 600;
 }
 
+/********************* CSS para form *********************/
 
-
-
-
-
-
-
-/* Container para alinhar o input e o botão lado a lado */
-.senha-container {
-  display: inline-flex;
-  align-items: center;
-  position: relative;
+.campo-required {
+    color: red;
 }
 
-/* Remove a aparência de caixa do input para parecer texto comum */
-#campo-senha {
-  border: none;
-  background: transparent;
-  outline: none;
-  padding-right: 30px; /* Dá espaço para o botão não cobrir o texto */
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit;
+.form-corpo-padrao {
+    margin-left: 200px;
+    margin-right: 200px;
 }
 
-/* Estilo do botão do olhinho */
-.btn-olho {
-  background: none;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  right: 0;
-  font-size: 16px;
-  padding: 0;
+.form-padrao {
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    padding: 30px;
+    gap: 30px;
+    font-size: 14px;
 }
+
+.form-campo {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 25px;
+}
+.form-nome {
+    width: 120px;
+    color: gray;
+    padding-bottom: 5px;
+}
+.form-input {
+    padding: 3px 5px 3px 8px;
+    font-size: 14px;
+    color: #333;
+    background-color: #f9f9f9;
+    border: 1px solid rgb(199, 199, 199);
+    border-radius: 5px;
+    height: 25px;
+}
+.form-texto-id {
+    color: gray;
+    font-size: 14px;
+}
+
+.form-botao {
+    display: flex;
+    gap: 10px;
+}
+
+.form-botao-cancelar {
+    color: #3f3f3f;
+    border: 1px solid rgb(210, 208, 208);
+    width: 90px;
+    height: 30px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-botao-cancelar:hover {
+    background-color: rgb(229, 228, 228);
+}
+
+.form-botao-cadastrar {
+    background-color: #357657;
+    width: 90px;
+    height: 30px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 14px;
+    Color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-botao-cadastrar:hover {
+    background-color: #204935;
+}
+
+.erro-form {
+    color: red;
+    padding-top: 10px;
+    font-size: 14px;
+}
+
