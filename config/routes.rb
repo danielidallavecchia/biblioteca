@@ -22,8 +22,8 @@ Biblioteca::Application.routes.draw do
   post   "autores"          => "autores#create"
   get    "autores/new"      => "autores#new",     :as => :new_autor
   get    "autores/:id"      => "autores#show",    :as => :autor
-  # get    "autores/:id/edit" => "autores#edit",    :as => :edit_autor
-  # put    "autores/:id"      => "autores#update"
-  # delete "autores/:id"      => "autores#destroy"
+  get    "autores/:id/edit" => "autores#edit",    :as => :edit_autor
+  put    "autores/:id"      => "autores#update"
+  delete "autores/:id"      => "autores#destroy"
 
 end

@@ -1,18 +1,12 @@
 class AutoresController < ApplicationController
 
-  def index 
-    @autores = Autor.order("id asc")
+  def index
+    if !params[:busca].blank?
+      @autores = Autor.where("nome ILIKE ? OR EXTRACT(YEAR FROM data_nasc) = ?", "%#{params[:busca]}%", "#{params[:busca]}").order("id desc")
+    else
+      @autores = Autor.order("id asc")
+    end
   end
-
-  # def index
-  #   if !params[:busca].blank?
-  #     termo = "%#{params[:busca]}%"
-
-  #     @autores = Autor.where("nome ILIKE ?", termo).order("id desc")
-  #   else
-  #     @autores = Autor.order("id asc")
-  #   end
-  # end
 
   def show
     @autor = Autor.find(params[:id])
@@ -23,7 +17,7 @@ class AutoresController < ApplicationController
   end
 
   def create
-    @autor = Autor.new(params[:genero])
+    @autor = Autor.new(params[:autor])
 
     if @autor.save 
       redirect_to autores_path, notice: "sucesso"
@@ -33,25 +27,25 @@ class AutoresController < ApplicationController
     end
   end
 
-  # def edit
-  #   @autor = Autor.find(params[:id])
-  # end
+  def edit
+    @autor = Autor.find(params[:id])
+  end
 
-  # def update
-  #   @autor = Autor.find(params[:id])
+  def update
+    @autor = Autor.find(params[:id])
 
-  #   if @autor.update_attributes(params[:autor])
-  #     redirect_to autores_path
-  #   else
-  #     render :edit
-  #   end
-  # end
+    if @autor.update_attributes(params[:autor])
+      redirect_to autores_path
+    else
+      render :edit
+    end
+  end
 
-  # def destroy
-  #   @autor = Autor.find(params[:id])
-  #   @autor.destroy
+  def destroy
+    @autor = Autor.find(params[:id])
+    @autor.destroy
 
-  #   redirect_to autores_path, notice: "sucesso"
-  # end
+    redirect_to autores_path, notice: "sucesso"
+  end
 
 end
