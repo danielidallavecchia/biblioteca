@@ -17,4 +17,13 @@ Biblioteca::Application.routes.draw do
   put    "generos/:id"      => "generos#update"
   delete "generos/:id"      => "generos#destroy"
 
+  # Autores
+  get    "autores"          => "autores#index",   :as => :autores
+  post   "autores"          => "autores#create"
+  get    "autores/new"      => "autores#new",     :as => :new_autor
+  get    "autores/:id"      => "autores#show",    :as => :autor
+  # get    "autores/:id/edit" => "autores#edit",    :as => :edit_autor
+  # put    "autores/:id"      => "autores#update"
+  # delete "autores/:id"      => "autores#destroy"
+
 end
