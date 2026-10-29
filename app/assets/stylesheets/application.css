@@ -170,3 +170,96 @@ header {
 }
 
 /******************** CSS para show ********************/
+
+.voltar-padrao {
+    color: #777676;
+    padding-bottom: 20px;
+}
+.voltar-botao {
+    color: #777676;
+    text-decoration: none;
+}
+.voltar-botao:hover {
+    color: rgb(65, 65, 65);
+}
+
+.show-corpo-padrao {
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+.show-titulo {
+    padding-bottom: 20px;
+}
+.show-texto-titulo {
+    font-size: 28px;
+}
+.show-texto-subtitulo {
+    padding-top: 8px;
+    font-size: 15px;
+    color: rgb(87, 86, 86);
+}
+
+.show-card {
+    display: flex;
+    flex-direction: column; 
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    padding: 30px;
+    gap: 30px;
+    font-size: 14px;
+}
+
+.show-campo {
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgb(235, 234, 234);
+} 
+.show-rotulo {
+    color: gray;
+}
+.show-valor {
+    padding-top: 5px;
+}
+
+.show-botoes {
+    display: flex;
+    gap: 10px;
+    padding-top: 5px;
+}
+
+.show-botao-editar {
+    background-color: rgb(230, 251, 230);
+    color: #1e4733;
+    border: 1px solid rgb(139, 198, 139);
+    width: 90px;
+    height: 30px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.show-botao-editar:hover {
+    background-color: rgb(190, 230, 190);
+}
+
+.show-botao-excluir {
+    background-color: rgb(249, 222, 222);
+    color: rgb(171, 21, 21);
+    border: 1px solid rgb(206, 164, 164);
+    width: 90px;
+    height: 30px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.show-botao-excluir:hover {
+    background-color: rgb(234, 198, 198);
+}
