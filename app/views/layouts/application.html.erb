@@ -2,8 +2,10 @@
 <html>
 <head>
     <title>Biblioteca</title>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= csrf_meta_tags %>
 
-<script src="<%= javascript_path 'application' %>"></script>
+    <script src="<%= javascript_path 'application' %>"></script>
 
 </head>
 <body>
@@ -21,7 +23,9 @@
             <%= link_to 'Reservas', '#' %>
         </nav>
     </header>
-    <br>
-    <%= yield %>
+  
+    <div class="body-corpo">
+      <%= yield %>
+    </div>
 </body>
 </html>

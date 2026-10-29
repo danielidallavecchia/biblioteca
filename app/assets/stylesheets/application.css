@@ -11,3 +11,162 @@
  *= require_self
  *= require_tree .
  */
+
+/************************* Geral *************************/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: rgb(236, 235, 235);
+}
+.body-corpo {
+    margin-left: 80px;
+    margin-right: 80px;
+    overflow-x: hidden;
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+
+header {
+    background-color: white;
+    padding: 20px;
+}
+
+/******************** CSS para index ********************/
+.index-topo-padrao {
+    display: flex;
+    justify-content: space-between;
+}
+
+.index-titulo {
+    padding-bottom: 20px;
+}
+
+.index-texto-titulo {
+    font-size: 28px;
+}
+.index-texto-subtitulo {
+    padding-top: 8px;
+    font-size: 15px;
+}
+
+.index-botao {
+    display: flex; 
+    padding-top: 18px;
+    padding-right: 3px;
+}
+.index-botao-novo {
+    background-color: #357657;
+    width: 140px;
+    height: 30px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 14px;
+    Color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.index-botao-novo:hover {
+    background-color: #204935;
+}
+
+.index-corpo-padrao {
+    display: flex;
+    flex-direction: column; 
+    background-color: white;
+    border-radius: 7px;
+    border: 1px solid lightgray;
+}
+
+.index-busca {
+    padding: 15px;
+    font-size: 13px;
+    display: flex;
+}
+.index-busca-input {
+    border-radius: 5px;
+    width: 400px;
+    height: 30px;
+    padding-left: 10px;
+    border: 1px solid rgb(199, 199, 199);
+}
+.index-busca-buscar {
+    background-color: #357657;
+    color: white;
+    font-size: 13px;
+    width: 65px;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid rgb(8, 83, 8);
+}
+.index-busca-buscar:hover {
+    background-color: #204935;
+}
+
+.index-busca-limpar {
+    padding-left: 5px;
+    font-size: 13px;
+    text-decoration: none;
+    color: #26382F;
+}
+.index-busca-limpar:hover {
+    color: #080e0b;
+}
+
+.index-tabela {
+    font-size: 13px;
+}
+.index-tabela table {
+    width: 100%;
+}
+.index-tabela table th {
+    text-align: left;
+    background-color: #f0f0ef;
+    padding-left: 10px;
+}
+.index-tabela table tr {
+    width: 100%;
+    height: 25px;
+}
+.index-tabela table tr:hover {
+    background-color: #f0f0ef;
+}
+.index-tabela table td {
+    padding-left: 10px;
+    border-bottom: 1px solid rgb(240, 240, 240);
+}
+.tabela-acoes {
+    gap: 40px;
+    color: #204935;
+}
+.tabela-botao-acao {
+    text-decoration: none;
+    color: #204935;
+}
+.tabela-botao-acao:hover {
+    color: #000302;
+}
+.tabela-sem-registros {
+    padding: 20px;
+    color: gray;
+    font-size: 14px;
+}
+
+.coluna-id {
+    width: 50px;
+}
+.coluna-acoes {
+    width: 300px;
+}
+
+.text-align-center {
+    align-items: center !important;
+    text-align: center !important;
+}
+
+/******************** CSS para show ********************/
