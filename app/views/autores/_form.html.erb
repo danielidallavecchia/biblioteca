@@ -1,7 +1,17 @@
 
 <div class="form-padrao">
 
-    <%= form_for(@autor) do |f| %>
+    <%= form_for( @autor, url: (@autor.new_record? ? autores_path : autor_path(@autor)) ) do |f| %>
+
+        <% if !@autor.id.blank? %>
+            <!-- somente exibir no edit -->
+            <div class="form-campo">
+                <p class="form-texto-id">
+                    <span>ID do registro:</span>
+                    <span><%= @autor.id %></span>
+                </p>
+            </div>
+        <% end %>
 
         <div class="form-campo">
             <p class="form-nome">
