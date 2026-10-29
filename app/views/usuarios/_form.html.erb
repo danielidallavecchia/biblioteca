@@ -1,0 +1,29 @@
+<%= form_for @usuario do |f| %>
+  <div>
+    <%= f.label :nome, "Nome" %>
+    <%= f.text_field :nome %>
+  </div>
+
+  <div>
+    <%= f.label :login, "Login" %>
+    <%= f.text_field :login %>
+  </div>
+
+  <div>
+    <%= f.label :email, "E-mail" %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :senha, "Senha" %>
+    <%= f.password_field :senha %>
+    <% if @usuario.persisted? %>
+      <small>Deixe em branco para manter a senha atual</small>
+    <% end %>
+  </div>
+
+  <div>
+    <%= link_to "Voltar", usuarios_path %>
+    <%= f.submit "Salvar", class: "btn" %>
+  </div>
+<% end %>
