@@ -1,0 +1,18 @@
+
+<div class="form-corpo-padrao">
+
+    <%= render "voltar" %>
+
+    <div class="show-titulo">
+        <p>Editar gênero</p>
+        <p>Altere as informações do gênero</p>
+    </div>
+
+    <%= render "form" %>
+
+    <% if @genero.errors.any? %>
+    <div class="erro-form">
+        Erro: <%= @genero.errors.full_messages.first %>
+    </div>
+    <% end %>
+</div>

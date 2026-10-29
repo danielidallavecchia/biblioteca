@@ -1,0 +1,27 @@
+<div class="show-corpo-padrao">
+
+    <%= render "voltar" %>
+
+    <div class="show-titulo">
+        <p>Detalhes do gênero</p>
+        <p>Consulte as informações do gênero cadastrado no seu acervo.</p>
+    </div>
+
+    <div class="show-card">
+        <div class="show-campo">
+            <p class="show-rotulo">ID: </p>
+            <p class="show-valor"><%= @genero.id %> </p> 
+        </div>
+
+        <div class="show-campo">
+            <p class="show-rotulo">Nome: </p>
+            <p class="show-valor"><%= @genero.nome %> </p>
+        </div>
+
+        <div class="show-botoes">
+            <%= link_to "Editar", edit_genero_path(@genero), class: "show-botao-editar" %> 
+            <%= link_to "Excluir", genero_path(@genero), data: { method: :delete, confirm: "Tem certeza?" }, class: "show-botao-excluir" %>
+        </div>
+    </div>
+
+</div>
