@@ -23,6 +23,26 @@
             <%= f.text_field :nome, class:"form-input" %>
         </div>
 
+        <div class="form-campo">
+            <p class="form-nome">
+            <%= f.label :data_nasc do %>
+                Data nascimento <span class="campo-required">*</span>
+            <% end %>
+            </p>
+            
+            <%= f.text_field :data_nasc, type: "date", class:"form-input" %>
+        </div>
+
+        <div class="form-campo">
+            <p class="form-nome">
+            <%= f.label :data_obito do %>
+                Data óbito
+            <% end %>
+            </p>
+            
+            <%= f.text_field :data_obito, type: "date", class:"form-input" %>
+        </div>
+
         <div class="form-botao">
             <%= link_to "Cancelar", autores_path, class: "form-botao-cancelar" %>
             <%= f.submit "Salvar", class: "form-botao-cadastrar" %>
