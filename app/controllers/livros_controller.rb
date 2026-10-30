@@ -1,5 +1,12 @@
 class LivrosController < ApplicationController
 
+  before_filter :carregar_auxiliares, only: [:new, :edit, :create, :update]
+
+  def carregar_auxiliares
+    @autores = Autor.order(:id)
+    @generos = Genero.order(:id) 
+  end
+
   def index
     if !params[:busca].blank?
       termo = "%#{params[:busca]}%"

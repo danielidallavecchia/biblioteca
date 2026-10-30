@@ -20,7 +20,7 @@
             </div>
 
             <nav class="topo-menu">
-                <%= link_to 'Livros',      '#',           class: ('ativo' if controller_name == 'livros') %>
+                <%= link_to 'Livros',      livros_path,   class: ('ativo' if controller_name == 'livros') %>
                 <%= link_to 'Autores',     autores_path,  class: ('ativo' if controller_name == 'autores') %>
                 <%= link_to 'Gêneros',     generos_path,  class: ('ativo' if controller_name == 'generos') %>
                 <%= link_to 'Usuários',    usuarios_path, class: ('ativo' if controller_name == 'usuarios') %>

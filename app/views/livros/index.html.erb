@@ -1,0 +1,76 @@
+
+<div class="index-topo-padrao">
+    <div class="index-titulo">
+        <p class="index-texto-titulo">Livros</p>
+        <p class="index-texto-subtitulo">Consulte os livros cadastrados e adicione novos ao seu acervo.</p>
+    </div>
+
+    <div class="index-botao">
+        <%= link_to "Cadastrar livro", new_livro_path, class: "index-botao-novo" %>
+    </div>
+</div>
+
+<div class="index-corpo-padrao">
+
+    <div class="index-busca">
+        <%= form_tag livros_path, method: :get do %>
+            <%= text_field_tag :busca, params[:busca], placeholder: "Buscar por título ou ano de publicação", class: "index-busca-input" %>
+            <%= hidden_field_tag :filtrar, params[:filtrar] %>
+            <%= submit_tag "Buscar", name: nil, class: "index-busca-buscar" %>
+            <%= link_to "Limpar", livros_path, class: "index-busca-limpar" %>
+        <% end %>
+        <span class="index-qtd-registros">
+            <%= pluralize(@livros.length, "livro cadastrado", "livros cadastrados") %>
+        </span>
+    </div>
+
+    <div>
+        <% if @livros.blank? %>
+            <p class="tabela-sem-registros">Sem registros encontrados.</p>
+        <% else %>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th class="coluna-id">ID</th>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Gênero</th>
+                        <th class="coluna-acoes text-align-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @livros.each do |livro| %>
+                    <tr>
+                        <td><%= livro.id %></td>
+                        <td><%= livro.titulo %></td>
+
+                        <td>
+                        <% if !livro.autor.blank? %>
+                            <%= link_to "#{livro.autor.nome}", autor_path(livro.autor) %>
+                        <% else %>
+                            (Sem autor associado)
+                        <% end %>
+                        </td>
+
+                        <td>
+                        <% if !livro.genero.blank? %>
+                            <%= link_to "#{livro.genero.nome}", genero_path(livro.genero) %>
+                        <% else %>
+                            (Sem gênero associado)
+                        <% end %>
+                        </td>
+
+                        <td>
+                            <%= link_to "Ver registro", livro_path(livro), class: "tabela-botao-acao" %>  |  
+                            <%= link_to "Excluir", livro_path(livro), data: { method: :delete, confirm: "Tem certeza?" }, class: "tabela-botao-acao" %>
+                        </td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+
+        <% end %>
+    </div>
+
+</div>
