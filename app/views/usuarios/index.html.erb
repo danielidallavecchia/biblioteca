@@ -49,7 +49,7 @@
                         
                         <td class="text-align-center tabela-acoes">
                             <%= link_to "Ver registro", usuario_path(usuario), class: "tabela-botao-acao" %>  |
-                            <%= link_to "Excluir", usuario_path(usuario), data: { method: :delete, confirm: "Tem certeza?" }, class: "tabela-botao-acao" %>
+                            <%= link_to "Excluir", usuario_path(usuario), method: :delete, data: { confirm: "Tem certeza?" }, class: "tabela-botao-acao" %>
                         </td>
                     </tr>
                     <% end %>
