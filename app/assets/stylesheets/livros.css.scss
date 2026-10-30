@@ -1,3 +1,22 @@
 // Place all the styles related to the livros controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.livros-campos-lado {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.livros-campos-lado .show-campo {
+    width: 50%;
+}
+
+.livros-campos-lado .show-valor a {
+    text-decoration: none;
+    color: rgb(10, 10, 182);
+}
+.livros-campos-lado .show-valor a:hover {
+    color: rgb(2, 2, 88);
+    text-decoration: underline; 
+}

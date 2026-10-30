@@ -7,68 +7,75 @@
         <p class="show-texto-subtitulo">Consulte as informações do livro cadastrado no seu acervo.</p>
     </div>
 
-    <div>
-        <div>
-            <p>ID</p>
-            <p><%= @livro.id %></p> 
+    <div class="show-card">
+
+        <div class="livros-campos-lado">
+            <div class="show-campo">
+                <p class="show-rotulo">ID</p>
+                <p class="show-valor"><%= @livro.id %></p> 
+            </div>
+
+            <div class="show-campo">
+                <p class="show-rotulo">Título</p>
+                <p class="show-valor"><%= @livro.titulo %></p> 
+            </div>
         </div>
 
-        <div>
-            <p>Título</p>
-            <p><%= @livro.titulo %></p> 
+        <div class="show-campo">
+            <p class="show-rotulo">Sinopse</p>
+            <p class="show-valor"><%= @livro.sinopse %></p> 
         </div>
 
-        <div>
-            <p>Sinopse</p>
-            <p><%= @livro.sinopse %></p> 
+        <div class="livros-campos-lado">
+            <div class="show-campo">
+                <p class="show-rotulo">Ano publicação</p>
+                <p class="show-valor"><%= @livro.ano_publicacao %></p> 
+            </div>
+
+            <div class="show-campo">
+                <p class="show-rotulo">Qtd. páginas</p>
+                <p class="show-valor"><%= @livro.qtd_paginas %></p> 
+            </div>
+
+            <div class="show-campo">
+                <p class="show-rotulo">Data cadastro</p>
+                <p class="show-valor">
+                    <% if @livro.created_at.blank? %>
+                        <span class="show-sem-dados">(Não contém)</span>
+                    <% else %>
+                        <%= l(@livro.created_at, format: :default) %>
+                    <% end %>
+                </p>
+            </div>
         </div>
 
-        <div>
-            <p>Ano publicação</p>
-            <p><%= @livro.ano_publicacao %></p> 
-        </div>
+        <div class="livros-campos-lado">
+            <div class="show-campo">
+                <p class="show-rotulo">Autor</p>
+                <p class="show-valor">
+                    <% if !@livro.autor.blank? %>
+                        <%= link_to "#{@livro.autor_id} - #{@livro.autor.nome}", autor_path(@livro.autor) %>
+                    <% else %>
+                        <p class="show-sem-dados">(Sem autor associado)</p>
+                    <% end %>
+                </p>
+            </div>
 
-        <div>
-            <p>Qtd. páginas</p>
-            <p><%= @livro.qtd_paginas %></p> 
-        </div>
+            <div class="show-campo">
+                <p class="show-rotulo">Gênero</p>
+                <p class="show-valor">
+                    <% if !@livro.genero.blank? %>
+                        <%= link_to "#{@livro.genero_id} - #{@livro.genero.nome}", genero_path(@livro.genero) %>
+                    <% else %>
+                        <p class="show-sem-dados">(Sem gênero associado)</p>
+                    <% end %>
+                </p>
+            </div>
 
-        <div>
-            <p>Autor</p>
-            <p>
-                <% if !@livro.autor.blank? %>
-                    <%= link_to "#{@livro.autor_id} - #{@livro.autor.nome}", autor_path(@livro.autor) %>
-                <% else %>
-                    <p class="show-sem-dados">(Sem autor associado)</p>
-                <% end %>
-            </p>
-        </div>
-
-        <div>
-            <p>Gênero</p>
-            <p>
-                <% if !@livro.genero.blank? %>
-                    <%= link_to "#{@livro.genero_id} - #{@livro.genero.nome}", genero_path(@livro.genero) %>
-                <% else %>
-                    <p class="show-sem-dados">(Sem gênero associado)</p>
-                <% end %>
-            </p>
-        </div>
-
-        <div>
-            <p>Emprestado</p>
-            <p><%= @livro.emprestado?(@livro.id) ? "Sim" : "Não" %> </p>
-        </div>
-
-        <div>
-            <p>Data cadastro</p>
-            <p>
-                <% if @livro.created_at.blank? %>
-                    <span class="show-sem-dados">(Não contém)</span>
-                <% else %>
-                    <%= l(@livro.created_at, format: :default) %>
-                <% end %>
-            </p>
+            <div class="show-campo">
+                <p class="show-rotulo">Emprestado</p>
+                <p class="show-valor"><%= @livro.emprestado?(@livro.id) ? "Sim" : "Não" %> </p>
+            </div>
         </div>
 
         <div class="show-botoes">
