@@ -1,27 +1,30 @@
-<%= form_for @usuario do |f| %>
-  <div>
-    <%= f.label :nome, "Nome" %>
-    <%= f.text_field :nome %>
-  </div>
+<div class="form-padrao">
 
-  <div>
-    <%= f.label :login, "Login" %>
-    <%= f.text_field :login %>
-  </div>
+  <%= form_for @usuario do |f| %>
+    <div>
+      <%= f.label :nome, "Nome" %>
+      <%= f.text_field :nome %>
+    </div>
 
-  <div>
-    <%= f.label :email, "E-mail" %>
-    <%= f.email_field :email %>
-  </div>
+    <div>
+      <%= f.label :login, "Login" %>
+      <%= f.text_field :login %>
+    </div>
 
-<div>
-  <%= f.label :senha, "Senha" %>
-  <%= f.password_field :senha, placeholder: (@usuario.persisted? ? "Deixe em branco para manter a senha atual" : nil) %>
+    <div>
+      <%= f.label :email, "E-mail" %>
+      <%= f.email_field :email %>
+    </div>
+
+    <div>
+      <%= f.label :senha, "Senha" %>
+      <%= f.password_field :senha, placeholder: (@usuario.persisted? ? "Deixe em branco para manter a senha atual" : nil) %>
+    </div>
+
+
+    <div class="form-botao">
+      <%= link_to "Cancelar", usuarios_path, class: "form-botao-cancelar" %>
+      <%= f.submit "Salvar", class: "btn", class: "from-botao-cadastrar"%>
+    </div>
+  <% end %>
 </div>
-
-
-  <div>
-    <%= link_to "Voltar", usuarios_path %>
-    <%= f.submit "Salvar", class: "btn" %>
-  </div>
-<% end %>
