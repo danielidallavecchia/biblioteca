@@ -55,6 +55,11 @@
             </p>
         </div>
 
+        <div>
+            <p>Emprestado</p>
+            <p><%= @livro.emprestado?(@livro.id) ? "Sim" : "Não" %> </p>
+        </div>
+
         <div class="show-botoes">
             <%= link_to "Editar", edit_livro_path(@livro), class: "show-botao-editar" %> 
             <%= link_to "Excluir", livro_path(@livro), data: { method: :delete, confirm: "Tem certeza?" }, class: "show-botao-excluir" %>
