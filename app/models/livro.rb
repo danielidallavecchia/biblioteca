@@ -23,7 +23,7 @@ class Livro < ActiveRecord::Base
   end
 
   def emprestado?(id)
-    # emprestado = Emprestimo.where(livro_id: id)
+    #emprestado = Emprestimo.where(livro_id: id, data_devolucao: nil) # emprestado se data_devolucao é nula
     # emprestado.blank? ? false : true
     false
   end
