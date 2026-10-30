@@ -1,0 +1,33 @@
+
+<div class="form-padrao">
+
+    <%= form_for( @autor, url: (@autor.new_record? ? autores_path : autor_path(@autor)) ) do |f| %>
+
+        <% if !@autor.id.blank? %>
+            <!-- somente exibir no edit -->
+            <div class="form-campo">
+                <p class="form-texto-id">
+                    <span>ID do registro:</span>
+                    <span><%= @autor.id %></span>
+                </p>
+            </div>
+        <% end %>
+
+        <div class="form-campo">
+            <p class="form-nome">
+            <%= f.label :nome do %>
+                Nome <span class="campo-required">*</span>
+            <% end %>
+            </p>
+            
+            <%= f.text_field :nome, class:"form-input" %>
+        </div>
+
+        <div class="form-botao">
+            <%= link_to "Cancelar", autores_path, class: "form-botao-cancelar" %>
+            <%= f.submit "Salvar", class: "form-botao-cadastrar" %>
+        </div>
+    
+    <% end %>
+
+</div>
