@@ -6,7 +6,7 @@ Biblioteca::Application.routes.draw do
   get    'usuarios/:id/edit', to: 'usuarios#edit',    as: :edit_usuario
   get    'usuarios/:id',      to: 'usuarios#show',    as: :usuario
   put    'usuarios/:id',      to: 'usuarios#update'
-  delete 'usuarios/:id',      to: 'usuarios#destroy', as: :destroy_usuario
+  delete 'usuarios/:id',      to: 'usuarios#destroy'
 
   # Generos
   get    "generos"          => "generos#index",   :as => :generos

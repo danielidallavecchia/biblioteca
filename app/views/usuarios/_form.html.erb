@@ -1,30 +1,46 @@
-<div class="form-padrao">
+<%= form_for @usuario, html: { class: "cartao" } do |f| %>
+  <div class="cartao-corpo">
+    <% if @usuario.errors.any? %>
+      <div class="erro-form">
+        Erro: <%= @usuario.errors.full_messages.first %>
+      </div>
+    <% end %>
 
-  <%= form_for @usuario do |f| %>
-    <div>
-      <%= f.label :nome, "Nome" %>
-      <%= f.text_field :nome %>
+    <div class="campo">
+    <p class="form-nome">
+      <%= f.label :nome do %>Nome <span class="campo-required">*</span><% end %>
+      </p>
+      <%= f.text_field :nome, class:"form-input"%>
     </div>
 
-    <div>
-      <%= f.label :login, "Login" %>
-      <%= f.text_field :login %>
+    <div class="linha">
+      <div class="campo">
+      <p class="form-nome">
+        <%= f.label :login do %>Login <span class="campo-required">*</span><% end %>
+      </p>
+        <%= f.text_field :login, class:"form-input" %>
+      </div>
+      <div class="campo">
+      <p class="form-nome">
+        <%= f.label :email do %>E-mail <span class="campo-required">*</span><% end %>
+      </p>
+        <%= f.text_field :email, class:"form-input" %>
+      </div>
     </div>
 
-    <div>
-      <%= f.label :email, "E-mail" %>
-      <%= f.email_field :email %>
+    <div class="campo">
+      <p class="form-nome">
+        <%= f.label :senha do %>
+        Senha <% if @usuario.new_record? %><span class="campo-required">*</span><% end %>
+      </p>
+      <% end %>
+      <%= f.password_field :senha, class:"form-input",
+            placeholder: (@usuario.persisted? ? "Deixe em branco para manter a senha atual" : nil) %>
     </div>
+  </div>
 
-    <div>
-      <%= f.label :senha, "Senha" %>
-      <%= f.password_field :senha, placeholder: (@usuario.persisted? ? "Deixe em branco para manter a senha atual" : nil) %>
-    </div>
-
-
-    <div class="form-botao">
-      <%= link_to "Cancelar", usuarios_path, class: "form-botao-cancelar" %>
-      <%= f.submit "Salvar", class: "btn", class: "from-botao-cadastrar"%>
-    </div>
-  <% end %>
-</div>
+  <div class="cartao-rodape">
+    <%= link_to "Cancelar", usuarios_path, class: "btn" %>
+    <%= f.submit(@usuario.new_record? ? "Cadastrar" : "Salvar", class: "btn btn-primario") %>
+  </div>
+<% end %>

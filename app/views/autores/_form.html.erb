@@ -1,7 +1,6 @@
 
-<div class="form-padrao">
-
-    <%= form_for( @autor, url: (@autor.new_record? ? autores_path : autor_path(@autor)) ) do |f| %>
+<%= form_for( @autor, html: { class: "cartao" }, url: (@autor.new_record? ? autores_path : autor_path(@autor)) ) do |f| %>
+    <div class="cartao-corpo">
 
         <% if !@autor.id.blank? %>
             <!-- somente exibir no edit -->
