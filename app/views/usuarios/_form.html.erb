@@ -1,11 +1,6 @@
 <%= form_for @usuario, html: { class: "cartao" } do |f| %>
   <div class="cartao-corpo">
-    <% if @usuario.errors.any? %>
-      <div class="erro-form">
-        Erro: <%= @usuario.errors.full_messages.first %>
-      </div>
-    <% end %>
-
+  
     <div class="campo">
     <p class="form-nome">
       <%= f.label :nome do %>Nome <span class="campo-required">*</span><% end %>
