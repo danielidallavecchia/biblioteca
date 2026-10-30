@@ -26,4 +26,8 @@ class Autor < ActiveRecord::Base
 
   end
 
+  def id_e_nome
+    "##{id} - #{nome}"
+  end
+
 end
