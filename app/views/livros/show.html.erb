@@ -2,9 +2,15 @@
 
     <%= render "voltar" %>
 
-    <div class="show-titulo">
-        <p class="show-texto-titulo">Detalhes do livro</p>
-        <p class="show-texto-subtitulo">Consulte as informações do livro cadastrado no seu acervo.</p>
+    <div class="livros-titulo-lado">
+        <div class="show-titulo">
+            <p class="show-texto-titulo">Detalhes do livro</p>
+            <p class="show-texto-subtitulo">Consulte as informações do livro cadastrado no seu acervo.</p>
+        </div>
+
+        <div class="livros-titulo-botao">
+            <%= link_to "Ver empréstimos", livro_path(@livro), class: "livros-botao-ver-emprestimo" %> 
+        </div>
     </div>
 
     <div class="show-card">
@@ -81,6 +87,12 @@
         <div class="show-botoes">
             <%= link_to "Editar", edit_livro_path(@livro), class: "show-botao-editar" %> 
             <%= link_to "Excluir", livro_path(@livro), data: { method: :delete, confirm: "Tem certeza?" }, class: "show-botao-excluir" %>
+
+            <% if @livro.emprestado?(@livro.id) %>
+                <%= link_to "Reservar", livro_path(@livro), class: "livros-botao-emprestar" %> 
+            <% else %>
+                <%= link_to "Emprestar", livro_path(@livro), class: "livros-botao-emprestar" %> 
+            <% end %>
         </div>
     </div>
 

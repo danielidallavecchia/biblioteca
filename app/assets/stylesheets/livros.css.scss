@@ -20,3 +20,48 @@
     color: rgb(2, 2, 88);
     text-decoration: underline; 
 }
+
+.livros-botao-emprestar {
+    background-color: rgb(230, 233, 251);
+    color: #1e1e47;
+    border: 1px solid rgb(139, 141, 198);
+    width: 90px;
+    height: 30px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.livros-botao-emprestar:hover {
+    background-color: rgb(193, 190, 230);
+}
+
+.livros-titulo-botao {
+    display: flex;
+    align-items: center;
+}
+.livros-botao-ver-emprestimo {
+    background-color: #3c8160;
+    width: 140px;
+    height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+.livros-botao-ver-emprestimo:hover {
+   background-color: rgb(48, 104, 77);
+}
+
+.livros-titulo-lado {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 5px;
+}
