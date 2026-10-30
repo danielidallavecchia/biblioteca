@@ -22,4 +22,10 @@ class Livro < ActiveRecord::Base
     end
   end
 
+  def emprestado?(id)
+    # emprestado = Emprestimo.where(livro_id: id)
+    # emprestado.blank? ? false : true
+    false
+  end
+
 end
