@@ -44,7 +44,9 @@
                         <td><%= usuario.nome %></td>
                         <td><%= usuario.login %></td>
                         <td><%= usuario.email %></td>
-                        <td class="text-align-center"><%= usuario.created_at.strftime("%d/%m/%Y") if usuario.created_at %></td>
+                        
+                        <td class="text-align-center"><%= l(usuario.created_at, format: :default) if usuario.created_at %></td>
+                        
                         <td class="text-align-center tabela-acoes">
                             <%= link_to "Ver registro", usuario_path(usuario), class: "tabela-botao-acao" %>  |
                             <%= link_to "Excluir", usuario_path(usuario), data: { method: :delete, confirm: "Tem certeza?" }, class: "tabela-botao-acao" %>

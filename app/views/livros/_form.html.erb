@@ -1,0 +1,79 @@
+
+<div class="form-padrao">
+
+    <%= form_for(@livro) do |f| %>
+
+        <% if !@livro.id.blank? %>
+            <!-- somente exibir no edit -->
+            <div>
+                <p>
+                    <span>ID do registro:</span>
+                    <span><%= @livro.id %></span>
+                </p>
+            </div>
+        <% end %>
+
+        <div>
+            <p>
+            <%= f.label :titulo do %>
+                Título <span class="campo-required">*</span>
+            <% end %>
+            </p>
+            
+            <%= f.text_field :titulo %>
+        </div>
+
+        <div>
+            <p>
+            <%= f.label :sinopse do %>
+                Sinopse <span class="campo-required">*</span>
+            <% end %>
+            </p>
+            
+            <%= f.text_field :sinopse %>
+        </div>
+
+        <div>
+            <p>
+            <%= f.label :ano_publicacao do %>
+                Ano publicação <span class="campo-required">*</span>
+            <% end %>
+            </p>
+            
+            <%= f.number_field :ano_publicacao, min: 1 %>
+        </div>
+
+        <div>
+            <p>
+            <%= f.label :qtd_paginas do %>
+                Qtd. páginas <span class="campo-required">*</span>
+            <% end %>
+            </p>
+            
+            <%= f.number_field :qtd_paginas, min: 1 %>
+        </div>
+
+        <div>
+            <p>
+            <%= f.label :autor_id, "Autor" %>
+            </p>
+
+            <%= f.collection_select :autor_id, @autores, :id, :id_e_nome, {}, { class: "form-input" } %>
+        </div>
+
+        <div>
+            <p>
+            <%= f.label :genero_id, "Gênero" %>
+            </p>
+
+            <%= f.collection_select :genero_id, @generos, :id, :id_e_nome, {}, { class: "form-input" } %>
+        </div>
+
+        <div class="form-botao">
+            <%= link_to "Cancelar", livros_path, class: "form-botao-cancelar" %>
+            <%= f.submit "Salvar", class: "form-botao-cadastrar" %>
+        </div>
+
+    <% end %>
+
+</div>
