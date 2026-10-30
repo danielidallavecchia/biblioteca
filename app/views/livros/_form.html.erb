@@ -1,7 +1,6 @@
+<%= form_for @livro, html: { class: "cartao" } do |f| %>
 
-<div class="form-padrao">
-
-    <%= form_for(@livro) do |f| %>
+    <div class="cartao-corpo">
 
         <% if !@livro.id.blank? %>
             <!-- somente exibir no edit -->
@@ -13,67 +12,68 @@
             </div>
         <% end %>
 
-        <div>
-            <p>
-            <%= f.label :titulo do %>
-                Título <span class="campo-required">*</span>
-            <% end %>
+        <div class="campo">
+            <p class="form-nome">
+                <%= f.label :titulo do %>
+                    Título <span class="campo-required">*</span>
+                <% end %>
             </p>
-            
-            <%= f.text_field :titulo %>
+                
+            <%= f.text_field :titulo, class:"form-input"  %>
         </div>
 
-        <div>
-            <p>
-            <%= f.label :sinopse do %>
-                Sinopse <span class="campo-required">*</span>
-            <% end %>
-            </p>
-            
-            <%= f.text_field :sinopse %>
+        <div class="linha">
+            <div class="campo">
+                <p class="form-nome">
+                    <%= f.label :ano_publicacao do %>
+                        Ano publicação <span class="campo-required">*</span>
+                    <% end %>
+                </p>
+                    
+                <%= f.number_field :ano_publicacao, min: 1, class:"form-input"  %>
+            </div>
+
+            <div class="campo">
+                <p class="form-nome">
+                    <%= f.label :qtd_paginas do %>
+                        Qtd. páginas <span class="campo-required">*</span>
+                    <% end %>
+                </p>
+                    
+                <%= f.number_field :qtd_paginas, min: 1, class:"form-input" %>
+            </div>
         </div>
 
-        <div>
-            <p>
-            <%= f.label :ano_publicacao do %>
-                Ano publicação <span class="campo-required">*</span>
-            <% end %>
+        <div class="campo">
+            <p class="form-nome">
+                <%= f.label :sinopse do %>
+                    Sinopse <span class="campo-required">*</span>
+                <% end %>
             </p>
-            
-            <%= f.number_field :ano_publicacao, min: 1 %>
+                
+            <%= f.text_field :sinopse, class:"form-input"  %>
         </div>
 
-        <div>
-            <p>
-            <%= f.label :qtd_paginas do %>
-                Qtd. páginas <span class="campo-required">*</span>
-            <% end %>
-            </p>
-            
-            <%= f.number_field :qtd_paginas, min: 1 %>
-        </div>
 
-        <div>
-            <p>
-            <%= f.label :autor_id, "Autor" %>
+        <div class="campo">
+            <p class="form-nome">
+                <%= f.label :autor_id, "Autor" %>
             </p>
 
             <%= f.collection_select :autor_id, @autores, :id, :id_e_nome, {}, { class: "form-input" } %>
         </div>
 
-        <div>
-            <p>
-            <%= f.label :genero_id, "Gênero" %>
+        <div class="campo">
+            <p class="form-nome">
+                <%= f.label :genero_id, "Gênero" %>
             </p>
 
             <%= f.collection_select :genero_id, @generos, :id, :id_e_nome, {}, { class: "form-input" } %>
         </div>
+    </div>
 
-        <div class="form-botao">
-            <%= link_to "Cancelar", livros_path, class: "form-botao-cancelar" %>
-            <%= f.submit "Salvar", class: "form-botao-cadastrar" %>
-        </div>
-
-    <% end %>
-
-</div>
+    <div class="cartao-rodape">
+        <%= link_to "Cancelar", livros_path, class: "btn" %>
+        <%= f.submit "Salvar", class: "btn btn-primario" %>
+    </div>
+<% end %>
