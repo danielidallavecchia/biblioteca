@@ -24,7 +24,7 @@
                 <%= link_to 'Autores',     autores_path,  class: ('ativo' if controller_name == 'autores') %>
                 <%= link_to 'Gêneros',     generos_path,  class: ('ativo' if controller_name == 'generos') %>
                 <%= link_to 'Usuários',    usuarios_path, class: ('ativo' if controller_name == 'usuarios') %>
-                <%= link_to 'Empréstimos', '#',           class: ('ativo' if controller_name == 'emprestimos') %>
+                <%= link_to 'Empréstimos', emprestimos_path, class: ('ativo' if controller_name == 'emprestimos') %>
                 <%= link_to 'Reservas',    '#',           class: ('ativo' if controller_name == 'reservas') %>
             </nav>
         </div>

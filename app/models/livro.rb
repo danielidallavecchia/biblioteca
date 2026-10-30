@@ -28,4 +28,8 @@ class Livro < ActiveRecord::Base
     false
   end
 
+  def id_e_nome
+    "##{id} - #{nome}"
+  end
+  
 end

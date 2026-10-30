@@ -9,4 +9,9 @@ class Usuario < ActiveRecord::Base
     with: /\A[^@\s]+@[^@\s]+\z/, 
     message: "Este e-mail não tem um formato válido" 
   }
+
+  def id_e_nome
+    "##{id} - #{nome}"
+  end
+  
 end
