@@ -1,2 +1,15 @@
-<h1>Editar usuário</h1>
-<%= render 'form' %>
+<div class="form-corpo-padrao">
+
+    <div class="show-titulo">
+        <h1>Editar usuário</h1>
+        <p>Altere as informações do usuário</p>
+    </div>
+
+    <%= render 'form' %>
+
+    <% if @usuario.errors.any? %>
+    <div class="erro-form">
+        Erro: <%= @usuario.errors.full_messages.first %>
+    </div>
+    <% end %>
+</div>
