@@ -28,9 +28,10 @@ class LivrosController < ApplicationController
     @livro = Livro.new(params[:livro])
 
     if @livro.save 
-      redirect_to livros_path, notice: "sucesso"
+      redirect_to livros_path
     else
       flash.now[:error] = "erro_create"
+      render :new
     end
   end
 
@@ -52,7 +53,7 @@ class LivrosController < ApplicationController
     @livro = Livro.find(params[:id])
     @livro.destroy 
 
-    redirect_to livros_path, notice: "sucesso"
+    redirect_to livros_path
   end
 
 end
