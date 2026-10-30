@@ -1,7 +1,6 @@
 
-<div class="form-padrao">
-
-    <%= form_for( @autor, url: (@autor.new_record? ? autores_path : autor_path(@autor)) ) do |f| %>
+<%= form_for( @autor, html: { class: "cartao" }, url: (@autor.new_record? ? autores_path : autor_path(@autor)) ) do |f| %>
+    <div class="cartao-corpo">
 
         <% if !@autor.id.blank? %>
             <!-- somente exibir no edit -->
@@ -22,12 +21,10 @@
             
             <%= f.text_field :nome, class:"form-input" %>
         </div>
+    </div>
 
-        <div class="form-botao">
-            <%= link_to "Cancelar", autores_path, class: "form-botao-cancelar" %>
-            <%= f.submit "Salvar", class: "form-botao-cadastrar" %>
-        </div>
-    
-    <% end %>
-
-</div>
+    <div class="cartao-rodape">
+        <%= link_to "Cancelar", autores_path, class: "btn" %>
+        <%= f.submit "Salvar", class: "btn btn-primario" %>
+    </div>
+<% end %>

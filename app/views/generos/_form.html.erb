@@ -1,10 +1,8 @@
-
-<div class="form-padrao">
-
-    <%= form_for(@genero) do |f| %>
+<%= form_for@genero, html: { class: "cartao" } do |f| %>
+    <div class="cartao-corpo">
 
         <% if !@genero.id.blank? %>
-            <!-- somente exibir no edit -->
+             <!-- somente exibir no edit -->
             <div class="form-campo">
                 <p class="form-texto-id">
                     <span>ID do registro:</span>
@@ -15,19 +13,16 @@
 
         <div class="form-campo">
             <p class="form-nome">
-            <%= f.label :nome do %>
-                Nome <span class="campo-required">*</span>
-            <% end %>
+                <%= f.label :nome do %>
+                    Nome <span class="campo-required">*</span>
+                <% end %>
             </p>
-            
             <%= f.text_field :nome, class:"form-input" %>
         </div>
+    </div>
 
-        <div class="form-botao">
-            <%= link_to "Cancelar", generos_path, class: "form-botao-cancelar" %>
-            <%= f.submit "Salvar", class: "form-botao-cadastrar" %>
-        </div>
-    
-    <% end %>
-
-</div>
+    <div class="cartao-rodape">
+        <%= link_to "Cancelar", generos_path, class: "btn" %>
+        <%= f.submit "Salvar", class: "btn btn-primario" %>
+    </div>
+<%end%>

@@ -7,26 +7,34 @@
     <% end %>
 
     <div class="campo">
+    <p class="form-nome">
       <%= f.label :nome do %>Nome <span class="campo-required">*</span><% end %>
-      <%= f.text_field :nome %>
+      </p>
+      <%= f.text_field :nome, class:"form-input"%>
     </div>
 
     <div class="linha">
       <div class="campo">
+      <p class="form-nome">
         <%= f.label :login do %>Login <span class="campo-required">*</span><% end %>
-        <%= f.text_field :login %>
+      </p>
+        <%= f.text_field :login, class:"form-input" %>
       </div>
       <div class="campo">
+      <p class="form-nome">
         <%= f.label :email do %>E-mail <span class="campo-required">*</span><% end %>
-        <%= f.text_field :email %>
+      </p>
+        <%= f.text_field :email, class:"form-input" %>
       </div>
     </div>
 
     <div class="campo">
-      <%= f.label :senha do %>
+      <p class="form-nome">
+        <%= f.label :senha do %>
         Senha <% if @usuario.new_record? %><span class="campo-required">*</span><% end %>
+      </p>
       <% end %>
-      <%= f.password_field :senha,
+      <%= f.password_field :senha, class:"form-input",
             placeholder: (@usuario.persisted? ? "Deixe em branco para manter a senha atual" : nil) %>
     </div>
   </div>
