@@ -19,29 +19,32 @@
             <p class="show-valor"><%= @autor.nome %> </p>
         </div>
 
-        <div class="show-campo">
-            <p class="show-rotulo">Data nascimento</p>
-            <p class="show-valor"><%= l(@autor.data_nasc, format: :default) %></p>
+        <div class="autores-campos-data">
+
+            <div class="show-campo">
+                <p class="show-rotulo">Data nascimento</p>
+                <p class="show-valor"><%= l(@autor.data_nasc, format: :default) %></p>
+            </div>
+
+            <div class="show-campo">
+                <p class="show-rotulo">Data óbito</p>
+                <p class="show-valor">
+                    <% if @autor.data_obito.blank? %>
+                        <span class="show-sem-dados">—</span>
+                    <% else %>
+                        <%= l(@autor.data_obito, format: :default) %>
+                    <% end %>
+                </p>
+            </div>
         </div>
 
         <div class="show-campo">
-            <p class="show-rotulo">Data óbito</p>
+            <p class="show-rotulo">Data cadastro</p>
             <p class="show-valor">
-                <% if @autor.data_obito.blank? %>
+                <% if @autor.created_at.blank? %>
                     <span class="show-sem-dados">(Não contém)</span>
                 <% else %>
-                    <%= l(@autor.data_obito, format: :default) %>
-                <% end %>
-            </p>
-        </div>
-
-        <div class="show-campo">
-            <p class="show-rotulo">Cadastro</p>
-            <p class="show-valor">
-                <% if @autor.data_obito.blank? %>
-                    <span class="show-sem-dados">(Não contém)</span>
-                <% else %>
-                    <%= l(@autor.data_obito, format: :default) %>
+                    <%= l(@autor.created_at, format: :default) %>
                 <% end %>
             </p>
         </div>
