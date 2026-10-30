@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20261028134144) do
+ActiveRecord::Schema.define(:version => 20261030163907) do
 
   create_table "autores", :force => true do |t|
     t.string   "nome"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20261028134144) do
   create_table "livros", :force => true do |t|
     t.string   "titulo"
     t.string   "sinopse"
-    t.date     "ano_publicacao"
+    t.integer  "ano_publicacao"
     t.integer  "qtd_paginas"
     t.integer  "autor_id"
     t.integer  "genero_id"
