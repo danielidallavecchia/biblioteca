@@ -9,7 +9,7 @@
 
     <%= render "form" %>
 
-    <% if @livro.errors.any? %>
+    <% if !@livro.errors.blank? %>
     <div class="erro-form">
         Erro: <%= @livro.errors.full_messages.first %>
     </div>
