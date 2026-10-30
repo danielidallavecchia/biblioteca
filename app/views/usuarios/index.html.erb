@@ -17,6 +17,9 @@
             <%= submit_tag "Buscar", name: nil, class: "index-busca-buscar" %>
             <%= link_to "Limpar", usuarios_path, class: "index-busca-limpar" %>
         <% end %>
+        <span class="index-qtd-registros">
+            <%= pluralize(@usuarios.length, "usuário cadastrado", "usuários cadastrados") %>
+        </span>
     </div>
 
     <div class="index-tabela">
@@ -26,6 +29,7 @@
             <table>
                 <thead>
                     <tr>
+                        <th class="coluna-id">ID</th>
                         <th>Nome</th>
                         <th>Login</th>
                         <th>E-mail</th>
@@ -36,6 +40,7 @@
                 <tbody>
                     <% @usuarios.each do |usuario| %>
                     <tr>
+                        <td class="text-align"><%= usuario.id %></td>
                         <td><%= usuario.nome %></td>
                         <td><%= usuario.login %></td>
                         <td><%= usuario.email %></td>
