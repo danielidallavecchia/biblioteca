@@ -19,17 +19,25 @@
             <%= submit_tag "Buscar", name: nil, class: "index-busca-buscar" %>
             <%= link_to "Limpar", autores_path, class: "index-busca-limpar" %>
         <% end %>
+
+        <span class="index-qtd-registros">
+            <% if @autores.length > 0 %>
+                <%= pluralize(@autores.length, "autor cadastrado", "autores cadastrados") %>
+            <% end %>
+        </span>
     </div>
 
     <div class="index-tabela">
         <% if @autores.blank? %>
-            <p class="tabela-sem-registros">Ainda não existem autores. Cadastre o primeiro autor.</p>
+            <p class="tabela-sem-registros">Sem registros encontrados.</p>
         <% else %>
             <table>
                 <thead>
                     <tr>
                         <th class="coluna-id">ID</th>
                         <th>Nome</th>
+                        <th>Data nascimento</th>
+                        <th>Data óbito</th>
                         <th class="coluna-acoes text-align-center">Ações</th>
                     </tr>
                 </thead>
@@ -38,6 +46,14 @@
                     <tr>
                         <td class="text-align-center"><%= autor.id %></td>
                         <td><%= autor.nome %> </td>
+                        <td><%= l(autor.data_nasc, format: :default) %> </td>
+                        <td>
+                            <% if autor.data_obito.blank? %>
+                                <span class="show-sem-dados">—</span>
+                            <% else %>
+                                <%= l(autor.data_obito, format: :default) %> 
+                            <% end %>
+                        </td>
                         <td class="text-align-center tabela-acoes">
                             <%= link_to "Ver registro", autor_path(autor), class: "tabela-botao-acao" %>  |  
                             <%= link_to "Excluir", autor_path(autor), data: { method: :delete, confirm: "Tem certeza?" }, class: "tabela-botao-acao" %>
