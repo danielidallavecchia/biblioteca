@@ -1,5 +1,5 @@
 Biblioteca::Application.routes.draw do
-  # rotas para usuarios
+  # Usuarios
   get    'usuarios',          to: 'usuarios#index',   as: :usuarios
   post   'usuarios',          to: 'usuarios#create'
   get    'usuarios/new',      to: 'usuarios#new',     as: :new_usuario

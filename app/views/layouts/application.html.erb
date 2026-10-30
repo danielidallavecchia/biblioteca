@@ -4,28 +4,34 @@
     <title>Biblioteca</title>
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= csrf_meta_tags %>
-
     <script src="<%= javascript_path 'application' %>"></script>
-
 </head>
 <body>
-    <header>
-        <div>
-            <div>Biblioteca</div>
-            <div>Meu perfil</div>
+    <header class="topo">
+        <div class="topo-conteudo">
+            <div class="topo-linha">
+                <div class="topo-marca">
+                    <span class="topo-nome">Biblioteca</span>
+                </div>
+
+                <%= link_to '#', class: 'topo-perfil' do %>
+                    Meu perfil
+                <% end %>
+            </div>
+
+            <nav class="topo-menu">
+                <%= link_to 'Livros',      '#',           class: ('ativo' if controller_name == 'livros') %>
+                <%= link_to 'Autores',     '#',           class: ('ativo' if controller_name == 'autores') %>
+                <%= link_to 'Gêneros',     generos_path,  class: ('ativo' if controller_name == 'generos') %>
+                <%= link_to 'Usuários',    usuarios_path, class: ('ativo' if controller_name == 'usuarios') %>
+                <%= link_to 'Empréstimos', '#',           class: ('ativo' if controller_name == 'emprestimos') %>
+                <%= link_to 'Reservas',    '#',           class: ('ativo' if controller_name == 'reservas') %>
+            </nav>
         </div>
-        <nav>
-            <%= link_to 'Livros', '#' %>
-            <%= link_to 'Autores', '#' %>
-            <%= link_to 'Gêneros', generos_path %>
-            <%= link_to 'Usuários', usuarios_path %>
-            <%= link_to 'Empréstimos', '#' %>
-            <%= link_to 'Reservas', '#' %>
-        </nav>
     </header>
-  
+
     <div class="body-corpo">
-      <%= yield %>
+        <%= yield %>
     </div>
 </body>
 </html>
