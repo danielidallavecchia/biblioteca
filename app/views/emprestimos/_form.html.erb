@@ -1,0 +1,48 @@
+
+<%= form_for( @autor, html: { class: "cartao" }, url: (@autor.new_record? ? autores_path : autor_path(@autor)) ) do |f| %>
+    <div class="cartao-corpo">
+
+        <% if !@autor.id.blank? %>
+            <!-- somente exibir no edit -->
+            <div class="form-campo">
+                <p class="form-texto-id">
+                    <span>ID do registro:</span>
+                    <span><%= @autor.id %></span>
+                </p>
+            </div>
+        <% end %>
+
+        <div>
+            <p>
+            <%= f.label :data_prevista_devolucao do %>
+                Data devolução (prevista) <span class="campo-required">*</span>
+            <% end %>
+            </p>
+            
+            <%= f.text_field :data_prevista_devolucao, type: "date", class:"form-input" %>
+        </div>
+
+        <div>
+            <p>
+            <%= f.label :usuario_id, "Usuário" %>
+            </p>
+
+            <%= f.collection_select :usuario_id, @usuarios, :id, :id_e_nome, {}, { class: "form-input" } %>
+        </div>
+
+        <div>
+            <p>
+            <%= f.label :livro_id, "Livro" %>
+            </p>
+
+            <%= f.collection_select :livro_id, @livros, :id, :id_e_nome, {}, { class: "form-input" } %>
+        </div>
+
+        <div class="form-botao">
+            <%= link_to "Cancelar", autores_path, class: "form-botao-cancelar" %>
+            <%= f.submit "Salvar", class: "form-botao-cadastrar" %>
+        </div>
+    
+    <% end %>
+
+</div>
