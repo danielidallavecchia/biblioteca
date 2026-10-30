@@ -35,6 +35,11 @@ header {
     padding: 15px;
 }
 
+.show-sem-dados {
+    color: rgb(68, 68, 68);
+    font-style: italic;
+}
+
 /******************** CSS para index ********************/
 .index-topo-padrao {
     display: flex;
