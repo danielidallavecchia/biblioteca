@@ -60,6 +60,17 @@
             <p><%= @livro.emprestado?(@livro.id) ? "Sim" : "Não" %> </p>
         </div>
 
+        <div>
+            <p>Data cadastro</p>
+            <p>
+                <% if @livro.created_at.blank? %>
+                    <span class="show-sem-dados">(Não contém)</span>
+                <% else %>
+                    <%= l(@livro.created_at, format: :default) %>
+                <% end %>
+            </p>
+        </div>
+
         <div class="show-botoes">
             <%= link_to "Editar", edit_livro_path(@livro), class: "show-botao-editar" %> 
             <%= link_to "Excluir", livro_path(@livro), data: { method: :delete, confirm: "Tem certeza?" }, class: "show-botao-excluir" %>
