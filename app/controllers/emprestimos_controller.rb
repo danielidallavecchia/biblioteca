@@ -47,7 +47,7 @@ class EmprestimosController < ApplicationController
   end
 
   def create 
-    @emprestimo = Emprestimo.new(params[:autor])
+    @emprestimo = Emprestimo.new(params[:emprestimo])
 
     if @emprestimo.save
       redirect_to emprestimos_path 

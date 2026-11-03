@@ -1,0 +1,87 @@
+
+<div class="index-topo-padrao">
+    <div class="index-titulo">
+        <p class="index-texto-titulo">Empréstimos</p>
+        <p class="index-texto-subtitulo">Gerencia os empréstimos cadastrados e crie novos.</p>
+    </div>
+
+    <div class="index-botao">
+        <%= link_to "Criar empréstimo", new_emprestimo_path, class: "index-botao-novo" %>
+    </div>
+</div>
+
+<div class="index-corpo-padrao">
+    <div class="index-busca">
+        <%= form_tag emprestimos_path, method: :get do %>
+            <%= text_field_tag :busca, params[:busca], placeholder: "Buscar por data", class: "index-busca-input" %>
+            <%= hidden_field_tag :filtrar, params[:filtrar] %>
+            <%= submit_tag "Buscar", name: nil, class: "index-busca-buscar" %>
+            <%= link_to "Limpar", emprestimos_path, class: "index-busca-limpar" %>
+        <% end %>
+        <span class="index-qtd-registros">
+            <%= pluralize(@emprestimos.length, "empréstimo cadastrado", "empréstimos cadastrados") %>
+        </span>
+    </div>
+
+    <div class="index-tabela">
+        <% if @emprestimos.blank? %>
+            <p class="tabela-sem-registros">Sem registros encontrados.</p>
+        <% else %>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="coluna-id">ID</th>
+                        <th>Data cadastro</th>
+                        <th>Data prevista devolução</th>
+                        <th>Data devolução</th>
+                        <th class="emprestimo-coluna-links">Livro</th>
+                        <th class="emprestimo-coluna-links">Usuário</th>
+                        <th class="emprestimo-coluna-status">Status</th>
+                        <th class="emprestimo-coluna-acoes text-align-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @emprestimos.each do |emprestimo| %>
+                        <tr>
+                            <td class="text-align-center"><%= emprestimo.id %></td>
+                            <td><%= l(emprestimo.created_at, format: :default) %> </td>
+                            <td><%= l(emprestimo.data_prevista_devolucao, format: :short) %> </td>
+                            <td>
+                                <% if emprestimo.data_devolucao.blank? %>
+                                    —
+                                <% else %>
+                                    <%= l(emprestimo.data_devolucao, format: :default) %> 
+                                <% end %>    
+                            </td>
+                            <td>
+                                <% if emprestimo.livro_id.blank? %>
+                                    —
+                                <% else %>
+                                    <%= link_to "#{emprestimo.livro.titulo}", livro_path(emprestimo.livro), class: "emprestimo-links" %>
+                                <% end %>  
+                            </td>
+                            <td>
+                                <% if emprestimo.usuario_id.blank? %>
+                                    —
+                                <% else %>
+                                    <%= link_to "#{emprestimo.usuario.nome}", usuario_path(emprestimo.usuario), class: "emprestimo-links" %>
+                                <% end %>  
+                            </td>
+                            <td><%= emprestimo.status %></td>
+
+                            <td class="text-align-center tabela-acoes">
+                                <%= link_to "Ver registro", emprestimo_path(emprestimo), class: "tabela-botao-acao" %> 
+
+                                <% if emprestimo.status != "ENCERRADO" %>
+                                    | <%= link_to "Devolver", edit_emprestimo_path(emprestimo), class: "tabela-botao-acao" %>
+                                <% end %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        <% end %>
+
+    </div>
+
+</div>

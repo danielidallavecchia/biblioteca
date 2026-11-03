@@ -1,0 +1,49 @@
+
+<%= form_for @emprestimo, html: { class: "cartao" } do |f| %>
+
+    <div class="cartao-corpo">
+
+        <% if !@emprestimo.id.blank? %>
+            <!-- somente exibir no edit -->
+            <div class="form-campo">
+                <p class="form-texto-id">
+                    <span>ID do registro:</span>
+                    <span><%= @emprestimo.id %></span>
+                </p>
+            </div>
+        <% end %>
+
+        <div class="form-campo">
+            <p class="form-nome-maior">
+            <%= f.label :data_prevista_devolucao do %>
+                Data devolução (prevista) <span class="campo-required">*</span>
+            <% end %>
+            </p>
+            
+            <%= f.text_field :data_prevista_devolucao, type: "date", class:"form-input" %>
+        </div>
+
+        <div class="form-campo">
+            <p class="form-nome">
+                <%= f.label :usuario_id, "Usuário" %>
+            </p>
+
+            <%= f.collection_select :usuario_id, @usuarios, :id, :id_e_nome, {}, { class: "form-input" } %>
+        </div>
+
+        <div class="form-campo">
+            <p class="form-nome">
+                <%= f.label :livro_id, "Livro" %>
+            </p>
+
+            <%= f.collection_select :livro_id, @livros, :id, :id_e_titulo, {}, { class: "form-input" } %>
+        </div>
+
+        <div class="form-botao">
+            <%= link_to "Cancelar", emprestimos_path, class: "form-botao-cancelar" %>
+            <%= f.submit "Salvar", class: "form-botao-cadastrar" %>
+        </div>
+
+    </div>
+    
+<% end %>
