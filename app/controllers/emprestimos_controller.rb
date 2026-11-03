@@ -25,6 +25,16 @@ class EmprestimosController < ApplicationController
       @emprestimos = @emprestimos.where(data_devolucao: nil)
     end
 
+    ## filtra por livro_id, usado no show do livro
+    if !params[:livro_id].blank?
+      @emprestimos = @emprestimos.where(livro_id: params[:livro_id]) 
+    end
+
+    ## filtra por usuario_id, usado no show do usuario
+    if !params[:usuario_id].blank?
+      @emprestimos = @emprestimos.where(usuario_id: params[:usuario_id]) 
+    end
+
   end
 
   def show 
