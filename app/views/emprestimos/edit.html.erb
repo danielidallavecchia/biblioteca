@@ -1,0 +1,56 @@
+
+<div class="form-corpo-padrao">
+
+    <%= render "voltar" %>
+
+    <div class="show-titulo">
+        <p class="show-texto-titulo">Devolver empréstimo</p>
+        <p class="show-texto-subtitulo">Encerre o empréstimo ativo após sua devolução</p>
+    </div>
+
+    <%= form_for @emprestimo, html: { class: "cartao" } do |f| %>
+        <div class="cartao-corpo">
+            <div class="form-campo">
+                <p class="form-texto-id">
+                    <span>ID do registro:</span>
+                    <span><%= @emprestimo.id %></span>
+                </p>
+            </div>
+
+            <div class="form-campo">
+                <p class="form-texto-id">
+                    <span>Usuário: </span>
+                    <span><%= link_to "##{@emprestimo.usuario_id} - #{@emprestimo.usuario.nome}", livro_path(@emprestimo.usuario) %> </span>
+                </p>
+            </div>
+
+            <div class="form-campo">
+                <p class="form-texto-id">
+                    <span>Livro: </span>
+                    <span> <%= link_to "##{@emprestimo.livro_id} - #{@emprestimo.livro.titulo}", livro_path(@emprestimo.livro) %> </span>
+                </p>
+            </div>
+
+            <div class="form-campo">
+                <p class="form-nome-maior">
+                <%= f.label :data_devolucao do %>
+                    Data devolução <span class="campo-required">*</span>
+                <% end %>
+                </p>
+                
+                <%= f.text_field :data_devolucao, type: "datetime-local", class:"form-input" %>
+            </div>
+
+            <div class="form-botao">
+                <%= link_to "Cancelar", emprestimos_path, class: "form-botao-cancelar" %>
+                <%= f.submit "Salvar", class: "form-botao-cadastrar" %>
+            </div>
+        </div>
+    <% end %>
+
+    <% if @emprestimo.errors.any? %>
+    <div class="erro-form">
+        Erro: <%= @emprestimo.errors.full_messages.first %>
+    </div>
+    <% end %>
+</div>

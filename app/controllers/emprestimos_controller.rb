@@ -1,6 +1,6 @@
 class EmprestimosController < ApplicationController
 
-  before_filter :carregar_auxiliares, only: [:new, :edit, :create, :update]
+  before_filter :carregar_auxiliares, only: [:new, :edit, :create, :update, :index]
 
   def carregar_auxiliares
     @usuarios = Usuario.order(:id)
@@ -10,31 +10,20 @@ class EmprestimosController < ApplicationController
   def index 
     @emprestimos = Emprestimo.order("id desc")
 
+    ## filtro de busca por usuario ou livro
     if !params[:busca].blank?
       termo = "%#{params[:busca]}%"
 
-      @emprestimos = @emprestimos.where("
-        EXTRACT(YEAR FROM data_prevista_devolucao)::text LIKE ?
-        OR EXTRACT(YEAR FROM data_devolucao)::text LIKE ?
-        OR EXTRACT(YEAR FROM created_at)::text LIKE ?
-
-        OR EXTRACT(MONTH FROM data_prevista_devolucao)::text LIKE ?
-        OR EXTRACT(MONTH FROM data_devolucao)::text LIKE ?
-        OR EXTRACT(MONTH FROM created_at)::text LIKE ?
-
-        OR EXTRACT(DAY FROM data_prevista_devolucao)::text LIKE ?
-        OR EXTRACT(DAY FROM data_devolucao)::text LIKE ?
-        OR EXTRACT(DAY FROM created_at)::text LIKE ?
-      ", termo, termo, termo, termo, termo, termo, termo, termo, termo)
+      @emprestimos = @emprestimos.joins(:usuario, :livro).where("
+        usuarios.id::TEXT LIKE ? OR usuarios.nome ILIKE ?
+        OR livros.id::TEXT LIKE ? OR livros.titulo ILIKE ?
+      ", termo, termo, termo, termo)
     end
 
-    # if !params[:id_usuario].blank?
-    #   @emprestimos = @emprestimos.joins(:usuario).where(usuarios: { usuario_id: params[:id_usuario] })
-    # end
-
-    # if !params[:id_livro].blank?
-    #   @emprestimos = @emprestimos.joins(:livro).where(livros: { livro_id: params[:id_livro] })
-    # end
+    ## filtra somente emprestimos ativos
+    if !params[:ativos].blank? && params[:ativos] == "true"
+      @emprestimos = @emprestimos.where(data_devolucao: nil)
+    end
 
   end
 
@@ -47,7 +36,7 @@ class EmprestimosController < ApplicationController
   end
 
   def create 
-    @emprestimo = Emprestimo.new(params[:autor])
+    @emprestimo = Emprestimo.new(params[:emprestimo])
 
     if @emprestimo.save
       redirect_to emprestimos_path 

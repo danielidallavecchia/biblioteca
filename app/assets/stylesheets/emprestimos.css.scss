@@ -13,17 +13,58 @@
 }
 
 .emprestimo-coluna-acoes {
-    width: 190px;
+    width: 180px;
 }
 .emprestimo-coluna-links {
-    width: 150px;
+    width: 180px;
 }
 .emprestimo-coluna-status {
-    width: 110px;
+    width: 100px;
 }
 
 .emprestimo-legenda-status {
     color: rgb(68, 68, 68);
     font-style: italic;
     padding-left: 3px;
+}
+
+.emprestimo-links {
+    text-decoration: none;
+    color: rgb(10, 10, 182);
+}
+.emprestimo-links:hover {
+    color: rgb(2, 2, 88);
+    text-decoration: underline; 
+}
+
+.form-texto-link {
+    color: rgb(111, 110, 110);
+    font-size: 14px;
+}
+
+.emprestimo-buscas {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    height: 30px;
+    display: flex;
+    padding: 0px 0px 10px 15px;
+    gap: 10px;
+}
+
+.emprestimo-buscas-botao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    height: 26px;
+    width: 125px;
+    border-radius: 10px;
+    border: 1.3px solid #1b4530;
+    color: #163b29;
+}
+.emprestimo-buscas-botao:hover {
+    background-color: #d7e7df;
+    color: #071d12;
 }
