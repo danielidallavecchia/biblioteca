@@ -27,3 +27,17 @@
     font-style: italic;
     padding-left: 3px;
 }
+
+.emprestimo-links {
+    text-decoration: none;
+    color: rgb(10, 10, 182);
+}
+.emprestimo-links:hover {
+    color: rgb(2, 2, 88);
+    text-decoration: underline; 
+}
+
+.form-texto-link {
+    color: rgb(111, 110, 110);
+    font-size: 14px;
+}
