@@ -3,12 +3,16 @@ class Emprestimo < ActiveRecord::Base
   belongs_to :livro
   belongs_to :usuario
 
-  validates :livro_id, :usuario_id, :data_prevista_devolucao, presence: true
+  validates :livro_id, :usuario_id, presence: { message: "é obrigatório" }
+  validates :data_prevista_devolucao, presence: { message: "é obrigatória" }
   validate :valida_data_prevista
+
+  validate :valida_livro, on: :create
+  validates :data_devolucao, presence: { message: "é obrigatória" }, on: :update
 
   def valida_data_prevista
     if !data_prevista_devolucao.blank? && data_prevista_devolucao < Date.today 
-      errors.add(:data_nasc, "não pode ser no passado")
+      errors.add("Data de devolução prevista", "não pode ser no passado")
     end
   end
 
@@ -20,6 +24,12 @@ class Emprestimo < ActiveRecord::Base
       "ATRASADO"
     else 
       "ATIVO"
+    end
+  end
+
+  def valida_livro
+    if Livro.esta_emprestado?(livro_id)
+      errors.add("Livro", "já está emprestado")
     end
   end
 
