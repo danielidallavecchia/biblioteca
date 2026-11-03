@@ -353,6 +353,11 @@ header {
     color: gray;
     padding-bottom: 5px;
 }
+.form-nome-maior {
+    width: 300px;
+    color: gray;
+    padding-bottom: 5px;
+}
 .form-input {
     padding: 3px 5px 3px 8px;
     font-size: 14px;

@@ -12,17 +12,28 @@ class EmprestimosController < ApplicationController
 
     if !params[:busca].blank?
       termo = "%#{params[:busca]}%"
-      @emprestimos = @emprestimos.where("EXTRACT(YEAR FROM data_prevista_devolucao)::text LIKE ?", termo)  
-      @emprestimos = @emprestimos.where("EXTRACT(MONTH FROM data_prevista_devolucao)::text LIKE ?", termo)
-      @emprestimos = @emprestimos.where("EXTRACT(DAY FROM data_prevista_devolucao)::text LIKE ?", termo)
+
+      @emprestimos = @emprestimos.where("
+        EXTRACT(YEAR FROM data_prevista_devolucao)::text LIKE ?
+        OR EXTRACT(YEAR FROM data_devolucao)::text LIKE ?
+        OR EXTRACT(YEAR FROM created_at)::text LIKE ?
+
+        OR EXTRACT(MONTH FROM data_prevista_devolucao)::text LIKE ?
+        OR EXTRACT(MONTH FROM data_devolucao)::text LIKE ?
+        OR EXTRACT(MONTH FROM created_at)::text LIKE ?
+
+        OR EXTRACT(DAY FROM data_prevista_devolucao)::text LIKE ?
+        OR EXTRACT(DAY FROM data_devolucao)::text LIKE ?
+        OR EXTRACT(DAY FROM created_at)::text LIKE ?
+      ", termo, termo, termo, termo, termo, termo, termo, termo, termo)
     end
 
     # if !params[:id_usuario].blank?
-    #   @emprestimos = @emprestimos.joins(:usuario).where(usuarios: { usuario_id: :id_usuario} )
+    #   @emprestimos = @emprestimos.joins(:usuario).where(usuarios: { usuario_id: params[:id_usuario] })
     # end
 
     # if !params[:id_livro].blank?
-    #   @emprestimos = @emprestimos.joins(:livro).where(livros: { livro_id: :id_livro} )
+    #   @emprestimos = @emprestimos.joins(:livro).where(livros: { livro_id: params[:id_livro] })
     # end
 
   end
