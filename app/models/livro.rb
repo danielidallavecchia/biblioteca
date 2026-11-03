@@ -26,7 +26,12 @@ class Livro < ActiveRecord::Base
     emprestado.blank? ? false : true
   end
 
-  def id_e_nome
+  def emprestimo_atual_id(id) 
+    emp = Emprestimo.where(livro_id: id, data_devolucao: nil).first
+    emp.id if !emp.blank? # retorna o id do emprestimo, se houver
+  end
+
+  def id_e_titulo
     "##{id} - #{titulo}"
   end
   
