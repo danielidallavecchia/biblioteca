@@ -80,7 +80,13 @@
 
             <div class="show-campo">
                 <p class="show-rotulo">Emprestado</p>
-                <p class="show-valor"><%= @livro.emprestado?(@livro.id) ? "Sim" : "Não" %> </p>
+                <p class="show-valor">
+                    <%= @livro.emprestado?(@livro.id) ? "Sim" : "Não" %> 
+
+                    <% if @livro.emprestado?(@livro.id) %>
+                        <%= link_to "(ver empréstimo)", emprestimo_path(@livro.emprestimo_atual_id(@livro.id)), class: "show-sem-dados" %>
+                    <% end %>
+                </p>
             </div>
         </div>
 
