@@ -2,9 +2,15 @@
 
     <%= render "voltar" %>
 
-    <div class="show-titulo">
-        <p class="show-texto-titulo">Detalhes do usuário</p>
-         <p class="show-texto-subtitulo">Consulte as informações do usuário cadastrado</p>
+    <div class="usuarios-titulo-lado">
+        <div class="show-titulo">
+            <p class="show-texto-titulo">Detalhes do usuário</p>
+            <p class="show-texto-subtitulo">Consulte as informações do usuário cadastrado</p>
+        </div>
+
+        <div class="usuarios-titulo-botao">
+            <%= link_to "Ver empréstimos", emprestimos_path(usuario_id: @usuario.id), class: "usuarios-botao-ver-emprestimo" %> 
+        </div>
     </div>
 
     <div class="show-card">

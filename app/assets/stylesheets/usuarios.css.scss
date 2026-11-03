@@ -1,0 +1,27 @@
+
+.usuarios-titulo-lado {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 5px;
+}
+
+.usuarios-titulo-botao {
+    display: flex;
+    align-items: center;
+}
+.usuarios-botao-ver-emprestimo {
+    background-color: #3c8160;
+    width: 140px;
+    height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+.usuarios-botao-ver-emprestimo:hover {
+   background-color: rgb(48, 104, 77);
+}
