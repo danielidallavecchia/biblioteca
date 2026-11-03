@@ -1,0 +1,29 @@
+// Place all the styles related to the emprestimos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.emprestimo-campos-lado {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.emprestimo-campos-lado .show-campo {
+    width: 50%;
+}
+
+.emprestimo-coluna-acoes {
+    width: 190px;
+}
+.emprestimo-coluna-links {
+    width: 150px;
+}
+.emprestimo-coluna-status {
+    width: 110px;
+}
+
+.emprestimo-legenda-status {
+    color: rgb(68, 68, 68);
+    font-style: italic;
+    padding-left: 3px;
+}
