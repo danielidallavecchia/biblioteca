@@ -34,5 +34,10 @@ class Livro < ActiveRecord::Base
   def id_e_titulo
     "##{id} - #{titulo}"
   end
+
+  def self.esta_emprestado?(id)
+    emprestado = Emprestimo.where(livro_id: id, data_devolucao: nil)
+    emprestado.blank? ? false : true
+  end
   
 end
