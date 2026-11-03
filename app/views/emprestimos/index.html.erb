@@ -12,8 +12,9 @@
 
 <div class="index-corpo-padrao">
     <div class="index-busca">
+        <!-- filtra por usuario e/ou livro -->
         <%= form_tag emprestimos_path, method: :get do %>
-            <%= text_field_tag :busca, params[:busca], placeholder: "Buscar por data", class: "index-busca-input" %>
+            <%= text_field_tag :busca, params[:busca], placeholder: "Buscar por usuário ou livro", class: "index-busca-input" %>
             <%= hidden_field_tag :filtrar, params[:filtrar] %>
             <%= submit_tag "Buscar", name: nil, class: "index-busca-buscar" %>
             <%= link_to "Limpar", emprestimos_path, class: "index-busca-limpar" %>
@@ -21,6 +22,15 @@
         <span class="index-qtd-registros">
             <%= pluralize(@emprestimos.length, "empréstimo cadastrado", "empréstimos cadastrados") %>
         </span>
+    </div>
+
+    <div class="emprestimo-buscas">
+        <!-- filtra somente por registros ativos -->
+        <% if params[:ativos] == "true" %>
+            <%= link_to "Ver todos", emprestimos_path(ativos: false, busca: params[:busca]), class: "emprestimo-buscas-botao" %>
+        <% else %>
+            <%= link_to "Ver somente abertos", emprestimos_path(ativos: true, busca: params[:busca]), class: "emprestimo-buscas-botao" %>
+        <% end %>
     </div>
 
     <div class="index-tabela">
@@ -57,14 +67,14 @@
                                 <% if emprestimo.livro_id.blank? %>
                                     —
                                 <% else %>
-                                    <%= link_to "#{emprestimo.livro.titulo}", livro_path(emprestimo.livro), class: "emprestimo-links" %>
+                                    <%= link_to "##{emprestimo.livro_id} - #{emprestimo.livro.titulo}", livro_path(emprestimo.livro), class: "emprestimo-links" %>
                                 <% end %>  
                             </td>
                             <td>
                                 <% if emprestimo.usuario_id.blank? %>
                                     —
                                 <% else %>
-                                    <%= link_to "#{emprestimo.usuario.nome}", usuario_path(emprestimo.usuario), class: "emprestimo-links" %>
+                                    <%= link_to "##{emprestimo.usuario_id} - #{emprestimo.usuario.nome}", usuario_path(emprestimo.usuario), class: "emprestimo-links" %>
                                 <% end %>  
                             </td>
                             <td><%= emprestimo.status %></td>
