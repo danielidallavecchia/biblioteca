@@ -9,7 +9,6 @@ class Livro < ActiveRecord::Base
 
   validates :titulo, presence: { message: "é obrigatório" }, length: { maximum: 255, message: "não pode exceder 255 caracteres" }
   validates :sinopse, presence: { message: "é obrigatório" }, length: { maximum: 255, message: "não pode exceder 255 caracteres" }
-  validates :ano_publicacao, presence: { message: "é obrigatório" }
   validates :qtd_paginas, presence: { message: "é obrigatório" }
   validates :autor_id, presence: { message: "é obrigatório" }
   validates :genero_id, presence: { message: "é obrigatório" }
