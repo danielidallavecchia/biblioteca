@@ -8,7 +8,7 @@ class ReservasController < ApplicationController
   end
 
   def index 
-    @reservas = Reserva.order("livro_id asc, posicao asc")
+    @reservas = Reserva.order("livro_id asc, posicao asc, id asc")
 
     ## filtro de busca por usuario ou livro
     if !params[:busca].blank?
@@ -39,6 +39,8 @@ class ReservasController < ApplicationController
 
   def show 
     @reserva = Reserva.find(params[:id])
+
+    @reservas_por_livro = Reserva.where(livro_id: @reserva.livro_id, data_expiracao: nil).order("posicao desc")
   end
 
   def new 
@@ -56,7 +58,6 @@ class ReservasController < ApplicationController
   def create 
     @reserva = Reserva.new(params[:reserva])
     
-    @reserva.data_expiracao = Date.today
     @reserva.posicao = proxima_posicao(@reserva.livro_id)
 
     if @reserva.save
@@ -67,21 +68,13 @@ class ReservasController < ApplicationController
   end
 
   def edit 
-    @reserva = Reserva.find(params[:id])
-    @reserva.data_expiracao = Date.today
   end
 
   def update
-    @reserva = Reserva.find(params[:id])
-    
-    if @reserva.update_attributes(params[:emprestimo])
-      redirect_to reservas_path
-    else
-      render :edit
-    end
   end
 
   def destroy 
+    @reserva = Reserva.find(params[:id])
     @reserva.destroy
     redirect_to reservas_path
   end

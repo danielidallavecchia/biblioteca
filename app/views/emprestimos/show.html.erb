@@ -54,7 +54,7 @@
 
             <div class="show-campo">
                 <p class="show-rotulo">Usuário</p>
-                <p class="show-valor"><%= link_to "##{@emprestimo.usuario_id} - #{@emprestimo.usuario.nome}", livro_path(@emprestimo.usuario), class: "emprestimo-links" %> </p>
+                <p class="show-valor"><%= link_to "##{@emprestimo.usuario_id} - #{@emprestimo.usuario.nome}",usuario_path(@emprestimo.usuario), class: "emprestimo-links" %> </p>
             </div>
         </div>
 

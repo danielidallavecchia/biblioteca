@@ -1,0 +1,34 @@
+<%= form_for @reserva, html: { class: "cartao" } do |f| %>
+    <div class="cartao-corpo">
+        <div class="form-campo">
+            <p class="form-nome-maior">
+            <%= f.label :data_reserva do %>
+                Data início <span class="campo-required">*</span>
+            <% end %>
+            </p>
+            
+            <%= f.text_field :data_reserva, type: "date", class:"form-input" %>
+        </div>
+
+        <div class="form-campo">
+            <p class="form-nome">
+                <%= f.label :usuario_id, "Usuário" %>
+            </p>
+
+            <%= f.collection_select :usuario_id, @usuarios, :id, :id_e_nome, {}, { class: "form-input" } %>
+        </div>
+
+        <div class="form-campo">
+            <p class="form-nome">
+                <%= f.label :livro_id, "Livro" %>
+            </p>
+
+            <%= f.collection_select :livro_id, @livros, :id, :id_e_titulo, {}, { class: "form-input" } %>
+        </div>
+
+        <div class="form-botao">
+            <%= link_to "Cancelar", reservas_path, class: "form-botao-cancelar" %>
+            <%= f.submit "Salvar", class: "form-botao-cadastrar" %>
+        </div>
+    </div>
+<% end %>

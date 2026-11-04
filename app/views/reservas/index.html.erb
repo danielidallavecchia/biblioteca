@@ -1,0 +1,82 @@
+<div class="index-topo-padrao">
+    <div class="index-titulo">
+        <p class="index-texto-titulo">Reservas</p>
+        <p class="index-texto-subtitulo">Consulte as reservas existentes e cadastre novas.</p>
+    </div>
+
+    <div class="index-botao">
+        <%= link_to "Cadastrar reserva", new_reserva_path, class: "index-botao-novo" %>
+    </div>
+</div>
+
+<div class="index-corpo-padrao">
+
+    <div class="index-busca">
+        <%= form_tag reservas_path, method: :get do %>
+            <%= text_field_tag :busca, params[:busca], placeholder: "Buscar por usuário ou livro", class: "index-busca-input" %>
+            <%= submit_tag "Buscar", name: nil, class: "index-busca-buscar" %>
+            <%= link_to "Limpar", reservas_path, class: "index-busca-limpar" %>
+        <% end %>
+        <span class="index-qtd-registros">
+            <%= pluralize(@reservas.length, "reserva cadastrada", "reservas cadastrados") %>
+        </span>
+    </div>
+
+    <div class="index-tabela">
+        <% if @reservas.blank? %>
+            <p class="tabela-sem-registros">Sem registros encontrados.</p>
+        <% else %>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="coluna-id">ID</th>
+                        <th class="coluna-id">Posição</th>
+                        <th class="emprestimo-coluna-links">Livro</th>
+                        <th class="emprestimo-coluna-links">Usuário</th>
+                        <th class="text-align-center">Data reserva</th>
+                        <th class="text-align-center">Data expiração</th>
+                        <th class="reserva-coluna-status">Status</th>
+                        <th class="reserva-coluna-acoes text-align-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @reservas.each do |reserva| %>
+                    <tr>
+                        <td class="text-align-center"><%= reserva.id %></td>
+                        <td class="text-align-center">
+                            <% if reserva.posicao.blank? %>
+                                —
+                            <% else %>
+                                <%= reserva.posicao %>
+                            <% end %>
+                        </td>
+
+                        <td>
+                            <%= link_to "##{reserva.livro_id} - #{reserva.livro.titulo}", livro_path(reserva.livro), class: "reserva-links" %>
+                        </td>
+                        <td>
+                            <%= link_to "##{reserva.usuario_id} - #{reserva.usuario.nome}", usuario_path(reserva.usuario), class: "reserva-links" %>
+                        </td>
+                        
+                        <td class="text-align-center"><%= l(reserva.data_reserva, format: :default) if reserva.data_reserva %></td>
+                        <td class="text-align-center">
+                            <% if reserva.data_expiracao.blank? %>
+                                —
+                            <% else %>
+                                <%= l(reserva.data_expiracao, format: :default) %>
+                            <% end %>
+                        </td>
+                        <td><%= reserva.status %></td>
+                        
+                        <td class="text-align-center tabela-acoes">
+                            <%= link_to "Ver registro", reserva_path(reserva), class: "tabela-botao-acao" %>  |
+                            <%= link_to "Excluir", reserva_path(reserva), method: :delete, data: { confirm: "Tem certeza?" }, class: "tabela-botao-acao" %>
+                        </td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        <% end %>
+    </div>
+
+</div>

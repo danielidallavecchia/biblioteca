@@ -45,4 +45,12 @@ Biblioteca::Application.routes.draw do
   put    "emprestimos/:id"      => "emprestimos#update"
   delete "emprestimos/:id"      => "emprestimos#destroy"
 
+  # Reservas
+  get    "reservas"          => "reservas#index",   :as => :reservas
+  post   "reservas"          => "reservas#create"
+  get    "reservas/new"      => "reservas#new",     :as => :new_reserva
+  get    "reservas/:id"      => "reservas#show",    :as => :reserva
+  put    "reservas/:id"      => "reservas#update"
+  delete "reservas/:id"      => "reservas#destroy"
+
 end
