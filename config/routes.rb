@@ -34,6 +34,7 @@ Biblioteca::Application.routes.draw do
   get    "livros/:id/edit" => "livros#edit",    :as => :edit_livro
   put    "livros/:id"      => "livros#update"
   delete "livros/:id"      => "livros#destroy"
+  get    "livros/:id/info" => "livros#info",    :as => :info_livro
 
   # Empréstimos
   get    "emprestimos"          => "emprestimos#index",   :as => :emprestimos

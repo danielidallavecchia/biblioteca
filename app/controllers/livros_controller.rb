@@ -56,4 +56,9 @@ class LivrosController < ApplicationController
     redirect_to livros_path
   end
 
+  def info 
+    @livro = Livro.find(params[:id]) 
+  end
+  
+  
 end
