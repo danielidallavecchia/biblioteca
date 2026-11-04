@@ -97,7 +97,7 @@
             <% if @livro.emprestado?(@livro.id) %>
                 <%= link_to "Reservar", livro_path(@livro), class: "livros-botao-emprestar" %> 
             <% else %>
-                <%= link_to "Emprestar", livro_path(@livro), class: "livros-botao-emprestar" %> 
+                <%= link_to "Emprestar", new_emprestimo_path(livro_id: @livro.id, usuario_id: session[:usuario_id]), class: "livros-botao-emprestar" %> 
             <% end %>
         </div>
     </div>

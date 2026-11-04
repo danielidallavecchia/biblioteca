@@ -43,6 +43,15 @@ class EmprestimosController < ApplicationController
 
   def new 
     @emprestimo = Emprestimo.new
+
+    if params[:livro_id]
+      @emprestimo.livro_id = params[:livro_id]
+    end
+
+    if params[:usuario_id]
+      @emprestimo.usuario_id = params[:usuario_id]
+    end
+    
   end
 
   def create 
