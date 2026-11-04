@@ -25,50 +25,39 @@
     </div>
 
     <div>
+
         <% if @livros.blank? %>
             <p class="tabela-sem-registros">Sem registros encontrados.</p>
         <% else %>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th class="coluna-id">ID</th>
-                        <th>Título</th>
-                        <th>Autor</th>
-                        <th>Gênero</th>
-                        <th class="coluna-acoes text-align-center">Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% @livros.each do |livro| %>
-                    <tr>
-                        <td><%= livro.id %></td>
-                        <td><%= livro.titulo %></td>
+            <div class="grade-livros">
+                <% @livros.each do |livro| %>
+                
+                    <div class="card-livro">
+                        <div>Imagem</div>
+                        <div class="botao-acao">
+                            <% if !livro.genero.blank? %>
+                                <%= link_to "#{livro.genero.nome}", genero_path(livro.genero), class: "botao-text"%>
+                            <% else %>
+                                <span class="botao-text">(Sem gênero)</span>
+                            <% end %>
+                        </div>
+                        
+                        <div class="info-livro-textos">    
+                            <strong class="text-livro">
+                                <%= link_to livro.titulo, info_livro_path(livro), class: "text-livro" %>
+                             </strong><br>
 
-                        <td>
-                        <% if !livro.autor.blank? %>
-                            <%= link_to "#{livro.autor.nome}", autor_path(livro.autor) %>
-                        <% else %>
-                            (Sem autor associado)
-                        <% end %>
-                        </td>
+                            <% if !livro.autor.blank? %>
+                                <%= link_to "#{livro.autor.nome}", autor_path(livro.autor), class: "text-autor" %>
+                            <% else %>
+                                <span class="text-autor-vazio">(Sem autor)</span>
+                            <% end %>
+                        </div>
 
-                        <td>
-                        <% if !livro.genero.blank? %>
-                            <%= link_to "#{livro.genero.nome}", genero_path(livro.genero) %>
-                        <% else %>
-                            (Sem gênero associado)
-                        <% end %>
-                        </td>
-
-                        <td>
-                            <%= link_to "Ver registro", livro_path(livro), class: "tabela-botao-acao" %>  |  
-                            <%= link_to "Excluir", livro_path(livro), data: { method: :delete, confirm: "Tem certeza?" }, class: "tabela-botao-acao" %>
-                        </td>
-                    </tr>
-                    <% end %>
-                </tbody>
-            </table>
+                    </div>
+                <% end %>
+            </div>
 
         <% end %>
     </div>
