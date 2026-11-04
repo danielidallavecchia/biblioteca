@@ -48,8 +48,10 @@
 
             <% if @emprestimo.livro.reservado?(@emprestimo.livro_id) %>
                 <div class="emprestimo-aviso-reserva">
-                    <span class="aviso-reserva">ATENÇÃO: Existe(m) reserva(s) para esse livro.</span>
-                    <span class="aviso-reserva">Ao salvar esta devolução um novo empréstimo será criado automaticamente.</span>
+                    <span class="aviso-reserva">ATENÇÃO: Existe uma reserva para esse livro.</span>
+                    <span class="aviso-reserva">
+                        Ao salvar esta devolução um novo empréstimo será criado automaticamente para a reserva Id =  <%= @primeira_reserva.id %>.
+                    </span>
                 </div>
             <% end %>
         </div>

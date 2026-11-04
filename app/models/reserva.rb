@@ -4,7 +4,8 @@ class Reserva < ActiveRecord::Base
     belongs_to :usuario # uma reserva pertence a um usuário
     belongs_to :livro # uma reserva pertence a um livro
 
-    validates :usuario_id, :livro_id, :data_reserva, :posicao, presence: { message: "é obrigatório" }
+    validates :usuario_id, :livro_id, :data_reserva, presence: { message: "é obrigatório" }
+    validates :posicao, presence: { message: "é obrigatória" }, on: :create
 
     validate :valida_data_reserva
     validate :valida_reserva, on: :create

@@ -75,6 +75,9 @@ class ReservasController < ApplicationController
 
   def destroy 
     @reserva = Reserva.find(params[:id])
+
+    reordena_posicao(@reserva.livro_id, @reserva.id)
+    
     @reserva.destroy
     redirect_to reservas_path
   end
@@ -94,6 +97,12 @@ class ReservasController < ApplicationController
       end
 
       return ultima_posicao + 1
+  end
+
+  def reordena_posicao(livro_id, id)
+    Reserva.where(livro_id: livro_id, data_expiracao: nil)
+      .where("id > ?", id)
+      .update_all("posicao = posicao - 1")
   end
 
 end
