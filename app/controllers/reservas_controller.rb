@@ -55,7 +55,8 @@ class ReservasController < ApplicationController
 
   def create 
     @reserva = Reserva.new(params[:reserva])
-
+    
+    @reserva.data_expiracao = Date.today
     @reserva.posicao = proxima_posicao(@reserva.livro_id)
 
     if @reserva.save
