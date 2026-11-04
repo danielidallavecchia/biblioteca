@@ -22,6 +22,23 @@
         </span>
     </div>
 
+    <div class="emprestimo-buscas">
+        <!-- filtra somente por registros ativos -->
+        <% if params[:ativos] == "true" || params[:livro_id] || params[:usuario_id] %>
+            <%= link_to "Ver todos", reservas_path(ativos: false, busca: params[:busca]), class: "emprestimo-buscas-botao" %>
+        <% else %>
+            <%= link_to "Ver somente ativos", reservas_path(ativos: true, busca: params[:busca]), class: "emprestimo-buscas-botao" %>
+        <% end %>
+
+        <% if params[:livro_id] %>
+            <span class="emprestimo-info-filtro">(Lista filtrada pelo Livro ID = <%= params[:livro_id] %>)</span>
+        <% end %>
+
+        <% if params[:usuario_id] %>
+            <span class="emprestimo-info-filtro">(lista filtrada pelo Usuário ID = <%= params[:usuario_id] %>)</span>
+        <% end %>
+    </div>
+
     <div class="index-tabela">
         <% if @reservas.blank? %>
             <p class="tabela-sem-registros">Sem registros encontrados.</p>
@@ -33,9 +50,9 @@
                         <th class="coluna-id">Posição</th>
                         <th class="emprestimo-coluna-links">Livro</th>
                         <th class="emprestimo-coluna-links">Usuário</th>
+                        <th class="reserva-coluna-status">Status</th>
                         <th class="text-align-center">Data reserva</th>
                         <th class="text-align-center">Data expiração</th>
-                        <th class="reserva-coluna-status">Status</th>
                         <th class="reserva-coluna-acoes text-align-center">Ações</th>
                     </tr>
                 </thead>
@@ -57,6 +74,7 @@
                         <td>
                             <%= link_to "##{reserva.usuario_id} - #{reserva.usuario.nome}", usuario_path(reserva.usuario), class: "reserva-links" %>
                         </td>
+                        <td><%= reserva.status %></td>
                         
                         <td class="text-align-center"><%= l(reserva.data_reserva, format: :default) if reserva.data_reserva %></td>
                         <td class="text-align-center">
@@ -66,7 +84,6 @@
                                 <%= l(reserva.data_expiracao, format: :default) %>
                             <% end %>
                         </td>
-                        <td><%= reserva.status %></td>
                         
                         <td class="text-align-center tabela-acoes">
                             <%= link_to "Ver registro", reserva_path(reserva), class: "tabela-botao-acao" %>  |
