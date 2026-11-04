@@ -67,6 +67,9 @@ class EmprestimosController < ApplicationController
 
   def edit 
     @emprestimo = Emprestimo.find(params[:id])
+    
+    # @emprestimo.data_devolucao = Date.today
+    @emprestimo.data_devolucao = Time.current
   end
 
   def update 
