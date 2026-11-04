@@ -39,5 +39,15 @@ class Livro < ActiveRecord::Base
     emprestado = Emprestimo.where(livro_id: id, data_devolucao: nil)
     emprestado.blank? ? false : true
   end
+
+  def reservado?(id)
+    reservado = Reserva.where(livro_id: id, data_expiracao: nil)
+    reservado.blank? ? false : true
+  end
+
+  def self.esta_reservado?(id, usuario_id)
+    reservado = Reserva.where(livro_id: id, usuario_id: usuario_id, data_expiracao: nil)
+    reservado.blank? ? false : true
+  end
   
 end
