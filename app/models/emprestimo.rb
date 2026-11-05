@@ -1,5 +1,5 @@
 class Emprestimo < ActiveRecord::Base 
-  attr_accessible :livro_id, :usuario_id, :data_prevista_devolucao, :data_devolucao
+  attr_accessible :livro_id, :usuario_id, :data_prevista_devolucao, :data_devolucao, :reserva_origem_id
   belongs_to :livro
   belongs_to :usuario
 
