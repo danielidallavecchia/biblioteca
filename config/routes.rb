@@ -46,6 +46,6 @@ Biblioteca::Application.routes.draw do
   delete "emprestimos/:id"      => "emprestimos#destroy"
 
   # Perfil
-  get    "perfil"               => 'perfil#show',          as: :perfil
+  get "perfil(/:id)" => "perfil#show", :as => :perfil
 
 end

@@ -1,34 +1,34 @@
 
- <% render "voltar" %>
-<div class="">
-  <article class="">
-    <div class="margem">
-      <h1 class="texto-titulo">Meu Perfil</h1>
-      
-      <div class="principal">
-        <div class="show-campo">
-          <span class="show-rotulo">Nome</span>
-          <span class="show-valor"><%=  %></span>
-        </div>
+<div class="principal margem">
+  <%= render "voltar" %>
+  <div>
+    <p class="show-texto-titulo">Meu perfil</p>
+    <p class="show-texto-subtitulo">Consulte as informações do usuário</p>
+  </div>
 
-        <div class="show-campo">
-          <span class="show-rotulo">Email</span>
-          <span class="show-valor"><%=  %></span>
-        </div>
+  <% if @usuario.present? %>
+    <div class="show-card">
+      <div class="show-campo">
+        <p class="show-rotulo">ID</p>
+        <p class="show-valor"><%= @usuario.id %></p>
+      </div>
 
-        <div class="show-campo">
-          <span class="show-rotulo">Login</span>
-          <span class="show-valor"><%=  %></span>
-        </div>
+      <div class="show-campo">
+        <p class="show-rotulo">Nome</p>
+        <p class="show-valor"><%= @usuario.nome %></p>
+      </div>
 
-        <div class="show-campo">
-          <span class="show-rotulo">ID</span>
-          <span class="show-valor"><%=  %></span>
-        </div>
+      <div class="show-campo">
+        <p class="show-rotulo">Login</p>
+        <p class="show-valor"><%= @usuario.login %></p>
+      </div>
 
-      <div class="show-botoes">
-         <%# link_to "Editar", edit_usuario_path(@usuario), class: "show-botao-editar" %>
+      <div class="show-campo">
+        <p class="show-rotulo">E-mail</p>
+        <p class="show-valor"><%= @usuario.email %></p>
       </div>
     </div>
-  </article>
+  <% else %>
+    <p>Perfil não encontrado.</p>
+  <% end %>
 </div>
