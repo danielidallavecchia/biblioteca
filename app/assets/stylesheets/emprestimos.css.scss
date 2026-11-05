@@ -74,3 +74,15 @@
     color: gray;
     font-style: italic;
 }
+
+.emprestimo-aviso-reserva {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+.aviso-reserva {
+    color: rgb(103, 102, 102);
+    font-size: 13px;
+    font-style: italic;
+}

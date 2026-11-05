@@ -5,7 +5,7 @@ class Emprestimo < ActiveRecord::Base
 
   validates :livro_id, :usuario_id, presence: { message: "é obrigatório" }
   validates :data_prevista_devolucao, presence: { message: "é obrigatória" }
-  validate :valida_data_prevista
+  validate :valida_data_prevista, on: :create
 
   validate :valida_livro, on: :create
   validates :data_devolucao, presence: { message: "é obrigatória" }, on: :update
