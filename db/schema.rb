@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20261030163907) do
+ActiveRecord::Schema.define(:version => 20261105113434) do
 
   create_table "autores", :force => true do |t|
     t.string   "nome"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20261030163907) do
     t.datetime "data_devolucao"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
+    t.integer  "reserva_origem_id"
   end
 
   create_table "generos", :force => true do |t|

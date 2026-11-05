@@ -1,0 +1,19 @@
+// Place all the styles related to the reservas controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.reserva-links {
+    text-decoration: none;
+    color: rgb(10, 10, 182);
+}
+.reserva-links:hover {
+    color: rgb(2, 2, 88);
+    text-decoration: underline; 
+}
+
+.reserva-coluna-status {
+    width: 150px;
+}
+.reserva-coluna-acoes {
+    width: 190px;
+}

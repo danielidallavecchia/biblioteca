@@ -1,4 +1,7 @@
 Biblioteca::Application.routes.draw do
+
+  root to: "livros#index"
+
   # Usuarios
   get    'usuarios',          to: 'usuarios#index',   as: :usuarios
   post   'usuarios',          to: 'usuarios#create'
@@ -47,5 +50,12 @@ Biblioteca::Application.routes.draw do
 
   # Perfil
   get "perfil(/:id)" => "perfil#show", :as => :perfil
+  # Reservas
+  get    "reservas"          => "reservas#index",   :as => :reservas
+  post   "reservas"          => "reservas#create"
+  get    "reservas/new"      => "reservas#new",     :as => :new_reserva
+  get    "reservas/:id"      => "reservas#show",    :as => :reserva
+  put    "reservas/:id"      => "reservas#update"
+  delete "reservas/:id"      => "reservas#destroy"
 
 end

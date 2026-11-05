@@ -54,19 +54,40 @@
 
             <div class="show-campo">
                 <p class="show-rotulo">Usuário</p>
-                <p class="show-valor"><%= link_to "##{@emprestimo.usuario_id} - #{@emprestimo.usuario.nome}", livro_path(@emprestimo.usuario), class: "emprestimo-links" %> </p>
+                <p class="show-valor"><%= link_to "##{@emprestimo.usuario_id} - #{@emprestimo.usuario.nome}",usuario_path(@emprestimo.usuario), class: "emprestimo-links" %> </p>
             </div>
         </div>
 
-        <div class="show-campo">
-            <p class="show-rotulo">Status</p>
-            <p class="show-valor">
-                <%= @emprestimo.status %>
-                <% if @emprestimo.status == "ATRASADO" %>
-                    <span class="emprestimo-legenda-status">(relativo à data prevista de devolução)</span>
-                <% end %>
-            </p> 
-        </div>
+        <% if !@emprestimo.reserva_origem_id.blank? %>
+            <div class="emprestimo-campos-lado">
+                <div class="show-campo">
+                    <p class="show-rotulo">Status</p>
+                    <p class="show-valor">
+                        <%= @emprestimo.status %>
+                        <% if @emprestimo.status == "ATRASADO" %>
+                            <span class="emprestimo-legenda-status">(relativo à data prevista de devolução)</span>
+                        <% end %>
+                    </p> 
+                </div>
+
+                <div class="show-campo">
+                    <p class="show-rotulo">Reserva de origem</p>
+                    <p class="show-valor">
+                        <%= link_to "##{@emprestimo.reserva_origem_id} (ver reserva)", reserva_path(@emprestimo.reserva_origem_id), class: "emprestimo-links" %>
+                    </p> 
+                </div>
+            </div>
+        <% else %>
+            <div class="show-campo">
+                <p class="show-rotulo">Status</p>
+                <p class="show-valor">
+                    <%= @emprestimo.status %>
+                    <% if @emprestimo.status == "ATRASADO" %>
+                        <span class="emprestimo-legenda-status">(relativo à data prevista de devolução)</span>
+                    <% end %>
+                </p> 
+            </div>
+        <% end %>
         
         <% if @emprestimo.status != "ENCERRADO" %>
             <div class="form-botao">

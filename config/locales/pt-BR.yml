@@ -11,3 +11,4 @@ pt-BR:
       default: "%d/%m/%Y %H:%M" 
       short: "%d/%m/%Y"
       long: "%d de %m de %Y às %H:%M"
+      datetime: "%Y-%m-%dT%H:%M"
