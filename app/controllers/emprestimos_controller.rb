@@ -113,7 +113,8 @@ class EmprestimosController < ApplicationController
     novo_emprestimo = Emprestimo.new(
       livro_id: @primeira_reserva.livro_id,
       usuario_id: @primeira_reserva.usuario_id,
-      data_prevista_devolucao: Date.today + 15
+      data_prevista_devolucao: Date.today + 15, # tempo padrao
+      reserva_origem_id: @primeira_reserva.id
     )
     novo_emprestimo.save
   end

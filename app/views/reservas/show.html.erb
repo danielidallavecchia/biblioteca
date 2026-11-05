@@ -14,11 +14,19 @@
                 <p class="show-valor"><%= @reserva.id %></p> 
             </div>
 
-           
             <div class="show-campo">
                 <% if !@reserva.posicao.blank? %>
                     <p class="show-rotulo">Posição</p>
                     <p class="show-valor"><%= @reserva.posicao %> / <%= @reservas_por_livro.length %> </p> 
+                <% else %>
+                    <% if !@emprestimo_origem_id.blank? %>
+                        <div class="show-campo">
+                            <p class="show-rotulo">Empréstimo originado</p>
+                            <p class="show-valor">
+                                <%= link_to "##{@emprestimo_origem_id} (ver empréstimo)", emprestimo_path(@emprestimo_origem_id), class: "reserva-links" %>
+                            </p> 
+                        </div>
+                    <% end %>
                 <% end %>
             </div>
         </div>

@@ -1,4 +1,7 @@
 Biblioteca::Application.routes.draw do
+
+  root to: "livros#index"
+
   # Usuarios
   get    'usuarios',          to: 'usuarios#index',   as: :usuarios
   post   'usuarios',          to: 'usuarios#create'
