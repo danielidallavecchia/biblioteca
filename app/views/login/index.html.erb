@@ -1,0 +1,31 @@
+<div>
+    <h2>Login</h2>
+</div>
+
+<div>
+    <%= form_for login_path do %>
+        <div>
+            <%= label_tag :login, "Login:" %>
+            <%= text_field_tag :login, params[:login] %>
+        </div>
+
+        <div>
+            <%= label_tag :senha, "Senha:" %>
+            <%= password_field_tag :senha, params[:senha] %>
+        </div>
+
+        <%= submit_tag "Entrar" %>
+    <% end %>
+</div>
+
+<div>
+    <%= link_to "Cadastre-se", new_usuario_path %>
+</div>
+
+<div>
+    <% if flash.any? %>
+        <% flash.each do |tipo, msg| %>
+            <p class="erro-login"><%= msg %> </p>
+        <% end %>
+    <% end %> 
+</div>

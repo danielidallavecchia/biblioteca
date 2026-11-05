@@ -1,4 +1,6 @@
 class UsuariosController < ApplicationController
+  skip_before_filter :exigir_login, only: [:new, :create]
+
   before_filter :carregar_usuario, only: [:show, :edit, :update, :destroy]
 
   def index
