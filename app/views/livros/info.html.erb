@@ -2,59 +2,86 @@
 
 <div class="livro-pagina">
   <article class="livro-card">
-
     <div class="livro-capa">
-      <%# Espaço para a capa do livro%>
+      <%# Espaço para a capa do livro %>
       <span>Sem capa</span>
     </div>
 
     <div class="coluna-conteudo">
       <h1 class="texto-titulo"><%= @livro.titulo %></h1>
-
-      <p class="texto-autor">
-        <% if @livro.autor.present? %>
-          <%= link_to @livro.autor.nome, autor_path(@livro.autor) %>
-        <% else %>
-          <span class="texto-mutado">(Sem autor associado)</span>
+      
+      <div class="autor-genero">
+          <% if @livro.genero.present? %>
+          <div class="botao-acao">
+            <%= link_to genero_path(@livro.genero), class: "botao-text" do %>
+              <%= @livro.genero.nome %>
+            <% end %>
+          </div>
         <% end %>
-      </p>
+        <p class="texto-autor">
+          <% if @livro.autor.present? %>
+            <%= link_to @livro.autor.nome, autor_path(@livro.autor) %>
+          <% else %>
+            <span class="texto-mutado">(Sem autor associado)</span>
+          <% end %>
+        </p>
+      </div>
 
       <h2 class="texto-subtitulo">Sobre a obra</h2>
+      
       <div class="text-sinopse">
         <%= @livro.sinopse %>
       </div>
 
-        <div>Botao emprestar</div>
-
-      <% if @livro.genero.present? %>
-        <div class="botao-acao">
-          <%= link_to genero_path(@livro.genero), class: "botao-text" do %>
-            <%= @livro.genero.nome %>
-          <% end %>
-        </div>
-      <% end %>
-
       <div class="barra-livro">
         <div class="barra-item">
+          <span class="barra-label">ID</span>
+          <span class="barra-valor"><%= @livro.id %></span>
+        </div>
+
+        <div class="barra-item">
           <span class="barra-label">Ano de publicação</span>
-          <span class="barra-valor">
-            <%= @livro.ano_publicacao %>
-          </span>
+          <span class="barra-valor"><%= @livro.ano_publicacao %></span>
         </div>
 
         <div class="barra-item">
           <span class="barra-label">Páginas</span>
+          <span class="barra-valor"><%= @livro.qtd_paginas %></span>
+        </div>
+
+        <div class="barra-item">
+          <span class="barra-label">Data de cadastro</span>
           <span class="barra-valor">
-            <%= @livro.qtd_paginas %>
+            <% if @livro.created_at.blank? %>
+              <span class="show-sem-dados">(Não contém)</span>
+            <% else %>
+              <%= l(@livro.created_at, format: :default) %>
+            <% end %>
           </span>
         </div>
 
-      <div class="text-align-center tabela-acoes">
-        <%= link_to "Ver registro", livro_path(@livro), class: "tabela-botao-acao" %> |
-        <%= link_to "Excluir", livro_path(@livro), data: { method: :delete, confirm: "Tem certeza?" }, class: "tabela-botao-acao" %>
+        <div class="barra-item">
+          <span class="barra-label">Emprestado</span>
+          <span class="barra-valor">
+            <%= @livro.emprestado?(@livro.id) ? "Sim" : "Não" %>
+            <% if @livro.emprestado?(@livro.id) %>
+              <%= link_to "(ver empréstimo)", emprestimo_path(@livro.emprestimo_atual_id(@livro.id)), class: "show-sem-dados" %>
+            <% end %>
+          </span>
+        </div>
+      </div>
+
+      <div class="show-botoes">
+        <%= link_to "Editar", edit_livro_path(@livro), class: "show-botao-editar" %>
+        <%= link_to "Excluir", livro_path(@livro), data: { method: :delete, confirm: "Tem certeza?" }, class: "show-botao-excluir" %>
+        
+        <% if @livro.emprestado?(@livro.id) %>
+          <%= link_to "Reservar", livro_path(@livro), class: "livros-botao-emprestar" %>
+        <% else %>
+          <%= link_to "Emprestar", new_emprestimo_path(livro_id: @livro.id, usuario_id: session[:usuario_id]), class: "livros-botao-emprestar" %>
+        <% end %>
       </div>
       </div>
     </div>
-
   </article>
 </div>
