@@ -46,6 +46,10 @@ class UsuariosController < ApplicationController
   end
 
   def destroy
+    if session[:usuario_id] == @usuario.id
+      session[:usuario_id] = nil
+    end
+
     @usuario.destroy
     flash[:success] = "Usuário removido com sucesso"
     redirect_to usuarios_path

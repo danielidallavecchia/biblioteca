@@ -296,7 +296,7 @@ header {
 }
 
 .topo-nome {
-    font-size: 25px;
+    font-size: 30px;
     line-height: 20px;
     color: white;
     padding-left: 8px;
@@ -322,11 +322,14 @@ header {
     text-decoration: none;
     border: 1px solid white;
     border-radius: 8px;
-    width: 85px;
+    width: 93px;
     height: 23px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.topo-botao:hover {
+    background-color: #205139;
 }
 
 .topo-menu {
@@ -369,15 +372,17 @@ header {
     width: 120px;
     color: gray;
     padding-bottom: 5px;
+    font-size: 13px;
 }
 .form-nome-maior {
     width: 300px;
     color: gray;
     padding-bottom: 5px;
+    font-size: 13px;
 }
 .form-input {
     padding: 3px 5px 3px 8px;
-    font-size: 14px;
+    font-size: 13px;
     color: #333;
     background-color: #f9f9f9;
     border: 1px solid rgb(199, 199, 199);
