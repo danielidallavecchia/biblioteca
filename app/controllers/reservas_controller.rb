@@ -41,6 +41,9 @@ class ReservasController < ApplicationController
     @reserva = Reserva.find(params[:id])
 
     @reservas_por_livro = Reserva.where(livro_id: @reserva.livro_id, data_expiracao: nil).order("posicao desc")
+
+    emp = Emprestimo.where(reserva_origem_id: @reserva.id).order("id asc").first
+    @emprestimo_origem_id = emp.id if emp
   end
 
   def new 
