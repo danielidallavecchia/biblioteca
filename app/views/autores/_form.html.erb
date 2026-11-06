@@ -41,12 +41,13 @@
             
             <%= f.text_field :data_obito, type: "date", class:"form-input" %>
         </div>
+    </div>
 
-        <div class="form-botao">
-            <%= link_to "Cancelar", autores_path, class: "form-botao-cancelar" %>
-            <%= f.submit "Salvar", class: "form-botao-cadastrar" %>
-        </div>
+    <div class="cartao-rodape">
+        <%= link_to "Cancelar", autores_path, class: "btn" %>
+        <%= f.submit "Salvar", class: "btn btn-primario" %>
+    </div>
     
-    <% end %>
+<% end %>
 
-</div>
+
