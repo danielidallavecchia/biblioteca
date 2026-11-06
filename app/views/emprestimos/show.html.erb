@@ -49,7 +49,7 @@
         <div class="emprestimo-campos-lado">
             <div class="show-campo">
                 <p class="show-rotulo">Livro</p>
-                <p class="show-valor"> <%= link_to "##{@emprestimo.livro_id} - #{@emprestimo.livro.titulo}", livro_path(@emprestimo.livro), class: "emprestimo-links" %> </p>
+                <p class="show-valor"> <%= link_to "##{@emprestimo.livro_id} - #{@emprestimo.livro.titulo}", info_livro_path(@emprestimo.livro), class: "emprestimo-links" %> </p>
             </div>
 
             <div class="show-campo">

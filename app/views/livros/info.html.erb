@@ -41,7 +41,13 @@
 
         <div class="barra-item">
           <span class="barra-label">Ano de publicação</span>
-          <span class="barra-valor"><%= @livro.ano_publicacao %></span>
+          <span class="barra-valor">
+            <% if @livro.ano_publicacao.blank? %>
+                <span class="show-sem-dados">(Não informado)</span>
+            <% else %>
+                <%= @livro.ano_publicacao %>
+            <% end %>
+          </span>
         </div>
 
         <div class="barra-item">
@@ -76,7 +82,7 @@
         <%= link_to "Excluir", livro_path(@livro), data: { method: :delete, confirm: "Tem certeza?" }, class: "show-botao-excluir" %>
         
         <% if @livro.emprestado?(@livro.id) %>
-          <%= link_to "Reservar", livro_path(@livro), class: "livros-botao-emprestar" %>
+          <%= link_to "Reservar", new_reserva_path(livro_id: @livro.id, usuario_id: session[:usuario_id]), class: "livros-botao-emprestar" %>
         <% else %>
           <%= link_to "Emprestar", new_emprestimo_path(livro_id: @livro.id, usuario_id: session[:usuario_id]), class: "livros-botao-emprestar" %>
         <% end %>
