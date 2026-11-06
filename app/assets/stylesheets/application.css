@@ -236,7 +236,7 @@ header {
 .show-botoes {
     display: flex;
     gap: 15px;
-    padding-top: 30px;
+    padding-top: 5px;
 }
 
 .show-botao-editar {
