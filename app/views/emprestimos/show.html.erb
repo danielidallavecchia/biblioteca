@@ -90,7 +90,7 @@
         <% end %>
         
         <% if @emprestimo.status != "ENCERRADO" %>
-            <div class="cartao-rodape">
+            <div class="show-botoes"> 
                 <%= link_to "Devolver", edit_emprestimo_path(@emprestimo), class: "btn btn-primario" %>
             </div>
         <% end %>

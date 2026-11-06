@@ -42,14 +42,21 @@
                     <tr>
                         <td class="text-align"><%= usuario.id %></td>
                         <td><%= usuario.nome %></td>
-                        <td><%= usuario.login %></td>
+                        <td>
+                            <%= usuario.login %>
+                            <% if session[:usuario_id] == usuario.id %>
+                                <span class="show-sem-dados">(usuário logado)</span>
+                            <% end %>
+                        </td>
                         <td><%= usuario.email %></td>
                         
                         <td class="text-align-center"><%= l(usuario.created_at, format: :default) if usuario.created_at %></td>
                         
                         <td class="text-align-center tabela-acoes">
-                            <%= link_to "Ver registro", usuario_path(usuario), class: "tabela-botao-acao" %>  |
-                            <%= link_to "Excluir", usuario_path(usuario), method: :delete, data: { confirm: "Tem certeza?" }, class: "tabela-botao-acao" %>
+                            <%= link_to "Ver registro", usuario_path(usuario), class: "tabela-botao-acao" %> 
+                            <% if session[:usuario_id] != usuario.id %>
+                                | <%= link_to "Excluir", usuario_path(usuario), method: :delete, data: { confirm: "Tem certeza?" }, class: "tabela-botao-acao" %>
+                            <% end %>
                         </td>
                     </tr>
                     <% end %>
