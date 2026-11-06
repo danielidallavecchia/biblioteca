@@ -235,3 +235,14 @@
     font-weight: 600;
     color: #1f2937;
 }
+
+.livro-campos-lado {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 15px;
+}
+
+.livro-campos-lado .form-campo {
+    width: 50%;
+}
