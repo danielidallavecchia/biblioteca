@@ -23,15 +23,16 @@
       </div>
     </div>
 
+    <% if @usuario.new_record? %>
     <div class="campo">
-      <p class="form-nome">
-        <%= f.label :senha do %>
-        Senha <% if @usuario.new_record? %><span class="campo-required">*</span><% end %>
-      </p>
+    <p class="form-nome">
+      <%= f.label :senha do %>
+        Senha <span class="campo-required">*</span>
       <% end %>
-      <%= f.password_field :senha, class:"form-input",
-            placeholder: (@usuario.persisted? ? "Deixe em branco para manter a senha atual" : nil) %>
-    </div>
+    </p>
+    <%= f.password_field :senha, class: "form-input" %>
+  </div>
+<% end %>
   </div>
 
   <div class="cartao-rodape">

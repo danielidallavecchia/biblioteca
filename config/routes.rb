@@ -49,7 +49,10 @@ Biblioteca::Application.routes.draw do
   delete "emprestimos/:id"      => "emprestimos#destroy"
 
   # Perfil
+  get "perfil/senha" => "perfil#alterar_senha",    :as => :alterar_senha_perfil
+  put "perfil/senha" => "perfil#atualizar_senha",  :as => :atualizar_senha_perfil
   get "perfil(/:id)" => "perfil#show", :as => :perfil
+  
   # Reservas
   get    "reservas"          => "reservas#index",   :as => :reservas
   post   "reservas"          => "reservas#create"
