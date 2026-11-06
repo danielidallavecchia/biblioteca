@@ -34,7 +34,7 @@
         <div class="emprestimo-campos-lado">
             <div class="show-campo">
                 <p class="show-rotulo">Livro</p>
-                <p class="show-valor"> <%= link_to "##{@reserva.livro_id} - #{@reserva.livro.titulo}", livro_path(@reserva.livro), class: "reserva-links" %> </p>
+                <p class="show-valor"> <%= link_to "##{@reserva.livro_id} - #{@reserva.livro.titulo}", info_livro_path(@reserva.livro), class: "reserva-links" %> </p>
             </div>
 
             <div class="show-campo">
