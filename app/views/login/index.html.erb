@@ -1,0 +1,34 @@
+
+<div class="login-body">
+
+<div class="login-form">
+    <div class="login-titulo">
+        <p>Entrar na biblioteca</p>
+    </div>
+
+    <%= form_for login_path do %>
+        <div class="login-campo">
+            <%= label_tag :login, "Login:" %>
+            <%= text_field_tag :login, params[:login], class:"login-input" %>
+        </div>
+
+        <div class="login-campo">
+            <%= label_tag :senha, "Senha:" %>
+            <%= password_field_tag :senha, params[:senha], class:"login-input" %>
+        </div>
+
+        <%= submit_tag "Entrar", class: "login-botao" %>
+    <% end %>
+
+    <%= link_to "Sem login? Cadastre-se", new_usuario_path, class: "login-link" %>
+</div>
+
+</div>
+
+<div class="login-erro">
+    <% if flash.any? %>
+        <% flash.each do |tipo, msg| %>
+            <p><%= msg %> </p>
+        <% end %>
+    <% end %> 
+</div>

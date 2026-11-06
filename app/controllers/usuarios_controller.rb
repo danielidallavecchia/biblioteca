@@ -1,4 +1,6 @@
 class UsuariosController < ApplicationController
+  skip_before_filter :exigir_login, only: [:new, :create]
+
   before_filter :carregar_usuario, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -44,6 +46,10 @@ class UsuariosController < ApplicationController
   end
 
   def destroy
+    if session[:usuario_id] == @usuario.id
+      session[:usuario_id] = nil
+    end
+
     @usuario.destroy
     flash[:success] = "Usuário removido com sucesso"
     redirect_to usuarios_path
