@@ -1,0 +1,34 @@
+<div class="margem">
+  <%= render "voltar" %>
+
+  <div class="show-titulo">
+    <p class="show-texto-titulo">Alterar senha</p>
+    <p class="show-texto-subtitulo">Informe sua senha atual e escolha uma nova</p>
+  </div>
+
+  <% if @erro.present? %>
+    <div class="erro-form"><%= @erro %></div>
+  <% end %>
+
+  <%= form_tag atualizar_senha_perfil_path, method: :put do %>
+    <div class="form-campo">
+      <%= label_tag :senha_atual, "Senha atual" %>
+      <%= password_field_tag :senha_atual %>
+    </div>
+
+    <div class="form-campo">
+      <%= label_tag :nova_senha, "Nova senha" %>
+      <%= password_field_tag :nova_senha %>
+    </div>
+
+    <div class="form-campo">
+      <%= label_tag :confirmacao_senha, "Confirmar nova senha" %>
+      <%= password_field_tag :confirmacao_senha %>
+    </div>
+
+    <div class="show-botoes">
+      <%= link_to "Cancelar", perfil_path, class: "show-botao-excluir" %>
+      <%= submit_tag "Salvar", class: "show-botao-editar" %>
+    </div>
+  <% end %>
+</div>

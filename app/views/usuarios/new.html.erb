@@ -1,17 +1,16 @@
 <div class="form-corpo-padrao">
+  <%= render "voltar" %>
 
-<%= render "voltar" %>
+  <div class="show-titulo">
+    <p class="show-texto-titulo">Cadastrar usuário</p>
+    <p class="show-texto-subtitulo">Cadastre novos usuários para se conectar ao sistema</p>
+  </div>
 
-    <div class="show-titulo">
-        <p class="show-texto-titulo">Cadastrar usuário</p>
-        <p class="show-texto-subtitulo">Cadastre novos usuários para se conectar ao sistema</p>
-    </div>
+  <%= render 'form' %>
 
-    <%= render 'form' %>
-
-    <% if @usuario.errors.any? %>
+  <% if @usuario.errors.any? %>
     <div class="erro-form">
-        Error: <%= @usuario.errors.full_messages.first %>
+      Error: <%= @usuario.errors.full_messages.first %>
     </div>
-    <% end %>
+  <% end %>
 </div>
