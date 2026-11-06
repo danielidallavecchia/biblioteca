@@ -52,6 +52,7 @@ class EmprestimosController < ApplicationController
       @emprestimo.usuario_id = params[:usuario_id]
     end
     
+    @emprestimo.data_devolucao = Time.current
   end
 
   def create 
