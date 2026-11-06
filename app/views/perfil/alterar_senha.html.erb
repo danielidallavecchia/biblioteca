@@ -10,25 +10,37 @@
     <div class="erro-form"><%= @erro %></div>
   <% end %>
 
-  <%= form_tag atualizar_senha_perfil_path, method: :put do %>
-    <div class="form-campo">
-      <%= label_tag :senha_atual, "Senha atual" %>
-      <%= password_field_tag :senha_atual %>
+  <%= form_tag atualizar_senha_perfil_path, method: :put, class: "cartao" do %>
+    <div class="cartao-corpo">
+    
+      <div class="campo">
+        <p class="form-nome">
+          <%= label_tag :senha_atual do %>Senha atual <span class="campo-required">*</span><% end %>
+        </p>
+        <%= password_field_tag :senha_atual, nil, class: "form-input" %>
+      </div>
+
+      <div class="linha">
+        <div class="campo">
+          <p class="form-nome">
+            <%= label_tag :nova_senha do %>Nova senha <span class="campo-required">*</span><% end %>
+          </p>
+          <%= password_field_tag :nova_senha, nil, class: "form-input" %>
+        </div>
+
+        <div class="campo">
+          <p class="form-nome">
+            <%= label_tag :confirmacao_senha do %>Confirmar senha <span class="campo-required">*</span><% end %>
+          </p>
+          <%= password_field_tag :confirmacao_senha, nil, class: "form-input" %>
+        </div>
+      </div>
+
     </div>
 
-    <div class="form-campo">
-      <%= label_tag :nova_senha, "Nova senha" %>
-      <%= password_field_tag :nova_senha %>
-    </div>
-
-    <div class="form-campo">
-      <%= label_tag :confirmacao_senha, "Confirmar nova senha" %>
-      <%= password_field_tag :confirmacao_senha %>
-    </div>
-
-    <div class="show-botoes">
-      <%= link_to "Cancelar", perfil_path, class: "show-botao-excluir" %>
-      <%= submit_tag "Salvar", class: "show-botao-editar" %>
+    <div class="cartao-rodape">
+      <%= link_to "Cancelar", perfil_path, class: "btn" %>
+      <%= submit_tag "Salvar", class: "btn btn-primario" %>
     </div>
   <% end %>
 </div>
