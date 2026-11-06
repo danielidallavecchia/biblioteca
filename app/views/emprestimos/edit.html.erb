@@ -31,7 +31,7 @@
                 </p>
             </div>
 
-            <div class="campo">
+            <div class="form-campo">
                 <p class="form-nome-maior">
                 <%= f.label :data_devolucao do %>
                     Data devolução <span class="campo-required">*</span>
@@ -39,11 +39,6 @@
                 </p>
                 
                 <%= f.text_field :data_devolucao, type: "datetime-local", value: l(@emprestimo.data_devolucao, format: :datetime), class:"form-input" %>
-            </div>
-
-            <div class="show-botoes">
-                <%= link_to "Cancelar", emprestimos_path, class: "btn" %>
-                <%= f.submit "Salvar", class: "btn btn-primario" %>
             </div>
 
             <% if @emprestimo.livro.reservado?(@emprestimo.livro_id) %>
@@ -55,6 +50,12 @@
                 </div>
             <% end %>
         </div>
+
+        <div class="cartao-rodape">
+            <%= link_to "Cancelar", emprestimos_path, class: "btn" %>
+            <%= f.submit "Salvar", class: "btn btn-primario" %>
+        </div>
+
     <% end %>
 
     <% if @emprestimo.errors.any? %>
