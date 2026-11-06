@@ -50,6 +50,9 @@ class LivrosController < ApplicationController
   end
 
   def destroy 
+    exclui_emprestimos(params[:id])
+    exclui_reservas(params[:id])
+
     @livro = Livro.find(params[:id])
     @livro.destroy 
 
@@ -60,5 +63,24 @@ class LivrosController < ApplicationController
     @livro = Livro.find(params[:id]) 
   end
   
+   def exclui_emprestimos(id)
+    emprestimos = Emprestimo.where("livro_id = ?", id)
+
+    if !emprestimos.blank?
+      emprestimos.each do |e|
+        e.destroy
+      end
+    end
+  end
+
+  def exclui_reservas(id)
+    reservas = Reserva.where("livro_id = ?", id)
+    
+    if !reservas.blank?
+      reservas.each do |r|
+        r.destroy
+      end
+    end
+  end
   
 end
