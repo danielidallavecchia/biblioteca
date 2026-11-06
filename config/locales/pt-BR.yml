@@ -5,6 +5,7 @@ pt-BR:
       default: "%d/%m/%Y"
       short: "%d/%m"
       long: "%d de %m de %Y" 
+      date: "%Y-%m-%d"
 
   time: 
     formats:

@@ -48,6 +48,7 @@ class ReservasController < ApplicationController
 
   def new 
     @reserva = Reserva.new
+    @reserva.data_reserva = Date.today
 
     if params[:livro_id]
       @reserva.livro_id = params[:livro_id]
