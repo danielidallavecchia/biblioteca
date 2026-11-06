@@ -35,7 +35,13 @@
         <div class="livros-campos-lado">
             <div class="show-campo">
                 <p class="show-rotulo">Ano publicação</p>
-                <p class="show-valor"><%= @livro.ano_publicacao %></p> 
+                <p class="show-valor">
+                    <% if @livro.ano_publicacao.blank? %>
+                        <span class="show-sem-dados">(Não informado)</span>
+                    <% else %>
+                        <%= @livro.ano_publicacao %>
+                    <% end %>
+                </p> 
             </div>
 
             <div class="show-campo">
