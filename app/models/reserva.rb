@@ -25,6 +25,10 @@ class Reserva < ActiveRecord::Base
         if !Livro.esta_emprestado?(livro_id) # se não tiver emprestado, nao permite criar uma reserva
             errors.add("Livro", "não possui empréstimo ativo. Sua reserva não é válida")
         end
+
+        if Livro.emprestado_para_usuario?(livro_id, usuario_id) # se já estiver emprestado pro usuario_id, nao permite reservar pro mesmo usuario
+            errors.add("Livro", "já possui um emprestimo ativo para esse usuário.")
+        end
     end
 
     # status = ATIVO ou ENCERRADO
