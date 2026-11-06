@@ -50,12 +50,35 @@ class UsuariosController < ApplicationController
       session[:usuario_id] = nil
     end
 
+    exclui_emprestimos(@usuario.id)
+    exclui_reservas(@usuario.id)
+
     @usuario.destroy
     flash[:success] = "Usuário removido com sucesso"
     redirect_to usuarios_path
   end
 
   private
+
+  def exclui_emprestimos(id)
+    emprestimos = Emprestimo.where("usuario_id = ?", id)
+
+    if !emprestimos.blank?
+      emprestimos.each do |e|
+        e.destroy
+      end
+    end
+  end
+
+  def exclui_reservas(id)
+    reservas = Reserva.where("usuario_id = ?", id)
+
+    if !reservas.blank?
+      reservas.each do |r|
+        r.destroy
+      end
+    end
+  end
 
   def carregar_usuario
     @usuario = Usuario.find(params[:id])
