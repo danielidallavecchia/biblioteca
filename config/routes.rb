@@ -53,6 +53,7 @@ Biblioteca::Application.routes.draw do
   put "perfil/senha" => "perfil#atualizar_senha",  :as => :atualizar_senha_perfil
   get "perfil(/:id)" => "perfil#show", :as => :perfil
   
+
   # Reservas
   get    "reservas"          => "reservas#index",   :as => :reservas
   post   "reservas"          => "reservas#create"
@@ -60,5 +61,10 @@ Biblioteca::Application.routes.draw do
   get    "reservas/:id"      => "reservas#show",    :as => :reserva
   put    "reservas/:id"      => "reservas#update"
   delete "reservas/:id"      => "reservas#destroy"
+
+  # Login
+  get "login" => "login#index", :as => :login
+  post "login" => "login#create"
+  get "logout" => "login#destroy", :as => :logout
 
 end
