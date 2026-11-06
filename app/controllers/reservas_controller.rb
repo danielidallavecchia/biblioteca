@@ -80,7 +80,9 @@ class ReservasController < ApplicationController
   def destroy 
     @reserva = Reserva.find(params[:id])
 
-    reordena_posicao(@reserva.livro_id, @reserva.id)
+    if !@reserva.posicao.blank?
+      reordena_posicao(@reserva.livro_id, @reserva.id)
+    end
     
     @reserva.destroy
     redirect_to reservas_path
