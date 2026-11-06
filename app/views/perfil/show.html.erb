@@ -8,8 +8,8 @@
       </div>
 
       <div class="usuarios-titulo-botao">
-        <%= link_to "Meus empréstimos", emprestimos_path, class: "usuarios-botao-ver-emprestimo" %>
-        <%= link_to "Minhas reservas", reservas_path, class: "usuarios-botao-ver-emprestimo" %> 
+        <%= link_to "Meus empréstimos", emprestimos_path(usuario_id: @usuario.id), class: "usuarios-botao-ver-emprestimo" %>
+        <%= link_to "Minhas reservas", reservas_path(usuario_id: @usuario.id), class: "usuarios-botao-ver-emprestimo" %> 
       </div>
     </div>
 
