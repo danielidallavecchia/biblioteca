@@ -290,8 +290,7 @@ Livro.create([
     :qtd_paginas => 333,
     :autor_id => 6,
     :genero_id => 11
-  }
-  ,
+  },
   {
     # 13
     :titulo => "Memórias Póstumas de Brás Cubas",
