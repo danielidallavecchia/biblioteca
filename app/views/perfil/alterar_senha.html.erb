@@ -6,10 +6,6 @@
     <p class="show-texto-subtitulo">Informe sua senha atual e escolha uma nova</p>
   </div>
 
-  <% if @erro.present? %>
-    <div class="erro-form"><%= @erro %></div>
-  <% end %>
-
   <%= form_tag atualizar_senha_perfil_path, method: :put, class: "cartao" do %>
     <div class="cartao-corpo">
     
@@ -43,4 +39,9 @@
       <%= submit_tag "Salvar", class: "btn btn-primario" %>
     </div>
   <% end %>
+
+  <% if !@erro.blank? %>
+    <div class="erro-form"><%= @erro %></div>
+  <% end %>
+
 </div>
