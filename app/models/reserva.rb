@@ -13,7 +13,7 @@ class Reserva < ActiveRecord::Base
 
     def valida_data_reserva
         if !data_reserva.blank? && data_reserva > Date.today 
-            errors.add("Data de reserva", "não pode ser no futuro")
+            errors.add("Data de início da reserva", "não pode ser no futuro")
         end
     end
 

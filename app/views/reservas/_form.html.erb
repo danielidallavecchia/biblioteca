@@ -6,8 +6,12 @@
                 Data início <span class="campo-required">*</span>
             <% end %>
             </p>
-            
-            <%= f.text_field :data_reserva, type: "date", value: l(@reserva.data_reserva, format: :date), class:"form-input" %>
+
+            <% if @reserva.data_reserva.blank? %>
+                <%= f.text_field :data_reserva, type: "date", class:"form-input" %>
+            <% else %>
+                <%= f.text_field :data_reserva, type: "date", value: l(@reserva.data_reserva, format: :date), class:"form-input" %>
+            <% end %>
         </div>
 
         <div class="form-campo">
