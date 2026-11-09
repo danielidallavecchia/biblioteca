@@ -4,8 +4,8 @@ class Autor < ActiveRecord::Base
   attr_accessible :nome, :data_nasc, :data_obito
   has_many :livros
 
-  validates :nome, presence: true
-  validates :data_nasc, presence: true
+  validates :nome, presence: { message: "é obrigatório" }
+  validates :data_nasc, presence: { message: "é obrigatória" }
 
   validate :valida_datas_futuro
 
