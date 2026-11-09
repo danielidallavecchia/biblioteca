@@ -5,8 +5,16 @@
             <p class="form-nome">
                 <%= f.label :reserva_automatica, "Reserva automática" %>
             </p>
-            <%= f.check_box :reserva_automatica, class:"form-input cfg-checkbox" %>
-            
+            <div class="cfg-reserva-auto">
+                <%= f.check_box :reserva_automatica, class:"cfg-checkbox", onclick: "muda_texto_configuracao(#{@configuracao.reserva_automatica})" %>
+                <span class="cfg-texto-reserva" id="cfg-texto-reserva">
+                    <% if @configuracao.reserva_automatica %>
+                        (está ativo)
+                    <% else %>
+                        (está inativo)
+                    <% end %>
+                </span>
+            </div>
         </div>
     </div>
 
