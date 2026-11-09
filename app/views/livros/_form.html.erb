@@ -3,9 +3,9 @@
     <div class="cartao-corpo">
 
         <% if !@livro.id.blank? %>
-            <!-- somente exibir no edit -->
-            <div>
-                <p>
+             <!-- somente exibir no edit -->
+            <div class="form-campo">
+                <p class="form-texto-id">
                     <span>ID do registro:</span>
                     <span><%= @livro.id %></span>
                 </p>
