@@ -355,3 +355,10 @@ Livro.create([
     :genero_id => 2
   }
 ])
+
+###########################################
+# configuracao
+
+Configuracao.create(
+  :reserva_automatica => true
+)

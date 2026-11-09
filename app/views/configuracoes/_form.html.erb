@@ -1,0 +1,17 @@
+
+<%= form_for @configuracao, html: { class: "cartao" } do |f| %>
+    <div class="cartao-corpo">
+        <div class="form-campo">
+            <p class="form-nome">
+                <%= f.label :reserva_automatica, "Reserva automática" %>
+            </p>
+            <%= f.check_box :reserva_automatica, class:"form-input cfg-checkbox" %>
+            
+        </div>
+    </div>
+
+    <div class="cartao-rodape">
+        <%= link_to "Cancelar", configuracao_path, class: "btn" %>
+        <%= f.submit "Salvar", class: "btn btn-primario" %>
+    </div>
+<% end %>

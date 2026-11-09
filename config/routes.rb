@@ -67,4 +67,9 @@ Biblioteca::Application.routes.draw do
   post "login" => "login#create"
   get "logout" => "login#destroy", :as => :logout
 
+  # Configuracao
+  get "configuracao" => "configuracoes#show", :as => :configuracao
+  get "configuracao/edit" => "configuracoes#edit", :as => :edit_configuracao
+  put "configuracao" => "configuracoes#update"
+
 end
