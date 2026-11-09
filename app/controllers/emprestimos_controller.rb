@@ -5,6 +5,7 @@ class EmprestimosController < ApplicationController
   def carregar_auxiliares
     @usuarios = Usuario.order(:id)
     @livros = Livro.order(:id) 
+    @configuracao = Configuracao.where("id > 0").first
   end
 
   def index 
@@ -58,7 +59,19 @@ class EmprestimosController < ApplicationController
   def create 
     @emprestimo = Emprestimo.new(params[:emprestimo])
 
+    @primeira_reserva = primeira_reserva
+
+    if !@primeira_reserva.blank?
+      @emprestimo.reserva_origem_id = @primeira_reserva.id
+    end
+
     if @emprestimo.save
+
+      if !@primeira_reserva.blank?
+        atualiza_reserva # a) setar na reserva data_expiracao=now e posicao=null
+        reordena_posicao_reservas # b) reordenar posicao de todas as reservas daquele livro
+      end
+
       redirect_to emprestimos_path 
     else
       flash.now[:error] = "erro_create"
@@ -80,12 +93,15 @@ class EmprestimosController < ApplicationController
 
     if @emprestimo.update_attributes(params[:emprestimo])
 
-      @primeira_reserva = primeira_reserva
+      # se reserva_automatica for true, cria reserva automaticamente
+      if @configuracao.reserva_automatica
+        @primeira_reserva = primeira_reserva
 
-      if !@primeira_reserva.blank?
-        atualiza_reserva # a) setar na reserva data_expiracao=now e posicao=null
-        reordena_posicao_reservas # b) reordenar posicao de todas as reservas daquele livro
-        cria_emprestimo # c) criar novo emprestimo com dados de @primeira_reserva
+        if !@primeira_reserva.blank?
+          cria_emprestimo # a) criar novo emprestimo com dados de @primeira_reserva
+          atualiza_reserva # b) setar na reserva data_expiracao=now e posicao=null
+          reordena_posicao_reservas # c) reordenar posicao de todas as reservas daquele livro
+        end
       end
 
       redirect_to emprestimos_path

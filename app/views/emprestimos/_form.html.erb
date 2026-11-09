@@ -19,8 +19,12 @@
                 Data devolução (prevista) <span class="campo-required">*</span>
             <% end %>
             </p>
-            
-            <%= f.text_field :data_prevista_devolucao, type: "datetime-local", value: l(@emprestimo.data_devolucao, format: :datetime), class:"form-input" %>
+
+            <% if @emprestimo.data_devolucao.blank? %>
+                <%= f.text_field :data_prevista_devolucao, type: "datetime-local", class:"form-input" %>
+            <% else %>
+                <%= f.text_field :data_prevista_devolucao, type: "datetime-local", value: l(@emprestimo.data_devolucao, format: :datetime), class:"form-input" %>
+            <% end %>
         </div>
 
         <div class="form-campo">
@@ -40,11 +44,10 @@
         </div>
     </div>
 
-    </div>
-    
     <div class="cartao-rodape">
         <%= link_to "Cancelar", emprestimos_path, class: "btn" %>
         <%= f.submit "Salvar", class: "btn btn-primario" %>
     </div>
 
+    </div>
 <% end %>

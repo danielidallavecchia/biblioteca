@@ -16,9 +16,16 @@
   <% if @usuario.present? %>
   <div>
     <div class="principal">
-      <div class="show-campo">
-        <p class="show-rotulo">ID</p>
-        <p class="show-valor"><%= @usuario.id %></p>
+
+      <div class="perfil-campos-lado">
+        <div class="show-campo">
+          <p class="show-rotulo">ID</p>
+          <p class="show-valor"><%= @usuario.id %></p>
+        </div>
+
+        <div class="show-campo perfil-cfg">
+          <%= link_to "Configurações", configuracao_path, class: "perfil-botao-cfg" %> 
+        </div>
       </div>
 
       <div class="show-campo">
