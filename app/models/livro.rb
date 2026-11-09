@@ -7,7 +7,7 @@ class Livro < ActiveRecord::Base
   has_many :emprestimos # um livro pode ter muitos emprestimos
   has_many :reservas  # um livro pode ter muitas reservas
 
-  validates :titulo, presence: { message: "é obrigatório" }, length: { maximum: 255, message: "não pode exceder 255 caracteres" }
+  validates :titulo, presence: { message: "é obrigatório" }, length: { maximum: 200, message: "não pode exceder 200 caracteres" }
   validates :sinopse, presence: { message: "é obrigatório" }, length: { maximum: 255, message: "não pode exceder 255 caracteres" }
   validates :qtd_paginas, presence: { message: "é obrigatório" }
   validates :autor_id, presence: { message: "é obrigatório" }
