@@ -26,9 +26,13 @@
 </div>
 
 <div class="login-erro">
-    <% if flash.any? %>
+    <% if !flash.blank? %>
         <% flash.each do |tipo, msg| %>
-            <p><%= msg %> </p>
+            <% if tipo == :error %>
+                <p class="msg-erro"><%= msg %></p>
+            <% else %>
+                <p class="msg-info"><%= msg %></p>
+            <% end %>
         <% end %>
     <% end %> 
 </div>
