@@ -13,3 +13,27 @@ pt-BR:
       short: "%d/%m/%Y"
       long: "%d de %m de %Y às %H:%M"
       datetime: "%Y-%m-%dT%H:%M"
+
+  activerecord:
+    attributes:
+      autor:
+        data_nasc: "Data de nascimento"
+        data_obito: "Data de óbito"
+      configuracao:
+        reserva_automatica: "Reserva automática"
+      emprestimo:
+        livro_id: "ID do livro"
+        usuario_id: "ID do usuário"
+        data_prevista_devolucao: "Data prevista para devolução"
+        data_devolucao: "Data de devolução"
+      livro:
+        ano_publicacao: "Ano de publicação"
+        qtd_paginas: "Quantidade de páginas"
+        autor_id: "ID do autor"
+        genero_id: "ID do gênero"
+      reserva:
+        usuario_id: "ID do usuário"
+        livro_id: "ID do livro"
+        data_reserva: "Data de início da reserva"
+        data_expiracao: "Data de expiração"
+      
