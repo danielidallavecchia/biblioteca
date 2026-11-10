@@ -11,6 +11,9 @@ class EmprestimosController < ApplicationController
   def index 
     @emprestimos = Emprestimo.order("id desc")
 
+    ## usado no index pra mostrar filtro ou nao
+    @tem_emprestimos = @emprestimos.length > 0
+
     ## filtro de busca por usuario ou livro
     if !params[:busca].blank?
       termo = "%#{params[:busca]}%"
