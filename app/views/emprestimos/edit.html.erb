@@ -41,7 +41,7 @@
                 <%= f.text_field :data_devolucao, type: "datetime-local", value: l(@emprestimo.data_devolucao, format: :datetime), class:"form-input" %>
             </div>
 
-            <% if @emprestimo.livro.reservado?(@emprestimo.livro_id) %>
+            <% if @emprestimo.livro.reservado?(@emprestimo.livro_id) && @configuracao.reserva_automatica %>
                 <div class="emprestimo-aviso-reserva">
                     <span class="aviso-reserva">ATENÇÃO: Existe uma reserva para esse livro.</span>
                     <span class="aviso-reserva">

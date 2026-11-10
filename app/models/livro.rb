@@ -49,5 +49,14 @@ class Livro < ActiveRecord::Base
     reservado = Reserva.where(livro_id: id, usuario_id: usuario_id, data_expiracao: nil)
     reservado.blank? ? false : true
   end
+
+  def self.emprestado_para_usuario?(id, usuario_id)
+    emprestado = Emprestimo.where(livro_id: id, usuario_id: usuario_id, data_devolucao: nil)
+    emprestado.blank? ? false : true
+  end
+
+  def self.reserva_atual(id)
+    Reserva.where(livro_id: id, data_expiracao: nil).order("posicao asc").first
+  end
   
 end

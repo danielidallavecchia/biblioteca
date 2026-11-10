@@ -21,6 +21,12 @@ ActiveRecord::Schema.define(:version => 20261110114028) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "configuracoes", :force => true do |t|
+    t.boolean  "reserva_automatica", :default => true
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+  end
+
   create_table "emprestimos", :force => true do |t|
     t.integer  "livro_id"
     t.integer  "usuario_id"

@@ -9,6 +9,7 @@ class Emprestimo < ActiveRecord::Base
 
   validate :valida_livro, on: :create
   validates :data_devolucao, presence: { message: "é obrigatória" }, on: :update
+  validate :valida_criacao_com_reserva, on: :create
 
   def valida_data_prevista
     if !data_prevista_devolucao.blank? && data_prevista_devolucao < Date.today 
@@ -30,6 +31,14 @@ class Emprestimo < ActiveRecord::Base
   def valida_livro
     if Livro.esta_emprestado?(livro_id)
       errors.add("Livro", "já está emprestado")
+    end
+  end
+
+  def valida_criacao_com_reserva
+    reserva_atual = Livro.reserva_atual(livro_id)
+
+    if !reserva_atual.blank? && reserva_atual.usuario_id != usuario_id
+      errors.add("Livro", "só pode ser emprestado para usuário #{reserva_atual.usuario_id} pois este possui reserva ativa (reserva id=#{reserva_atual.id}).")
     end
   end
 

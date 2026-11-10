@@ -4,6 +4,6 @@ class AddColumReservaOrigemId < ActiveRecord::Migration
   end
 
   def down
-    dropremove_column :emprestimos, :reserva_origem_id
+    remove_column :emprestimos, :reserva_origem_id
   end
 end

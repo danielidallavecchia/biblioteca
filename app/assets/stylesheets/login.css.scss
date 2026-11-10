@@ -24,11 +24,11 @@
 
 .login-link {
     text-decoration: none;
-    color: rgb(18, 18, 196);
+    color: rgb(23, 23, 241);
     font-size: 13px;
 }
 .login-link:hover {
-    color: rgb(2, 2, 88);
+    color: rgb(4, 4, 147);
     text-decoration: underline;
 }
 
@@ -69,7 +69,13 @@
     padding-top: 20px;
     text-align: center;
 }
-.login-erro p {
+
+.login-erro .msg-erro {
     color: rgb(255, 0, 0);
+    font-size: 14px;
+}
+
+.login-erro .msg-info {
+    color: rgb(187, 104, 2);
     font-size: 14px;
 }
