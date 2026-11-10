@@ -190,7 +190,8 @@ Livro.create([
     :ano_publicacao => 2018,
     :qtd_paginas => 136,
     :autor_id => 1,
-    :genero_id => 1
+    :genero_id => 1,
+    :imagem_url => "https://m.media-amazon.com/images/I/914sM98HUAL.jpg"
   },
   {
     # 2
@@ -199,7 +200,8 @@ Livro.create([
     :ano_publicacao => 2024,
     :qtd_paginas => 203,
     :autor_id => 1,
-    :genero_id => 10
+    :genero_id => 10,
+    :imagem_url => "https://m.media-amazon.com/images/I/81mEFzYPcSL.jpg"
   },
   {
     # 3
@@ -208,7 +210,8 @@ Livro.create([
     :ano_publicacao => 2017,
     :qtd_paginas => 143,
     :autor_id => 1,
-    :genero_id => 5
+    :genero_id => 5,
+    :imagem_url => "https://m.media-amazon.com/images/I/915GvEbmRjL._AC_UF1000,1000_QL80_.jpg"
   },
   {
     # 4
@@ -217,7 +220,8 @@ Livro.create([
     :ano_publicacao => 2006,
     :qtd_paginas => 132,
     :autor_id => 2,
-    :genero_id => 10
+    :genero_id => 10,
+    :imagem_url => "https://m.media-amazon.com/images/I/81rKkgH1vgL.jpg"
   },
   {
     # 5
@@ -226,7 +230,8 @@ Livro.create([
     :ano_publicacao => 2014,
     :qtd_paginas => 116,
     :autor_id => 2,
-    :genero_id => 6
+    :genero_id => 6,
+    :imagem_url => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-NhWj3nlaKnWD1n59gnFKfgp3o3qQn7MidTJgELQcBw&s=10"
   },
   {
     # 6
@@ -235,7 +240,8 @@ Livro.create([
     :ano_publicacao => 2003,
     :qtd_paginas => 298,
     :autor_id => 2,
-    :genero_id => 2
+    :genero_id => 2,
+    :imagem_url => "https://m.media-amazon.com/images/I/81EULWTz2PL._AC_UF1000,1000_QL80_.jpg"
   },
   {
     # 7
@@ -244,7 +250,8 @@ Livro.create([
     :ano_publicacao => 2018,
     :qtd_paginas => 177,
     :autor_id => 2,
-    :genero_id => 3
+    :genero_id => 3,
+    :imagem_url => "https://m.media-amazon.com/images/I/61u-HWzo8nL.jpg"
   },
   {
     # 8
@@ -253,7 +260,8 @@ Livro.create([
     :ano_publicacao => 1985,
     :qtd_paginas => 401,
     :autor_id => 3,
-    :genero_id => 1
+    :genero_id => 1,
+    :imagem_url => "https://m.media-amazon.com/images/I/91AHNAr638L._AC_UF1000,1000_QL80_.jpg"
   },
   {
     # 9
@@ -262,16 +270,18 @@ Livro.create([
     :ano_publicacao => 2019,
     :qtd_paginas => 142,
     :autor_id => 4,
-    :genero_id => 7
+    :genero_id => 7,
+    :imagem_url => "https://m.media-amazon.com/images/I/71CDcBHXuDL._AC_UF1000,1000_QL80_.jpg"
   },
   {
     # 10
     :titulo => "Vidas Secas",
-    :sinopse => "É um dos romances mais importantes do Modernismo brasileiro. A obra retrata a dura realidade de uma família de retirantes no sertão nordestino, esmagada pela seca, pela miséria e pela exploração social.",
+    :sinopse => "É um dos romances mais importantes do Modernismo brasileiro. A obra retrata a dura realidade de uma família de retirantes no sertão nordestino, esmagada pela seca, pela miséria e pela exploração social.",
     :ano_publicacao => 1938,
     :qtd_paginas => 345,
     :autor_id => 5,
-    :genero_id => 8
+    :genero_id => 8,
+    :imagem_url => "https://m.media-amazon.com/images/I/618-b9Im6dL.jpg"
   },
   {
     # 11
@@ -280,7 +290,8 @@ Livro.create([
     :ano_publicacao => 1937,
     :qtd_paginas => 230,
     :autor_id => 6,
-    :genero_id => 9
+    :genero_id => 9,
+    :imagem_url => "https://m.media-amazon.com/images/I/81t7altQZxL.jpg"
   },
   {
     # 12
@@ -289,7 +300,8 @@ Livro.create([
     :ano_publicacao => 1966,
     :qtd_paginas => 333,
     :autor_id => 6,
-    :genero_id => 11
+    :genero_id => 11,
+    :imagem_url => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTof-9PNdxIUcavsiWUPVYT8D7XP7iSFhmqqda29fasAyGItFACar5cz5o&s=10"
   },
   {
     # 13
@@ -298,7 +310,8 @@ Livro.create([
     :ano_publicacao => 1881,
     :qtd_paginas => 368,
     :autor_id => 7,
-    :genero_id => 12
+    :genero_id => 12,
+    :imagem_url => "https://m.media-amazon.com/images/I/71OL9RU2tJL.jpg"
   },
   {
     # 14
@@ -307,7 +320,8 @@ Livro.create([
     :ano_publicacao => 1899,
     :qtd_paginas => 232,
     :autor_id => 7,
-    :genero_id => 13
+    :genero_id => 13,
+    :imagem_url => "https://m.media-amazon.com/images/I/61x1ZHomWUL.jpg"
   },
   {
     # 15
@@ -316,7 +330,8 @@ Livro.create([
     :ano_publicacao => 1882,
     :qtd_paginas => 101,
     :autor_id => 7,
-    :genero_id => 14
+    :genero_id => 14,
+    :imagem_url => "https://m.media-amazon.com/images/I/61+cCiPBnWL.jpg"
   },
   {
     # 16
@@ -325,7 +340,8 @@ Livro.create([
     :ano_publicacao => 1977,
     :qtd_paginas => 176,
     :autor_id => 8,
-    :genero_id => 1
+    :genero_id => 1,
+    :imagem_url => "https://m.media-amazon.com/images/I/810Vj9zyi-L._AC_UF1000,1000_QL80_.jpg"
   },
   {
     # 17
@@ -334,7 +350,8 @@ Livro.create([
     :ano_publicacao => 2006,
     :qtd_paginas => 234,
     :autor_id => 9,
-    :genero_id => 6
+    :genero_id => 6,
+    :imagem_url => "https://m.media-amazon.com/images/I/91vUYaiay0L._UF1000,1000_QL80_.jpg"
   },
   {
     # 18
@@ -343,7 +360,8 @@ Livro.create([
     :ano_publicacao => 1859,
     :qtd_paginas => 118,
     :autor_id => 10,
-    :genero_id => 3
+    :genero_id => 3,
+    :imagem_url => "https://biblioteca.letras.ufrj.br/wp-content/uploads/2022/08/58755390._SY475_.jpg"
   },
   {
     # 19
@@ -352,7 +370,8 @@ Livro.create([
     :ano_publicacao => 1928,
     :qtd_paginas => 111,
     :autor_id => 11,
-    :genero_id => 2
+    :genero_id => 2,
+    :imagem_url => "https://m.media-amazon.com/images/I/71kADstk2gL._AC_UF1000,1000_QL80_.jpg"
   }
 ])
 
