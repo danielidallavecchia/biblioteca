@@ -110,6 +110,17 @@ class EmprestimosController < ApplicationController
     end
   end
 
+  def destroy
+    @emprestimo = Emprestimo.find(params[:id])
+    @emprestimo.destroy
+
+    if !@emprestimo.reserva_origem_id.blank?
+      exclui_reserva(@emprestimo.reserva_origem_id)
+    end
+
+    redirect_to emprestimos_path
+  end
+
   private
   
   def primeira_reserva
@@ -134,6 +145,14 @@ class EmprestimosController < ApplicationController
       reserva_origem_id: @primeira_reserva.id
     )
     novo_emprestimo.save
+  end
+
+  def exclui_reserva(id_reserva)
+    reserva = Reserva.where(id: id_reserva).first
+
+    if !reserva.blank?
+      reserva.destroy
+    end
   end
 
 end

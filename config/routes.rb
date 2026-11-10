@@ -46,7 +46,7 @@ Biblioteca::Application.routes.draw do
   get    "emprestimos/:id"      => "emprestimos#show",    :as => :emprestimo
   get    "emprestimos/:id/edit" => "emprestimos#edit",    :as => :edit_emprestimo
   put    "emprestimos/:id"      => "emprestimos#update"
-  delete "emprestimos/:id"      => "emprestimos#destroy"
+  delete "emprestimos/:id" => "emprestimos#destroy"
 
   # Perfil
   get "perfil/senha" => "perfil#alterar_senha",    :as => :alterar_senha_perfil

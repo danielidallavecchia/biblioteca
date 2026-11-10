@@ -92,6 +92,8 @@
 
                                 <% if emprestimo.status != "ENCERRADO" %>
                                     | <%= link_to "Devolver", edit_emprestimo_path(emprestimo), class: "tabela-botao-acao" %>
+                                <% else %>
+                                    | <%= link_to "Excluir", emprestimo_path(emprestimo), method: :delete, data: { confirm: "Tem certeza?" }, class: "tabela-botao-acao" %>
                                 <% end %>
                             </td>
                         </tr>

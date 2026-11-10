@@ -89,11 +89,13 @@
             </div>
         <% end %>
         
-        <% if @emprestimo.status != "ENCERRADO" %>
-            <div class="show-botoes"> 
+        <div class="show-botoes">
+            <% if @emprestimo.status != "ENCERRADO" %>
                 <%= link_to "Devolver", edit_emprestimo_path(@emprestimo), class: "btn btn-primario" %>
-            </div>
-        <% end %>
+            <% else %>
+                <%= link_to "Excluir", emprestimo_path(@emprestimo), data: {method: :delete, confirm: "Tem certeza?"}, class: "show-botao-excluir" %>
+            <% end %>
+        </div>
 
     </div>
 
