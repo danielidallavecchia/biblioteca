@@ -20,7 +20,12 @@ class GenerosController < ApplicationController
     @genero = Genero.new(params[:genero])
 
     if @genero.save 
-      redirect_to generos_path, notice: "sucesso"
+      if @genero.id.blank?
+        redirect_to generos_path 
+      else 
+        redirect_to genero_path(@genero)
+      end
+      
     else 
       flash.now[:error] = "erro_create"
       render :new
@@ -35,7 +40,7 @@ class GenerosController < ApplicationController
     @genero = Genero.find(params[:id])
 
     if @genero.update_attributes(params[:genero])
-      redirect_to generos_path
+      redirect_to genero_path(@genero)
     else
       render :edit
     end

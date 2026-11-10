@@ -9,7 +9,7 @@
 
     <%= render "form" %>
 
-    <% if @reserva.errors.any? %>
+    <% if !@reserva.errors.blank? %>
     <div class="erro-form">
         Erro: <%= @reserva.errors.full_messages.first %>
     </div>

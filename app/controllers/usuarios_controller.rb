@@ -22,7 +22,13 @@ class UsuariosController < ApplicationController
     @usuario = Usuario.new(params[:usuario])
     if @usuario.save
       flash[:success] = "Usuário criado com sucesso"
-      redirect_to usuarios_path
+
+      if @usuario.id.blank?
+        redirect_to usuarios_path 
+      else 
+        redirect_to usuario_path(@usuario)
+      end
+
     else
       flash.now[:error] = @usuario.errors.full_messages.to_sentence
       render :new
@@ -38,7 +44,7 @@ class UsuariosController < ApplicationController
 
     if @usuario.update_attributes(dados)
       flash[:success] = "Usuário editado com sucesso"
-      redirect_to usuarios_path
+      redirect_to usuario_path(@usuario)
     else
       flash.now[:error] = @usuario.errors.full_messages.to_sentence
       render :edit

@@ -4,7 +4,6 @@
     <div class="cartao-corpo">
 
         <% if !@emprestimo.id.blank? %>
-            <!-- somente exibir no edit -->
             <div class="form-campo">
                 <p class="form-texto-id">
                     <span>ID do registro:</span>
@@ -42,6 +41,7 @@
 
             <%= f.collection_select :livro_id, @livros, :id, :id_e_titulo, {}, { class: "form-input" } %>
         </div>
+
     </div>
 
     <div class="cartao-rodape">
@@ -49,5 +49,4 @@
         <%= f.submit "Salvar", class: "btn btn-primario" %>
     </div>
 
-    </div>
 <% end %>

@@ -58,7 +58,7 @@
 
     <% end %>
 
-    <% if @emprestimo.errors.any? %>
+    <% if !@emprestimo.errors.blank? %>
     <div class="erro-form">
         Erro: <%= @emprestimo.errors.full_messages.first %>
     </div>

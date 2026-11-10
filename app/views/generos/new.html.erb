@@ -10,7 +10,7 @@
 
     <%= render "form" %>
 
-    <% if @genero.errors.any? %>
+    <% if !@genero.errors.blank? %>
     <div class="erro-form">
         Erro: <%= @genero.errors.full_messages.first %>
     </div>

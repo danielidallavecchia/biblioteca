@@ -65,7 +65,12 @@ class ReservasController < ApplicationController
     @reserva.posicao = proxima_posicao(@reserva.livro_id)
 
     if @reserva.save
-      redirect_to reservas_path 
+      if @reserva.id.blank?
+        redirect_to reservas_path 
+      else 
+        redirect_to reserva_path(@reserva)
+      end
+
     else
       render :new
     end

@@ -72,7 +72,12 @@ class EmprestimosController < ApplicationController
         reordena_posicao_reservas # b) reordenar posicao de todas as reservas daquele livro
       end
 
-      redirect_to emprestimos_path 
+      if @emprestimo.id.blank?
+        redirect_to emprestimos_path 
+      else 
+        redirect_to emprestimo_path(@emprestimo)
+      end
+
     else
       flash.now[:error] = "erro_create"
       render :new
@@ -104,7 +109,7 @@ class EmprestimosController < ApplicationController
         end
       end
 
-      redirect_to emprestimos_path
+      redirect_to emprestimo_path(@emprestimo)
     else
       render :edit
     end
