@@ -69,7 +69,7 @@
                         </td>
 
                         <td>
-                            <%= link_to "##{reserva.livro_id} - #{reserva.livro.titulo}", livro_path(reserva.livro), class: "reserva-links" %>
+                            <%= link_to "##{reserva.livro_id} - #{reserva.livro.titulo}", info_livro_path(reserva.livro), class: "reserva-links" %>
                         </td>
                         <td>
                             <%= link_to "##{reserva.usuario_id} - #{reserva.usuario.nome}", usuario_path(reserva.usuario), class: "reserva-links" %>
