@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20261109115703) do
+ActiveRecord::Schema.define(:version => 20261110114028) do
 
   create_table "autores", :force => true do |t|
     t.string   "nome"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20261109115703) do
     t.integer  "genero_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "imagem_url"
   end
 
   create_table "reservas", :force => true do |t|

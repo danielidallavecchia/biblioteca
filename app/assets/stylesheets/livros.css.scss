@@ -50,18 +50,18 @@
 /********Inicial**********/
 
 .grade-livros {
-  display: flex;       
-  flex-wrap: wrap;     
-  gap: 32px;           
-  padding: 16px 0;
-  margin-left: 20px;
-}
+    display: grid;
+    grid-template-columns: repeat(6, minmax(200px, 1fr));
+    gap: 24px 20px;
+    padding: 20px;
+    margin-left: 50px;
+  }
 
 .card-livro {
-  display: flex;
-  flex-direction: column; 
-  gap: 12px;              
-  width: 200px;           
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 200px;
 }
 
 .botao-acao {
@@ -101,13 +101,29 @@
     text-decoration: none;
 }
 
+.capa {
+    width: 200px;
+    height: 300px;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    background: #e9e9e9;
+    border-radius: 6px;
+  }
+
+.capa:hover {
+    transform: scale(1.03);
+}
+  
 .text-livro {
-    color: #1b1b1b;
-    white-space: normal;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
     font-size: 16px;
     font-weight: 700;
     line-height: 1.3;
-    overflow: hidden;
+    color: #1b1b1b;
     text-decoration: none;
 }
 
@@ -245,4 +261,20 @@
 
 .livro-campos-lado .form-campo {
     width: 50%;
+}
+
+/******* Imagem ********/
+
+.livro-capa-imagem {
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 8px;
+    width: 200px;
+    height: 300px;
+    transition: transform .2s;
+    box-shadow: 0 4px 8px #0000001a;
+}
+
+.livro-capa-imagem:hover {
+transform: scale(1.03);
 }
