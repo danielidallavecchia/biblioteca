@@ -10,6 +10,9 @@ class ReservasController < ApplicationController
   def index 
     @reservas = Reserva.order("livro_id asc, posicao asc, id asc")
 
+    ## usado no index pra mostrar filtro ou nao
+    @tem_reservas = @reservas.length > 0
+
     ## filtro de busca por usuario ou livro
     if !params[:busca].blank?
       termo = "%#{params[:busca]}%"
