@@ -15,6 +15,14 @@
 
     <div class="show-card">
 
+        <div class="livro-detalhe-capa">
+            <% if @livro.imagem_url.present? %>
+                <%= image_tag @livro.image_url, class: "livro-capa-imagem", alt: @livro.titulo %>
+            <% else %>
+                <%= image_tag "", class: "livro-capa-imagem capa", alt: "Sem capa" %>
+            <% end %>
+        </div>
+
         <div class="livros-campos-lado">
             <div class="show-campo">
                 <p class="show-rotulo">ID</p>

@@ -3,8 +3,11 @@
 <div class="livro-pagina">
   <article class="livro-card">
     <div class="livro-capa">
-      <%# Espaço para a capa do livro %>
-      <span>Sem capa</span>
+      <% if @livro.imagem_url.present? %>
+        <%= image_tag @livro.imagem_url, class: "livro-capa-imagem", alt: @livro.titulo %>
+      <% else %>
+        <%= image_tag "", class: "livro-capa-imagem capa", alt: "Sem capa" %>
+      <% end %>
     </div>
 
     <div class="coluna-conteudo">

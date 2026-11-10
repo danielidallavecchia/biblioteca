@@ -54,6 +54,16 @@
             <%= f.text_field :sinopse, class:"form-input"  %>
         </div>
 
+        <div class="campo">
+            <p class="form-nome">
+                <%=f.label :imagem_url do %>
+                    URL da capa do livro
+                <% end %>
+            </p>
+
+            <%= f.text_field :imagem_url, class: "form-input", placeholder: "https://exemplo.com/capa.jpg" %>
+        </div>
+
 
         <div class="livro-campos-lado">
             <div class="form-campo">

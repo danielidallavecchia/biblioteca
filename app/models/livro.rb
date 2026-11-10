@@ -1,5 +1,5 @@
 class Livro < ActiveRecord::Base 
-  attr_accessible :titulo, :sinopse, :ano_publicacao, :qtd_paginas, :autor_id, :genero_id
+  attr_accessible :titulo, :sinopse, :ano_publicacao, :qtd_paginas, :autor_id, :genero_id, :imagem_url
 
   belongs_to :autor # um livro pertence a somente um autor
   belongs_to :genero # um livro pertence a somente um genero
