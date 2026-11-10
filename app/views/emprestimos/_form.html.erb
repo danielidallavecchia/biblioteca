@@ -26,7 +26,7 @@
             <% end %>
         </div>
 
-        <div class="campo">
+        <div class="form-campo">
             <p class="form-nome">
                 <%= f.label :usuario_id, "Usuário" %>
             </p>
@@ -34,7 +34,7 @@
             <%= f.collection_select :usuario_id, @usuarios, :id, :id_e_nome, {}, { class: "form-input" } %>
         </div>
 
-        <div class="campo">
+        <div class="form-campo">
             <p class="form-nome">
                 <%= f.label :livro_id, "Livro" %>
             </p>

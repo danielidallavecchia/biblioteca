@@ -28,7 +28,12 @@ class LivrosController < ApplicationController
     @livro = Livro.new(params[:livro])
 
     if @livro.save 
-      redirect_to livros_path
+      if @livro.id.blank?
+        redirect_to livros_path 
+      else 
+        redirect_to info_livro_path(@livro)
+      end
+
     else
       flash.now[:error] = "erro_create"
       render :new
@@ -43,7 +48,7 @@ class LivrosController < ApplicationController
     @livro = Livro.find(params[:id])
 
     if @livro.update_attributes(params[:livro])
-      redirect_to livros_path
+      redirect_to info_livro_path(@livro)
     else
       render :edit
     end

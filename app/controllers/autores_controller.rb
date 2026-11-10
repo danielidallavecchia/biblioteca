@@ -20,7 +20,11 @@ class AutoresController < ApplicationController
     @autor = Autor.new(params[:autor])
 
     if @autor.save 
-      redirect_to autores_path, notice: "sucesso"
+      if @autor.id.blank?
+        redirect_to autores_path
+      else 
+        redirect_to autor_path(@autor)
+      end
     else 
       flash.now[:error] = "erro_create"
       render :new
@@ -35,7 +39,7 @@ class AutoresController < ApplicationController
     @autor = Autor.find(params[:id])
 
     if @autor.update_attributes(params[:autor])
-      redirect_to autores_path
+      redirect_to autor_path(@autor)
     else
       render :edit
     end
