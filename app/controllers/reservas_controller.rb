@@ -88,6 +88,8 @@ class ReservasController < ApplicationController
     if !@reserva.posicao.blank?
       reordena_posicao(@reserva.livro_id, @reserva.id)
     end
+
+    atualiza_emprestimo(@reserva.id)
     
     @reserva.destroy
     redirect_to reservas_path
@@ -114,6 +116,11 @@ class ReservasController < ApplicationController
     Reserva.where(livro_id: livro_id, data_expiracao: nil)
       .where("id > ?", id)
       .update_all("posicao = posicao - 1")
+  end
+
+  def atualiza_emprestimo(id)
+    Emprestimo.where(reserva_origem_id: id)
+      .update_all(reserva_origem_id: nil)
   end
 
 end
