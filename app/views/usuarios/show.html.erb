@@ -36,6 +36,11 @@
             <p class="show-valor"><%= @usuario.email %> </p>
         </div>
 
+         <div class="show-campo">
+            <p class="show-rotulo">Cadastro</p>
+            <p class="show-valor"><%= @usuario.created_at.strftime("%d/%m/%Y %H:%M") %></p>
+        </div>
+
         <div class="show-botoes">
             <%= link_to "Editar", edit_usuario_path(@usuario), class: "show-botao-editar" %> 
             <% if session[:usuario_id] != @usuario.id %>
