@@ -22,22 +22,24 @@
         </span>
     </div>
 
-    <div class="emprestimo-buscas">
-        <!-- filtra somente por registros ativos -->
-        <% if params[:ativos] == "true" || params[:livro_id] || params[:usuario_id] %>
-            <%= link_to "Ver todos", reservas_path(ativos: false, busca: params[:busca]), class: "emprestimo-buscas-botao" %>
-        <% else %>
-            <%= link_to "Ver somente ativos", reservas_path(ativos: true, busca: params[:busca]), class: "emprestimo-buscas-botao" %>
-        <% end %>
+    <% if @tem_reservas %>
+        <div class="emprestimo-buscas">
+            <!-- filtra somente por registros ativos -->
+            <% if params[:ativos] == "true" || params[:livro_id] || params[:usuario_id] %>
+                <%= link_to "Ver todos", reservas_path(ativos: false, busca: params[:busca]), class: "emprestimo-buscas-botao" %>
+            <% else %>
+                <%= link_to "Ver somente ativos", reservas_path(ativos: true, busca: params[:busca]), class: "emprestimo-buscas-botao" %>
+            <% end %>
 
-        <% if params[:livro_id] %>
-            <span class="emprestimo-info-filtro">(Lista filtrada pelo Livro ID = <%= params[:livro_id] %>)</span>
-        <% end %>
+            <% if params[:livro_id] %>
+                <span class="emprestimo-info-filtro">(Lista filtrada pelo Livro ID = <%= params[:livro_id] %>)</span>
+            <% end %>
 
-        <% if params[:usuario_id] %>
-            <span class="emprestimo-info-filtro">(lista filtrada pelo Usuário ID = <%= params[:usuario_id] %>)</span>
-        <% end %>
-    </div>
+            <% if params[:usuario_id] %>
+                <span class="emprestimo-info-filtro">(lista filtrada pelo Usuário ID = <%= params[:usuario_id] %>)</span>
+            <% end %>
+        </div>
+    <% end %>
 
     <div class="index-tabela">
         <% if @reservas.blank? %>

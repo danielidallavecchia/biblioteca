@@ -14,7 +14,7 @@
 
     <div class="index-busca">
         <%= form_tag livros_path, method: :get do %>
-            <%= text_field_tag :busca, params[:busca], placeholder: "Buscar por título ou ano de publicação", class: "index-busca-input" %>
+            <%= text_field_tag :busca, params[:busca], placeholder: "Buscar por título, gênero ou autor", class: "index-busca-input" %>
             <%= hidden_field_tag :filtrar, params[:filtrar] %>
             <%= submit_tag "Buscar", name: nil, class: "index-busca-buscar" %>
             <%= link_to "Limpar", livros_path, class: "index-busca-limpar" %>

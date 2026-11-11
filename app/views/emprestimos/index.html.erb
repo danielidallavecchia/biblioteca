@@ -11,6 +11,8 @@
 </div>
 
 <div class="index-corpo-padrao">
+  
+  <% if @tem_emprestimos %>
 
     <div class="emprestimo-filtros">
         <%= form_tag emprestimos_path(ativos: params[:ativos], busca: params[:busca], livro_id: params[:livro_id],
@@ -71,6 +73,8 @@
 
         <% end %>
     </div>
+  
+  <% end %>
 
     <div class="index-tabela">
         <% if @emprestimos.blank? %>

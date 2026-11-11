@@ -8,14 +8,19 @@ class LivrosController < ApplicationController
   end
 
   def index
-    if !params[:busca].blank?
+    @livros = Livro.includes(:autor, :genero).order("livros.id ASC")
+  
+    if params[:busca].present?
       termo = "%#{params[:busca]}%"
-      @livros = Livro.where("titulo ILIKE ? OR ano_publicacao::text LIKE ?", termo, termo).order("id asc")
-    else
-      @livros = Livro.order("id asc")
+      
+      @livros = @livros.where(
+        "livros.titulo ILIKE :termo OR generos.nome ILIKE :termo OR autores.nome ILIKE :termo", 
+        termo: termo
+      )
     end
   end
 
+  
   def show 
     @livro = Livro.find(params[:id])
   end
