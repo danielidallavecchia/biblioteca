@@ -23,6 +23,22 @@ class LivrosController < ApplicationController
         termo: termo
       )
     end
+
+    ## filtra somente livros que estão emprestados
+    if !params[:emprestados].blank? && params[:emprestados] == "true"
+      @emps = Emprestimo.where(data_devolucao: nil)
+
+      if !@emps.blank?
+        ids = []
+        @emps.each do |e|
+          ids << e.livro_id
+        end
+
+        @livros = @livros.where("id in (?)", ids).order("id asc")
+      end
+    end
+
+    @tem_livros = @livros.length > 0
   end
 
   def show 
