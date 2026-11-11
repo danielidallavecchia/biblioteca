@@ -75,6 +75,7 @@ class LivrosController < ApplicationController
 
   def info 
     @livro = Livro.find(params[:id]) 
+    @livros_com_mesmo_autor = Livro.where("autor_id = ? and id <> ?", @livro.autor_id, @livro.id).order("id asc")
   end
   
    def exclui_emprestimos(id)
