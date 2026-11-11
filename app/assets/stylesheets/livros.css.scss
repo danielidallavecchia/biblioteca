@@ -280,3 +280,46 @@
 .livro-capa-imagem:hover {
 transform: scale(1.03);
 }
+
+.livro-sublista {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    margin-top: 15px;
+}
+
+.livro-sublista .titulo {
+    font-size: 21px;
+    padding-bottom: 15px;
+    font-weight: bold;
+}
+
+.livro-sublista-dados {
+    display: flex;
+    gap: 20px;
+}
+
+.livro-sublista-capa-imagem {
+    border-radius: 8px;
+    width: 150px;
+    height: 210px;
+}
+.livro-sublista-capa-imagem:hover {
+    transform: scale(1.02);
+}
+
+.livro-sublista-card {
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+}
+
+.livro-sublista-titulo {
+    font-size: 15px;
+    color: rgb(8, 8, 8);
+    text-decoration: none;
+}
+.livro-sublista-titulo:hover {
+    color: rgb(94, 93, 93);
+}
+
