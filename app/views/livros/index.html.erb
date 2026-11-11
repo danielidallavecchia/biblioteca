@@ -23,10 +23,19 @@
         </span>
     </div>
 
-    <% if params[:autor_id].present? %>
+    <% if @tem_livros %>
         <div class="emprestimo-buscas">
-            <%= link_to "Ver todos", livros_path(busca: params[:busca]), class: "emprestimo-buscas-botao" %>
-            <span class="emprestimo-info-filtro">(Lista filtrada pelo Autor ID = <%= params[:autor_id] %>)</span>
+            <!-- filtra somente por livros emprestados -->
+            <% if params[:emprestados] == "true" || params[:autor_id] %>
+                <%= link_to "Ver todos", livros_path(emprestados: false, busca: params[:busca]), class: "emprestimo-buscas-botao" %>
+            <% else %>
+                <%= link_to "Ver emprestados", livros_path(emprestados: true, busca: params[:busca], autor_id: params[:autor_id]), class: "emprestimo-buscas-botao" %>
+            <% end %>
+            
+            <!-- mostra se houver filtro por usuario -->
+            <% if params[:autor_id].present? %>
+                <span class="emprestimo-info-filtro">(Lista filtrada pelo Autor ID = <%= params[:autor_id] %>)</span>
+            <% end %>
         </div>
     <% end %>
 
