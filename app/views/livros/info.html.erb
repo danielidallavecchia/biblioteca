@@ -1,7 +1,7 @@
 <%= render "voltar" %>
 
 <div class="livro-pagina">
-  <article class="livro-card">
+  <div class="livro-card">
     <div class="livro-capa">
       <% if @livro.imagem_url.present? %>
         <%= image_tag @livro.imagem_url, class: "livro-capa-imagem", alt: @livro.titulo %>
@@ -92,5 +92,8 @@
       </div>
       </div>
     </div>
-  </article>
+  </div>
+
+  <%= render "info_sublista" %>
+
 </div>

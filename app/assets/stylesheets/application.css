@@ -345,6 +345,10 @@ header {
     color: white;
     text-decoration: none;
 }
+.topo-menu a:hover {
+    /* background-color: #316d50; */
+    transform: scale(1.02);
+}
 
 .topo-menu a.ativo {
     background-color: #DDE3DC;
