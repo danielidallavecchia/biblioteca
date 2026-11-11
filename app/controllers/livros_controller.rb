@@ -28,7 +28,9 @@ class LivrosController < ApplicationController
     if !params[:emprestados].blank? && params[:emprestados] == "true"
       @emps = Emprestimo.where(data_devolucao: nil)
 
-      if !@emps.blank?
+      if @emps.blank?
+        @livros = []
+      elsif 
         ids = []
         @emps.each do |e|
           ids << e.livro_id
