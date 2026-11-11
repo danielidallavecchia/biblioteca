@@ -3,9 +3,15 @@
 
     <%= render "voltar" %>
 
-    <div class="show-titulo">
-        <p class="show-texto-titulo">Detalhes do autor</p>
-        <p class="show-texto-subtitulo">Consulte as informações do autor cadastrado no seu acervo.</p>
+    <div class="usuarios-titulo-lado">
+        <div class="show-titulo">
+            <p class="show-texto-titulo">Detalhes do autor</p>
+            <p class="show-texto-subtitulo">Consulte as informações do autor cadastrado no seu acervo.</p>
+        </div>
+
+        <div class="usuarios-titulo-botao">
+            <%= link_to "Ver livros", livros_path(autor_id: @autor.id), class: "usuarios-botao-ver-emprestimo" %>
+        </div>
     </div>
 
     <div class="show-card">
@@ -54,5 +60,4 @@
             <%= link_to "Excluir", autor_path(@autor), data: { method: :delete, confirm: "Tem certeza?" }, class: "show-botao-excluir" %>
         </div>
     </div>
-
 </div>

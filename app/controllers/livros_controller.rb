@@ -9,6 +9,11 @@ class LivrosController < ApplicationController
 
   def index
     @livros = Livro.includes(:autor, :genero).order("livros.id ASC")
+
+    if params[:autor_id].present?
+      @livros = @livros.where(autor_id: params[:autor_id])
+      @autor_filtrado = Autor.find_by_id(params[:autor_id])
+    end
   
     if params[:busca].present?
       termo = "%#{params[:busca]}%"
@@ -20,7 +25,6 @@ class LivrosController < ApplicationController
     end
   end
 
-  
   def show 
     @livro = Livro.find(params[:id])
   end
