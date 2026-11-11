@@ -36,6 +36,25 @@ class EmprestimosController < ApplicationController
       @emprestimos = @emprestimos.where(usuario_id: params[:usuario_id]) 
     end
 
+    ## filtra por data de devolucao
+    if !params[:data_devolucao_inicio].blank? && params[:data_devolucao_fim].blank?
+      @erro = "Informe a data final antes de buscar"
+      render :index
+    elsif !params[:data_devolucao_fim].blank? && params[:data_devolucao_inicio].blank?
+      @erro = "Informe a data inicial antes de buscar"
+      render :index
+    end
+
+    if !params[:data_devolucao_inicio].blank? && !params[:data_devolucao_fim].blank?
+      if params[:data_devolucao_inicio] > params[:data_devolucao_fim]
+        @erro = "Data de início não pode ser maior que data final"
+        render :index
+      end 
+
+      @emprestimos = @emprestimos.where("(data_devolucao::date between ? and ?) or data_devolucao::date = ? or data_devolucao::date = ?", 
+        params[:data_devolucao_inicio], params[:data_devolucao_fim], params[:data_devolucao_inicio], params[:data_devolucao_fim])
+    end
+
   end
 
   def show 
