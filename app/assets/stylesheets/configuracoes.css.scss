@@ -1,20 +1,31 @@
 
 .cfg-reserva-auto {
     display: flex;
-    justify-content: left;
+    gap: 3px;
 }
 
-.cfg-checkbox {
-    width: 20px;
-    height: 20px;
+.cfg-input {
+    width: 18px;
 }
 
-.cfg-texto-reserva {
-    color: rgb(110, 108, 108);
-    font-size: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-left: 5px;
-    font-style: italic;
+.cfg-input-texto {
+    margin-right: 8px;
+    font-size: 14px;
+    color: rgb(45, 44, 44);
 }
+
+// .cfg-checkbox {
+//     width: 20px;
+//     height: 20px;
+//     border-radius: 10px;
+// }
+
+// .cfg-texto-reserva {
+//     color: rgb(110, 108, 108);
+//     font-size: 12px;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     padding-left: 5px;
+//     font-style: italic;
+// }
