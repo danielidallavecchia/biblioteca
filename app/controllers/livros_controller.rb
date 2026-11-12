@@ -15,7 +15,7 @@ class LivrosController < ApplicationController
       @autor_filtrado = Autor.find_by_id(params[:autor_id])
     end
 
-    if params[:genero_id].present?
+    if !params[:genero_id].blank?
       @livros = @livros.where(genero_id: params[:genero_id])
       @genero_filtrado = Genero.find_by_id(params[:genero_id])
     end
