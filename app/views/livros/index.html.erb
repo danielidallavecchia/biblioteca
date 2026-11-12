@@ -25,7 +25,7 @@
 
     <div class="emprestimo-buscas">
         <!-- filtra somente por livros emprestados -->
-        <% if params[:emprestados] == "true" || params[:autor_id] %>
+        <% if params[:emprestados] == "true" || params[:autor_id] || params[:genero_id] %>
             <%= link_to "Ver todos", livros_path(emprestados: false, busca: params[:busca]), class: "emprestimo-buscas-botao" %>
         <% else %>
             <%= link_to "Ver emprestados", livros_path(emprestados: true, busca: params[:busca], autor_id: params[:autor_id]), class: "emprestimo-buscas-botao" %>

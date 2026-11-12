@@ -49,8 +49,8 @@
                 <thead>
                     <tr>
                         <th class="coluna-id">ID</th>
-                        <th class="coluna-id">Posição</th>
                         <th class="emprestimo-coluna-links">Livro</th>
+                        <th class="coluna-id">Posição</th>
                         <th class="emprestimo-coluna-links">Usuário</th>
                         <th class="reserva-coluna-status">Status</th>
                         <th class="text-align-center">Data reserva</th>
@@ -62,16 +62,15 @@
                     <% @reservas.each do |reserva| %>
                     <tr>
                         <td class="text-align-center"><%= reserva.id %></td>
+                        <td>
+                            <%= link_to "##{reserva.livro_id} - #{reserva.livro.titulo}", info_livro_path(reserva.livro), class: "reserva-links" %>
+                        </td>
                         <td class="text-align-center">
                             <% if reserva.posicao.blank? %>
                                 —
                             <% else %>
                                 <%= reserva.posicao %>
                             <% end %>
-                        </td>
-
-                        <td>
-                            <%= link_to "##{reserva.livro_id} - #{reserva.livro.titulo}", info_livro_path(reserva.livro), class: "reserva-links" %>
                         </td>
                         <td>
                             <%= link_to "##{reserva.usuario_id} - #{reserva.usuario.nome}", usuario_path(reserva.usuario), class: "reserva-links" %>
