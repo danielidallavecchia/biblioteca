@@ -23,6 +23,16 @@
       </div>
     </div>
 
+    <div class="form-campo">
+      <p class="form-nome">
+        <%= f.label :perfil_id do %>Perfil <span class="campo-required">*</span><% end %>
+      </p>
+      <%= f.collection_select :perfil_id, @usuario_perfis, :id, :nome,
+          { prompt: "Selecione um perfil" },
+          { class: "form-input", required: true } %>
+    </div>
+
+    <div>
     <% if @usuario.new_record? %>
     <div class="campo">
     <p class="form-nome">
@@ -31,6 +41,7 @@
       <% end %>
     </p>
     <%= f.password_field :senha, class: "form-input" %>
+    <div>
   </div>
   <% end %>
   </div>

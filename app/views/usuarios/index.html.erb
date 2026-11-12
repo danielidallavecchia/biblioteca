@@ -30,6 +30,7 @@
                 <thead>
                     <tr>
                         <th class="coluna-id">ID</th>
+                        <th>Perfil</th>
                         <th>Nome</th>
                         <th>Login</th>
                         <th>E-mail</th>
@@ -41,6 +42,7 @@
                     <% @usuarios.each do |usuario| %>
                     <tr>
                         <td class="text-align"><%= usuario.id %></td>
+                        <td><%= usuario.usuario_perfil.try(:nome) %></td>
                         <td><%= usuario.nome %></td>
                         <td>
                             <%= usuario.login %>
