@@ -8,9 +8,11 @@
             <p class="show-texto-subtitulo">Consulte e edite as configurações da sua biblioteca.</p>
         </div>
 
+        <% if pode_escrever? %>
         <div class="cfg-perfil">
             <%= link_to "Configurar perfis de usuários", usuario_perfis_path, class: "cfg-perfil-botao" %>
         </div>
+        <% end %>
     </div>
 
     <div class="show-card">
