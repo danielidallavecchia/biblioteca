@@ -35,6 +35,10 @@
         <% if params[:autor_id].present? %>
             <span class="emprestimo-info-filtro">(Lista filtrada pelo Autor ID = <%= params[:autor_id] %>)</span>
         <% end %>
+
+        <% if params[:genero_id].present? %>
+            <span class="emprestimo-info-filtro">(Lista filtrada pelo Genero ID = <%= params[:genero_id] %>)</span>
+        <% end %>
     </div>
 
     <div>

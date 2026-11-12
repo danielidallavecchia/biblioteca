@@ -14,6 +14,11 @@ class LivrosController < ApplicationController
       @livros = @livros.where(autor_id: params[:autor_id])
       @autor_filtrado = Autor.find_by_id(params[:autor_id])
     end
+
+    if params[:genero_id].present?
+      @livros = @livros.where(genero_id: params[:genero_id])
+      @genero_filtrado = Genero.find_by_id(params[:genero_id])
+    end
   
     if params[:busca].present?
       termo = "%#{params[:busca]}%"
