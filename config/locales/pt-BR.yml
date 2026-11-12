@@ -36,4 +36,6 @@ pt-BR:
         livro_id: "ID do livro"
         data_reserva: "Data de início da reserva"
         data_expiracao: "Data de expiração"
+      usuario_perfil:
+        pode_escrever: "Permite escrita"
       

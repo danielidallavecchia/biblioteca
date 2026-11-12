@@ -43,7 +43,7 @@
 
         <div class="show-botoes">
             <%= link_to "Editar", edit_usuario_path(@usuario), class: "show-botao-editar" %> 
-            <% if session[:usuario_id] != @usuario.id %>
+            <% if session[:usuario_id] != @usuario.id && @usuario.id != 1 %>
                 <%= link_to "Excluir", usuario_path(@usuario), data: { method: :delete, confirm: "Tem certeza?" }, class: "show-botao-excluir" %>
             <% end %>
         </div>

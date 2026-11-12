@@ -72,4 +72,13 @@ Biblioteca::Application.routes.draw do
   get "configuracao/edit" => "configuracoes#edit", :as => :edit_configuracao
   put "configuracao" => "configuracoes#update"
 
+  # Usuarios perfis
+  get    "usuario_perfis"          => "usuario_perfis#index",   :as => :usuario_perfis
+  post   "usuario_perfis"          => "usuario_perfis#create"
+  get    "usuario_perfis/new"      => "usuario_perfis#new",     :as => :new_usuario_perfil
+  get    "usuario_perfis/:id/edit" => "usuario_perfis#edit",    :as => :edit_usuario_perfil
+  get    "usuario_perfis/:id"      => "usuario_perfis#show",    :as => :usuario_perfil
+  put    "usuario_perfis/:id"      => "usuario_perfis#update"
+  delete "usuario_perfis/:id"      => "usuario_perfis#destroy"
+
 end
