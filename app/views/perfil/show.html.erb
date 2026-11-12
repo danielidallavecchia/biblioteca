@@ -47,10 +47,13 @@
         <p class="show-valor"><%= @usuario.email %></p>
       </div>
 
-      <div class="show-botoes">
-        <%= link_to "Editar", edit_usuario_path(@usuario), class: "show-botao-editar" %>
-        <%= link_to "Alterar senha", alterar_senha_perfil_path(@usuario), class: "show-botao-excluir" %>
-      </div>
+      <% if pode_escrever? %>
+        <div class="show-botoes">
+          <%= link_to "Editar", edit_usuario_path(@usuario), class: "show-botao-editar" %>
+          <%= link_to "Alterar senha", alterar_senha_perfil_path(@usuario), class: "show-botao-excluir" %>
+        </div>
+      <% end %>
+
     </div>
   </div>
   <% else %>
