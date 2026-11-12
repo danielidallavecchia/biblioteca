@@ -1,5 +1,15 @@
 <div class="margem">
-  <%= render "voltar" %>
+
+  <div class="usuarios-titulo-lado">
+    <%= render "voltar" %>
+
+    <div class="perfil-cfg">
+      <%= link_to configuracao_path, class: "perfil-botao-cfg" do %>
+          <%= image_tag "configuracao.png", class: "botao-cfg-img" %>
+      <% end %>
+    </div>
+
+  </div>
 
     <div class="usuarios-titulo-lado">
       <div class="show-titulo">
@@ -17,15 +27,9 @@
   <div>
     <div class="principal">
 
-      <div class="perfil-campos-lado">
-        <div class="show-campo">
-          <p class="show-rotulo">ID</p>
-          <p class="show-valor"><%= @usuario.id %></p>
-        </div>
-
-        <div class="show-campo perfil-cfg">
-          <%= link_to "Configurações", configuracao_path, class: "perfil-botao-cfg" %> 
-        </div>
+      <div class="show-campo">
+        <p class="show-rotulo">ID</p>
+        <p class="show-valor"><%= @usuario.id %></p>
       </div>
 
       <div class="show-campo">
