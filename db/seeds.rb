@@ -9,27 +9,35 @@
 ###########################################
 # usuarios
 
+UsuarioPerfil.create([
+  :nome => "Administrador",
+  :pode_escrever => true
+])
+
 Usuario.create([
   {
     # 1
     :nome => "Administrador da Silva",
     :email => "admin@gmail.com",
     :login => "admin",
-    :senha => "admin123"
+    :senha => "admin123",
+    :perfil_id => 1
   },
   {
     # 2
     :nome => "Danieli N. Dalla Vecchia",
     :email => "danieli@gmail.com",
     :login => "danieli",
-    :senha => "admin123"
+    :senha => "admin123",
+    :perfil_id => 1
   },
   {
     # 3
     :nome => "Felipe Lima",
     :email => "felipe@gmail.com",
     :login => "felipe",
-    :senha => "admin123"
+    :senha => "admin123",
+    :perfil_id => 1
   }
 ])
 
