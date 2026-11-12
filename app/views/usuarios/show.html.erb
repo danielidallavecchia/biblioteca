@@ -41,11 +41,13 @@
             <p class="show-valor"><%= @usuario.created_at.strftime("%d/%m/%Y %H:%M") %></p>
         </div>
 
-        <div class="show-botoes">
-            <%= link_to "Editar", edit_usuario_path(@usuario), class: "show-botao-editar" %> 
-            <% if session[:usuario_id] != @usuario.id && @usuario.id != 1 %>
-                <%= link_to "Excluir", usuario_path(@usuario), data: { method: :delete, confirm: "Tem certeza?" }, class: "show-botao-excluir" %>
-            <% end %>
-        </div>
+        <% if pode_escrever? %>
+            <div class="show-botoes">
+                <%= link_to "Editar", edit_usuario_path(@usuario), class: "show-botao-editar" %> 
+                <% if session[:usuario_id] != @usuario.id && @usuario.id != 1 %>
+                    <%= link_to "Excluir", usuario_path(@usuario), data: { method: :delete, confirm: "Tem certeza?" }, class: "show-botao-excluir" %>
+                <% end %>
+            </div>
+        <% end %>
     </div>
 </div>

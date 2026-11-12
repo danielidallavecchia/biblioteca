@@ -4,9 +4,11 @@
         <p class="index-texto-subtitulo">Consulte os usuários existentes e cadastre novos nomes ao sistema.</p>
     </div>
 
-    <div class="index-botao">
-        <%= link_to "Cadastrar usuário", new_usuario_path, class: "index-botao-novo" %>
-    </div>
+    <% if pode_escrever? %>
+        <div class="index-botao">
+            <%= link_to "Cadastrar usuário", new_usuario_path, class: "index-botao-novo" %>
+        </div>
+    <% end %>
 </div>
 
 <div class="index-corpo-padrao">
@@ -53,9 +55,11 @@
                         <td class="text-align-center"><%= l(usuario.created_at, format: :default) if usuario.created_at %></td>
                         
                         <td class="text-align-center tabela-acoes">
-                            <%= link_to "Ver registro", usuario_path(usuario), class: "tabela-botao-acao" %> 
-                            <% if session[:usuario_id] != usuario.id && usuario.id != 1 %>
-                                | <%= link_to "Excluir", usuario_path(usuario), method: :delete, data: { confirm: "Tem certeza?" }, class: "tabela-botao-acao" %>
+                            <%= link_to "Ver registro", usuario_path(usuario), class: "tabela-botao-acao" %>
+                            <% if pode_escrever? %> 
+                                <% if session[:usuario_id] != usuario.id && usuario.id != 1 %>
+                                    | <%= link_to "Excluir", usuario_path(usuario), method: :delete, data: { confirm: "Tem certeza?" }, class: "tabela-botao-acao" %>
+                                <% end %>
                             <% end %>
                         </td>
                     </tr>
