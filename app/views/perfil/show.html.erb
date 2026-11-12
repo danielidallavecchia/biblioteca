@@ -33,6 +33,11 @@
       </div>
 
       <div class="show-campo">
+        <p class="show-rotulo">Perfil</p>
+        <p class="show-valor"><%= @usuario.usuario_perfil.try(:nome)  %></p>
+      </div>
+
+      <div class="show-campo">
         <p class="show-rotulo">Nome</p>
         <p class="show-valor"><%= @usuario.nome %></p>
       </div>

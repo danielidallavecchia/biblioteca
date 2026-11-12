@@ -2,6 +2,7 @@ class UsuariosController < ApplicationController
   skip_before_filter :exigir_login, only: [:new, :create]
 
   before_filter :carregar_usuario, only: [:show, :edit, :update, :destroy]
+  before_filter :carregar_perfis, only: [:new, :create, :edit, :update]
 
   def index
     @usuarios = Usuario.order(:nome)
@@ -88,5 +89,9 @@ class UsuariosController < ApplicationController
 
   def carregar_usuario
     @usuario = Usuario.find(params[:id])
+  end
+
+  def carregar_perfis
+    @usuario_perfis = UsuarioPerfil.order(:nome)
   end
 end
