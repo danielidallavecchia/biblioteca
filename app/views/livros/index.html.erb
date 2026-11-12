@@ -32,7 +32,7 @@
         <% end %>
         
         <!-- mostra se houver filtro por usuario -->
-        <% if params[:autor_id].present? %>
+        <% if !params[:autor_id].blank? %>
             <span class="emprestimo-info-filtro">(Lista filtrada pelo Autor ID = <%= params[:autor_id] %>)</span>
         <% end %>
     </div>
@@ -45,7 +45,7 @@
                 <% @livros.each do |livro| %>
                     <div class="card-livro">
                         <div class="capa">
-                            <% if livro.imagem_url.present? %>
+                            <% if !livro.imagem_url.blank? %>
                                 <%= link_to info_livro_path(livro) do %>
                                     <%= image_tag livro.imagem_url, class: "livro-capa-imagem", alt: livro.titulo %>
                                 <% end %>
