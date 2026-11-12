@@ -1,0 +1,46 @@
+
+<%= form_for @usuario_perfil, html: { class: "cartao" }, 
+    url: (@usuario_perfil.new_record? ? usuario_perfis_path : usuario_perfil_path(@usuario_perfil)) do |f| %>
+
+    <div class="cartao-corpo">
+
+        <% if !@usuario_perfil.id.blank? %>
+            <div class="form-campo">
+                <p class="form-texto-id">
+                    <span>ID do registro:</span>
+                    <span><%= @usuario_perfil.id %></span>
+                </p>
+            </div>
+        <% end %>
+
+        <div class="campo">
+            <p class="form-nome">
+            <%= f.label :nome do %>
+                Nome <span class="campo-required">*</span>
+            <% end %>
+            </p> 
+            <%= f.text_field :nome, class:"form-input" %>
+        </div>
+
+        <div>
+            <p class="form-nome">
+                Permite escrita <span class="campo-required">*</span>
+            </p>
+        
+            <div class="perfil-reserva-auto" >
+                <%= f.radio_button :pode_escrever, true, class: "perfil-input" %>
+                <%= f.label :pode_escrever_sim, "sim", class: "perfil-input-texto" %>
+
+                <%= f.radio_button :pode_escrever, false, class: "perfil-input" %>
+                <%= f.label :pode_escrever_nao, "não", class: "perfil-input-texto" %>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="cartao-rodape">
+        <%= link_to "Cancelar", usuario_perfis_path, class: "btn" %>
+        <%= f.submit "Salvar", class: "btn btn-primario" %>
+    </div>
+
+<%end%>

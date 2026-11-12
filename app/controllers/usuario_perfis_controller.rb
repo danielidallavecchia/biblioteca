@@ -51,8 +51,6 @@ class UsuarioPerfisController < ApplicationController
 
     if !usado.blank?
       @erro = "Perfil não pode ser excluído pois está vinculado a usuário(s)."
-
-      @usuario_perfis = UsuarioPerfil.order("nome asc")
       render :show
     else
       @usuario_perfil.destroy 
