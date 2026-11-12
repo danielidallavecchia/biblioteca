@@ -37,10 +37,6 @@
                         </td>
                         <td class="text-align-center">
                             <%= link_to "Ver registro", usuario_perfil_path(usuario_perfil), class: "tabela-botao-acao" %> 
-
-                            <% if session[:usuario_id] == 1 %>
-                                | <%= link_to "Excluir", usuario_perfil_path(usuario_perfil), data: { method: :delete, confirm: "Tem certeza?" }, class: "tabela-botao-acao" %>
-                            <% end %>
                         </td>
                     </tr>
                 <% end %>
