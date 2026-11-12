@@ -5,9 +5,11 @@
         <p class="index-texto-subtitulo">Consulte os gêneros cadastrados e adicione novos ao seu acervo.</p>
     </div>
 
-    <div class="index-botao">
-        <%= link_to "Cadastrar gênero", new_genero_path, class: "index-botao-novo" %>
-    </div>
+    <% if pode_escrever? %>
+        <div class="index-botao">
+            <%= link_to "Cadastrar gênero", new_genero_path, class: "index-botao-novo" %>
+        </div>
+    <% end %>
 </div>
 
 <div class="index-corpo-padrao">
@@ -42,8 +44,11 @@
                         <td class="text-align-center"><%= genero.id %></td>
                         <td><%= genero.nome %> </td>
                         <td class="text-align-center tabela-acoes">
-                            <%= link_to "Ver registro", genero_path(genero), class: "tabela-botao-acao" %>  |  
-                            <%= link_to "Excluir", genero_path(genero), data: { method: :delete, confirm: "Tem certeza?" }, class: "tabela-botao-acao" %>
+                            <%= link_to "Ver registro", genero_path(genero), class: "tabela-botao-acao" %>  
+                            <% if pode_escrever? %>
+                                |  
+                                <%= link_to "Excluir", genero_path(genero), data: { method: :delete, confirm: "Tem certeza?" }, class: "tabela-botao-acao" %>
+                            <% end %>
                         </td>
                     </tr>
                     <% end %>
