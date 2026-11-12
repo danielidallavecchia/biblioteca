@@ -1,5 +1,5 @@
 class Usuario < ActiveRecord::Base
-    attr_accessible :nome, :login, :email, :senha
+    attr_accessible :nome, :login, :email, :senha, :perfil_id
 
     validates :nome, :email, presence: { message: "é obrigatório" }, length: { maximum: 255, message: "não pode exceder 255 caracteres" }
     validates :login, presence: { message: "é obrigatório" }, length: { maximum: 20, message: "não pode exceder 20 caracteres" }
