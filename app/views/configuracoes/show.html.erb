@@ -2,9 +2,15 @@
 <div class="margem">
     <%= render "voltar" %>
 
-    <div class="show-titulo">
-        <p class="show-texto-titulo">Configurações</p>
-        <p class="show-texto-subtitulo">Consulte e edite as configurações da sua biblioteca.</p>
+    <div class="usuarios-titulo-lado">
+        <div class="show-titulo">
+            <p class="show-texto-titulo">Configurações</p>
+            <p class="show-texto-subtitulo">Consulte e edite as configurações da sua biblioteca.</p>
+        </div>
+
+        <div class="cfg-perfil">
+            <%= link_to "Configurar perfis de usuários", usuario_perfis_path, class: "cfg-perfil-botao" %>
+        </div>
     </div>
 
     <div class="show-card">
