@@ -3,7 +3,7 @@
 <div class="livro-pagina">
   <div class="livro-card">
     <div class="livro-capa">
-      <% if @livro.imagem_url.present? %>
+      <% if !@livro.imagem_url.blank? %>
         <%= image_tag @livro.imagem_url, class: "livro-capa-imagem", alt: @livro.titulo %>
       <% else %>
         <%= image_tag "", class: "livro-capa-imagem capa", alt: "Sem capa" %>
@@ -14,7 +14,7 @@
       <h1 class="texto-titulo"><%= @livro.titulo %></h1>
       
       <div class="autor-genero">
-          <% if @livro.genero.present? %>
+          <% if !@livro.genero.blank? %>
           <div class="botao-acao">
             <%= link_to genero_path(@livro.genero), class: "botao-text" do %>
               <%= @livro.genero.nome %>
@@ -22,7 +22,7 @@
           </div>
         <% end %>
         <p class="texto-autor">
-          <% if @livro.autor.present? %>
+          <% if !@livro.autor.blank? %>
             <%= link_to @livro.autor.nome, autor_path(@livro.autor) %>
           <% else %>
             <span class="texto-mutado">(Sem autor associado)</span>

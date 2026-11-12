@@ -16,7 +16,7 @@
     <div class="show-card">
 
         <div class="livro-detalhe-capa">
-            <% if @livro.imagem_url.present? %>
+            <% if !@livro.imagem_url.blank? %>
                 <%= image_tag @livro.image_url, class: "livro-capa-imagem", alt: @livro.titulo %>
             <% else %>
                 <%= image_tag "", class: "livro-capa-imagem capa", alt: "Sem capa" %>

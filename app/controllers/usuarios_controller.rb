@@ -5,7 +5,7 @@ class UsuariosController < ApplicationController
 
   def index
     @usuarios = Usuario.order(:nome)
-    if params[:busca].present?
+    if !params[:busca].blank?
       termo = "%#{params[:busca]}%"
       @usuarios = @usuarios.where("nome LIKE ? OR login LIKE ? OR email LIKE ?", termo, termo, termo)
     end

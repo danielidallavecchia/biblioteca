@@ -10,7 +10,7 @@ class LivrosController < ApplicationController
   def index
     @livros = Livro.includes(:autor, :genero).order("livros.id ASC")
 
-    if params[:autor_id].present?
+    if !params[:autor_id].blank?
       @livros = @livros.where(autor_id: params[:autor_id])
       @autor_filtrado = Autor.find_by_id(params[:autor_id])
     end
@@ -20,7 +20,7 @@ class LivrosController < ApplicationController
       @genero_filtrado = Genero.find_by_id(params[:genero_id])
     end
   
-    if params[:busca].present?
+    if !params[:busca].blank?
       termo = "%#{params[:busca]}%"
       
       @livros = @livros.where(
@@ -35,7 +35,7 @@ class LivrosController < ApplicationController
 
       if @emps.blank?
         @livros = []
-      elsif 
+      elsif
         ids = []
         @emps.each do |e|
           ids << e.livro_id
