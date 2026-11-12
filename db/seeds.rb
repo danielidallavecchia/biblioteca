@@ -10,8 +10,14 @@
 # usuarios
 
 UsuarioPerfil.create([
-  :nome => "Administrador",
-  :pode_escrever => true
+  {
+    :nome => "Administrador",
+    :pode_escrever => true
+  },
+  {
+    :nome => "Operador",
+    :pode_escrever => false
+  }
 ])
 
 Usuario.create([
@@ -29,7 +35,7 @@ Usuario.create([
     :email => "danieli@gmail.com",
     :login => "danieli",
     :senha => "admin123",
-    :perfil_id => 1
+    :perfil_id => 2
   },
   {
     # 3
@@ -37,7 +43,7 @@ Usuario.create([
     :email => "felipe@gmail.com",
     :login => "felipe",
     :senha => "admin123",
-    :perfil_id => 1
+    :perfil_id => 2
   }
 ])
 
