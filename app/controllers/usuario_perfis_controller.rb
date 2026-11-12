@@ -1,7 +1,7 @@
 class UsuarioPerfisController < ApplicationController
 
   def index
-    @usuario_perfis = UsuarioPerfil.order("nome asc")
+    @usuario_perfis = UsuarioPerfil.order("id asc")
 
     if !params[:busca].blank?
       @usuario_perfis = @usuario_perfis.where("nome LIKE ?", "%#{params[:busca]}%")
@@ -46,9 +46,19 @@ class UsuarioPerfisController < ApplicationController
 
   def destroy
     @usuario_perfil = UsuarioPerfil.find(params[:id])
-    @usuario_perfil.destroy 
 
-    redirect_to usuario_perfis_path
+    usado = Usuario.where("perfil_id = ?", @usuario_perfil.id)
+
+    if !usado.blank?
+      @erro = "Perfil não pode ser excluído pois está vinculado a usuário(s)."
+
+      @usuario_perfis = UsuarioPerfil.order("nome asc")
+      render :show
+    else
+      @usuario_perfil.destroy 
+      redirect_to usuario_perfis_path
+    end
+
   end
 
 end
