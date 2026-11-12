@@ -6,7 +6,9 @@
     </div>
 
     <div class="index-botao">
-        <%= link_to "Cadastrar autor", new_autor_path, class: "index-botao-novo" %>
+        <% if pode_escrever? %>
+            <%= link_to "Cadastrar autor", new_autor_path, class: "index-botao-novo" %>
+        <% end %>
     </div>
 </div>
 
@@ -55,8 +57,10 @@
                             <% end %>
                         </td>
                         <td class="text-align-center tabela-acoes">
-                            <%= link_to "Ver registro", autor_path(autor), class: "tabela-botao-acao" %>  |  
-                            <%= link_to "Excluir", autor_path(autor), data: { method: :delete, confirm: "Tem certeza?" }, class: "tabela-botao-acao" %>
+                            <%= link_to "Ver registro", autor_path(autor), class: "tabela-botao-acao" %>  
+                            <% if pode_escrever? %>
+                                | <%= link_to "Excluir", autor_path(autor), data: { method: :delete, confirm: "Tem certeza?" }, class: "tabela-botao-acao" %>
+                            <% end %>
                         </td>
                     </tr>
                     <% end %>
