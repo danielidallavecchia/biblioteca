@@ -80,6 +80,7 @@
         </div>
       </div>
 
+     <% if pode_escrever? %>
       <div class="show-botoes">
         <%= link_to "Editar", edit_livro_path(@livro), class: "show-botao-editar" %>
         <%= link_to "Excluir", livro_path(@livro), data: { method: :delete, confirm: "Tem certeza?" }, class: "show-botao-excluir" %>
@@ -90,6 +91,8 @@
           <%= link_to "Emprestar", new_emprestimo_path(livro_id: @livro.id, usuario_id: session[:usuario_id]), class: "livros-botao-emprestar" %>
         <% end %>
       </div>
+     <% end %>
+
       </div>
     </div>
   </div>

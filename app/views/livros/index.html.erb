@@ -4,9 +4,11 @@
         <p class="index-texto-subtitulo">Consulte os livros cadastrados e adicione novos ao seu acervo.</p>
     </div>
 
-    <div class="index-botao">
-        <%= link_to "Cadastrar livro", new_livro_path, class: "index-botao-novo" %>
-    </div>
+    <% if pode_escrever? %>
+        <div class="index-botao">
+            <%= link_to "Cadastrar livro", new_livro_path, class: "index-botao-novo" %>
+        </div>
+    <% end %>
 </div>
 
 <div class="index-corpo-padrao">
