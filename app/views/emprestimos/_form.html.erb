@@ -20,9 +20,9 @@
             </p>
 
             <% if @emprestimo.data_devolucao.blank? %>
-                <%= f.text_field :data_prevista_devolucao, type: "datetime-local", class:"form-input" %>
+                <%= f.text_field :data_prevista_devolucao, type: "date", class:"form-input" %>
             <% else %>
-                <%= f.text_field :data_prevista_devolucao, type: "datetime-local", value: l(@emprestimo.data_devolucao, format: :datetime), class:"form-input" %>
+                <%= f.text_field :data_prevista_devolucao, type: "date-local", value: l(@emprestimo.data_devolucao, format: :short), class:"form-input" %>
             <% end %>
         </div>
 

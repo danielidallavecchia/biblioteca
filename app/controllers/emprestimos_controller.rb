@@ -9,7 +9,11 @@ class EmprestimosController < ApplicationController
   end
 
   def index 
-    @emprestimos = Emprestimo.order("id desc")
+    if !pode_escrever?
+      @emprestimos = Emprestimo.where(usuario_id: session[:usuario_id]).order("id desc")
+    else 
+      @emprestimos = Emprestimo.order("id desc")
+    end
 
     ## usado no index pra mostrar filtro ou nao
     @tem_emprestimos = @emprestimos.length > 0
@@ -75,7 +79,7 @@ class EmprestimosController < ApplicationController
       @emprestimo.usuario_id = params[:usuario_id]
     end
     
-    @emprestimo.data_devolucao = Time.current
+    @emprestimo.data_devolucao = Date.today + 15 # Time.current
   end
 
   def create 
@@ -117,6 +121,7 @@ class EmprestimosController < ApplicationController
 
   def update 
     @emprestimo = Emprestimo.find(params[:id])
+    @emprestimo.data_devolucao = Time.current
 
     if @emprestimo.update_attributes(params[:emprestimo])
 

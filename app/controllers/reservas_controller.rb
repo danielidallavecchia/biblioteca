@@ -8,7 +8,11 @@ class ReservasController < ApplicationController
   end
 
   def index 
-    @reservas = Reserva.order("livro_id asc, posicao asc, id asc")
+    if !pode_escrever?
+      @reservas = Reserva.where(usuario_id: session[:usuario_id]).order("livro_id asc, posicao asc, id asc")
+    else 
+      @reservas = Reserva.order("livro_id asc, posicao asc, id asc")
+    end
 
     ## usado no index pra mostrar filtro ou nao
     @tem_reservas = @reservas.length > 0
@@ -64,7 +68,11 @@ class ReservasController < ApplicationController
 
   def create 
     @reserva = Reserva.new(params[:reserva])
-    
+
+    if !pode_escrever? || @reserva.usuario_id.blank?
+      @reserva.usuario_id = session[:usuario_id]
+    end
+
     @reserva.posicao = proxima_posicao(@reserva.livro_id)
 
     if @reserva.save

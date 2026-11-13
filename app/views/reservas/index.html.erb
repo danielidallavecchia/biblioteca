@@ -8,6 +8,10 @@
         <div class="index-botao">
             <%= link_to "Cadastrar reserva", new_reserva_path, class: "index-botao-novo" %>
         </div>
+    <% else %>
+        <div class="index-botao">
+            <%= link_to "Reservar p/ mim", new_reserva_path, class: "index-botao-novo" %>
+        </div>
     <% end %>
 </div>
 
