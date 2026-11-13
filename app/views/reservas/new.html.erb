@@ -3,8 +3,13 @@
     <%= render "voltar" %>
 
     <div class="show-titulo">
-        <p class="show-texto-titulo">Cadastrar reserva</p>
-        <p class="show-texto-subtitulo">Crie uma nova reserva para um livro do acervo</p>
+        <p class="show-texto-titulo">
+            <% if pode_escrever? %>
+                Cadastrar reserva
+            <% else %>
+                Criar minha reserva
+            <% end %>
+        </p>
     </div>
 
     <%= render "form" %>

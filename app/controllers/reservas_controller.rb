@@ -69,7 +69,7 @@ class ReservasController < ApplicationController
   def create 
     @reserva = Reserva.new(params[:reserva])
 
-    if !pode_escrever?
+    if !pode_escrever? || @reserva.usuario_id.blank?
       @reserva.usuario_id = session[:usuario_id]
     end
 

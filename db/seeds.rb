@@ -15,7 +15,7 @@ UsuarioPerfil.create([
     :pode_escrever => true
   },
   {
-    :nome => "Operador",
+    :nome => "Comum",
     :pode_escrever => false
   }
 ])
