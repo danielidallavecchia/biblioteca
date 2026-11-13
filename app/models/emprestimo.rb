@@ -38,8 +38,18 @@ class Emprestimo < ActiveRecord::Base
     reserva_atual = Livro.reserva_atual(livro_id)
 
     if !reserva_atual.blank? && reserva_atual.usuario_id != usuario_id
-      errors.add("Livro", "só pode ser emprestado para usuário #{reserva_atual.usuario_id} pois este possui reserva ativa (reserva id=#{reserva_atual.id}).")
+      errors.add("Livro", "só pode ser emprestado para usuário #{Usuario.get_nome(reserva_atual.usuario_id)}, pois este possui reserva ativa.")
     end
+  end
+
+  def self.livro_titulo(id)
+    l = Livro.where(id: id).first
+    l.blank? ? "ID #{id}" : l.titulo
+  end
+
+  def self.usuario_nome(id)
+    u = Usuario.where(id: id).first
+    u.blank? ? "ID #{id}" : u.nome
   end
 
 end
