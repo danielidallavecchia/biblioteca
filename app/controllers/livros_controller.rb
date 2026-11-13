@@ -8,7 +8,7 @@ class LivrosController < ApplicationController
   end
 
   def index
-    @livros = Livro.includes(:autor, :genero).order("livros.id ASC")
+    @livros = Livro.joins(:autor, :genero).order("livros.id ASC")
 
     if !params[:autor_id].blank?
       @livros = @livros.where(autor_id: params[:autor_id])
