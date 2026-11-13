@@ -296,11 +296,21 @@ header {
 }
 
 .topo-nome {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-size: 30px;
     line-height: 20px;
     color: white;
     padding-left: 8px;
-}
+    text-decoration: none;
+  }
+  
+  .topo-logo {
+    height: 30px;
+    width: auto;
+  }
+
 .topo-marca {
     display: flex;
     justify-content: center;
