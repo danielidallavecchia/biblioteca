@@ -8,7 +8,7 @@ class Usuario < ActiveRecord::Base
     validates :login, presence: { message: "é obrigatório" }, length: { maximum: 20, message: "não pode exceder 20 caracteres" }
     validates :senha, presence: { message: "é obrigatória" }, length: { minimum: 4, maximum: 20, message: "deve ter entre 4 e 20 caracteres" }
 
-    validates :login, :email, uniqueness: true
+    validates :login, :email, uniqueness: { message: "já existe" }
 
     validates :email, format: { 
     with: /\A[^@\s]+@[^@\s]+\z/, 
