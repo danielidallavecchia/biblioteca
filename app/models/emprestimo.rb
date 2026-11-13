@@ -42,4 +42,14 @@ class Emprestimo < ActiveRecord::Base
     end
   end
 
+  def self.livro_titulo(id)
+    l = Livro.where(id: id).first
+    l.blank? ? "ID #{id}" : l.titulo
+  end
+
+  def self.usuario_nome(id)
+    u = Usuario.where(id: id).first
+    u.blank? ? "ID #{id}" : u.nome
+  end
+
 end
