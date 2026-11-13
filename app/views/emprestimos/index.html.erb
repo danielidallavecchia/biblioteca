@@ -122,7 +122,7 @@
                                     <%= link_to "##{emprestimo.usuario_id} - #{emprestimo.usuario.nome}", usuario_path(emprestimo.usuario), class: "emprestimo-links" %>
                                 <% end %>  
                             </td>
-                            <td><%= emprestimo.status %></td>
+                            <td class ="<%= "atrasado" if emprestimo.status == "ATRASADO" %>"><%= emprestimo.status %></td>
 
                             <td class="text-align-center tabela-acoes">
                                 <%= link_to "Ver registro", emprestimo_path(emprestimo), class: "tabela-botao-acao" %> 
