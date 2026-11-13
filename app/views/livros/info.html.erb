@@ -2,13 +2,13 @@
 
 <div class="livro-pagina">
   <div class="livro-card">
-    <div class="livro-capa">
-      <% if !@livro.imagem_url.blank? %>
-        <%= image_tag @livro.imagem_url, class: "livro-capa-imagem", alt: @livro.titulo %>
-      <% else %>
-        <%= image_tag "", class: "livro-capa-imagem capa", alt: "Sem capa" %>
-      <% end %>
-    </div>
+  <div class="capa">
+    <% if !@livro.imagem_url.blank? %>
+      <%= image_tag @livro.imagem_url, class: "livro-capa-imagem"%>
+    <% else %>
+      <span class="format-sem-capa">Sem capa</span>
+    <% end %>
+  </div>
 
     <div class="coluna-conteudo">
       <h1 class="texto-titulo"><%= @livro.titulo %></h1>

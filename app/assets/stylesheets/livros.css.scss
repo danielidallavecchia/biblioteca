@@ -104,18 +104,34 @@
 .capa {
     width: 100%;
     max-width: 200px;
-    height: auto;
     aspect-ratio: 2 / 3;
-    object-fit: cover;
     background: #e9e9e9;
-    border-radius: 6px;
-    flex-shrink: 0;
+    border-radius: 8px;
+
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .2s;
+    box-shadow: 0 2px 4px #0000001a;;
 }
 
 .capa:hover {
     transform: scale(1.03);
 }
+
+.format-sem-capa {
+    color: #777777;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    padding: 12px;
+  }
   
+.capa-link {
+    text-decoration: none;
+}
+
 .text-livro {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -303,6 +319,14 @@ transform: scale(1.03);
     border-radius: 8px;
     width: 150px;
     height: 210px;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    background: #e9e9e9;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px #0000001a;;
 }
 .livro-sublista-capa-imagem:hover {
     transform: scale(1.02);
