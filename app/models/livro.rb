@@ -12,6 +12,7 @@ class Livro < ActiveRecord::Base
   validates :qtd_paginas, presence: { message: "é obrigatório" }
   validates :autor_id, presence: { message: "é obrigatório" }
   validates :genero_id, presence: { message: "é obrigatório" }
+  validates :ano_publicacao, presence: {message: "é obrigatório"}
 
   validate :valida_ano_publicacao_futuro
 
