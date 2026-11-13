@@ -41,7 +41,7 @@ class LivrosController < ApplicationController
           ids << e.livro_id
         end
 
-        @livros = @livros.where("id in (?)", ids).order("id asc")
+        @livros = @livros.where("livros.id in (?)", ids).order("livros.id asc")
       end
     end
 
