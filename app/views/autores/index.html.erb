@@ -1,4 +1,3 @@
-
 <div class="index-topo-padrao">
     <div class="index-titulo">
         <p class="index-texto-titulo">Autores</p>
@@ -40,13 +39,13 @@
                         <th>Nome</th>
                         <th>Data nascimento</th>
                         <th>Data óbito</th>
-                        <th class="coluna-acoes text-align-center">Ações</th>
+                        <th class="coluna-acoes">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% @autores.each do |autor| %>
                     <tr>
-                        <td class="text-align-center"><%= autor.id %></td>
+                        <td><%= autor.id %></td>
                         <td><%= autor.nome %> </td>
                         <td><%= l(autor.data_nasc, format: :default) %> </td>
                         <td>
@@ -56,7 +55,7 @@
                                 <%= l(autor.data_obito, format: :default) %> 
                             <% end %>
                         </td>
-                        <td class="text-align-center tabela-acoes">
+                        <td class="tabela-acoes">
                             <%= link_to "Ver registro", autor_path(autor), class: "tabela-botao-acao" %>  
                             <% if pode_escrever? %>
                                 | <%= link_to "Excluir", autor_path(autor), data: { method: :delete, confirm: "Tem certeza?" }, class: "tabela-botao-acao" %>

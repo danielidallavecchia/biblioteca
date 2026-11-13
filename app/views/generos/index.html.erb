@@ -1,4 +1,3 @@
-
 <div class="index-topo-padrao">
     <div class="index-titulo">
         <p class="index-texto-titulo">Gêneros</p>
@@ -35,15 +34,15 @@
                     <tr>
                         <th class="coluna-id">ID</th>
                         <th>Nome</th>
-                        <th class="coluna-acoes text-align-center">Ações</th>
+                        <th class="coluna-acoes">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% @generos.each do |genero| %>
                     <tr>
-                        <td class="text-align-center"><%= genero.id %></td>
+                        <td><%= genero.id %></td>
                         <td><%= genero.nome %> </td>
-                        <td class="text-align-center tabela-acoes">
+                        <td class="tabela-acoes">
                             <%= link_to "Ver registro", genero_path(genero), class: "tabela-botao-acao" %>  
                             <% if pode_escrever? %>
                                 |  
