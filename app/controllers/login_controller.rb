@@ -15,6 +15,10 @@ class LoginController < ApplicationController
         session[:pode_escrever] = perfil.pode_escrever if !perfil.blank?
       end
 
+      if usuario.id == 1 # admin sempre pode escrever
+        session[:pode_escrever] = true
+      end
+
       redirect_to livros_path
     else
       flash.now[:error] = "Login ou senha inválidos"
