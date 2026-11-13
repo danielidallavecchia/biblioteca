@@ -36,10 +36,12 @@
             </p>
         </div>
 
-        <div class="show-botoes">
-            <%= link_to "Editar", edit_genero_path(@genero), class: "show-botao-editar" %> 
-            <%= link_to "Excluir", genero_path(@genero), data: { method: :delete, confirm: "Tem certeza?" }, class: "show-botao-excluir" %>
-        </div>
+        <% if pode_escrever? %>
+            <div class="show-botoes">
+                <%= link_to "Editar", edit_genero_path(@genero), class: "show-botao-editar" %> 
+                <%= link_to "Excluir", genero_path(@genero), data: { method: :delete, confirm: "Tem certeza?" }, class: "show-botao-excluir" %>
+            </div>
+        <% end %>
     </div>
 
 </div>

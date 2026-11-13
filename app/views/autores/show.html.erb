@@ -55,9 +55,11 @@
             </p>
         </div>
 
-        <div class="show-botoes">
-            <%= link_to "Editar", edit_autor_path(@autor), class: "show-botao-editar" %> 
-            <%= link_to "Excluir", autor_path(@autor), data: { method: :delete, confirm: "Tem certeza?" }, class: "show-botao-excluir" %>
-        </div>
+        <% if pode_escrever? %>
+            <div class="show-botoes">
+                <%= link_to "Editar", edit_autor_path(@autor), class: "show-botao-editar" %> 
+                <%= link_to "Excluir", autor_path(@autor), data: { method: :delete, confirm: "Tem certeza?" }, class: "show-botao-excluir" %>
+            </div>
+        <% end %>
     </div>
 </div>

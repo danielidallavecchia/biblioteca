@@ -4,9 +4,11 @@
         <p class="index-texto-subtitulo">Consulte as reservas existentes e cadastre novas.</p>
     </div>
 
-    <div class="index-botao">
-        <%= link_to "Cadastrar reserva", new_reserva_path, class: "index-botao-novo" %>
-    </div>
+    <% if pode_escrever? %>
+        <div class="index-botao">
+            <%= link_to "Cadastrar reserva", new_reserva_path, class: "index-botao-novo" %>
+        </div>
+    <% end %>
 </div>
 
 <div class="index-corpo-padrao">
@@ -87,8 +89,11 @@
                         </td>
                         
                         <td class="text-align-center tabela-acoes">
-                            <%= link_to "Ver registro", reserva_path(reserva), class: "tabela-botao-acao" %>  |
-                            <%= link_to "Excluir", reserva_path(reserva), method: :delete, data: { confirm: "Tem certeza?" }, class: "tabela-botao-acao" %>
+                            <%= link_to "Ver registro", reserva_path(reserva), class: "tabela-botao-acao" %> 
+                            <% if pode_escrever? %> 
+                                |
+                                <%= link_to "Excluir", reserva_path(reserva), method: :delete, data: { confirm: "Tem certeza?" }, class: "tabela-botao-acao" %>
+                            <% end %>
                         </td>
                     </tr>
                     <% end %>
