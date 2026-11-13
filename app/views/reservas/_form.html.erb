@@ -14,13 +14,15 @@
             <% end %>
         </div>
 
-        <div class="form-campo">
-            <p class="form-nome">
-                <%= f.label :usuario_id, "Usuário" %>
-            </p>
+        <% if pode_escrever? %>
+            <div class="form-campo">
+                <p class="form-nome">
+                    <%= f.label :usuario_id, "Usuário" %>
+                </p>
 
-            <%= f.collection_select :usuario_id, @usuarios, :id, :id_e_nome, {}, { class: "form-input" } %>
-        </div>
+                <%= f.collection_select :usuario_id, @usuarios, :id, :id_e_nome, {}, { class: "form-input" } %>
+            </div>
+        <% end %>
 
         <div class="form-campo">
             <p class="form-nome">
