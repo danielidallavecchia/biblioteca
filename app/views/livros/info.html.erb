@@ -73,8 +73,11 @@
           <span class="barra-label">Emprestado</span>
           <span class="barra-valor">
             <%= @livro.emprestado?(@livro.id) ? "Sim" : "Não" %>
-            <% if @livro.emprestado?(@livro.id) %>
-              <%= link_to "(ver empréstimo)", emprestimo_path(@livro.emprestimo_atual_id(@livro.id)), class: "show-sem-dados" %>
+
+            <% if pode_escrever? %>
+              <% if @livro.emprestado?(@livro.id) %>
+                <%= link_to "(ver empréstimo)", emprestimo_path(@livro.emprestimo_atual_id(@livro.id)), class: "show-sem-dados" %>
+              <% end %>
             <% end %>
           </span>
         </div>
