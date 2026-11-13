@@ -1,48 +1,44 @@
 <div class="margem">
 
-<div class="voltar-padrao">
-    <%= link_to "⇦ Voltar", configuracao_path, class: "voltar-botao" %>
-</div>
-
-<div class="usuarios-titulo-lado">
-    <div class="index-titulo">
-        <p class="show-texto-titulo">Perfis de usuário</p>
+    <div class="voltar-padrao">
+        <%= link_to "⇦ Voltar", configuracao_path, class: "voltar-botao" %>
     </div>
 
-    <% if session[:usuario_id] == 1 %>
-        <div class="usuarios-titulo-botao">
-            <%= link_to "Cadastrar perfil", new_usuario_perfil_path, class: "usuarios-botao-ver-emprestimo" %>
+    <div class="usuarios-titulo-lado">
+        <div class="index-titulo">
+            <p class="show-texto-titulo">Perfis de usuário</p>
         </div>
-    <% end %>
-</div>
 
-<div class="index-corpo-padrao">
-    <div class="index-tabela">
-        <table>
-            <thead>
-                <tr>
-                    <th class="coluna-id">ID</th>
-                    <th>Nome</th>
-                    <th class="text-align-center">Permite escrita</th>
-                    <th class="text-align-center">Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @usuario_perfis.each do |usuario_perfil| %>
-                    <tr>
-                        <td class="text-align-center"><%= usuario_perfil.id %></td>
-                        <td><%= usuario_perfil.nome %> </td>
-                        <td class="text-align-center">
-                            <%= usuario_perfil.pode_escrever ? "Sim" : "Não" %>
-                        </td>
-                        <td class="text-align-center">
-                            <%= link_to "Ver registro", usuario_perfil_path(usuario_perfil), class: "tabela-botao-acao" %> 
-                        </td>
-                    </tr>
-                <% end %>
-            </tbody>
-        </table>
+        <% if session[:usuario_id] == 1 %>
+            <div class="usuarios-titulo-botao">
+                <%= link_to "Cadastrar perfil", new_usuario_perfil_path, class: "usuarios-botao-ver-emprestimo" %>
+            </div>
+        <% end %>
     </div>
-</div>
+
+    <div class="index-corpo-padrao">
+        <div class="index-tabela">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="coluna-id">ID</th>
+                        <th>Nome</th>
+                        <th>Permite escrita</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @usuario_perfis.each do |usuario_perfil| %>
+                        <tr>
+                            <td><%= usuario_perfil.id %></td>
+                            <td><%= usuario_perfil.nome %> </td>
+                            <td><%= usuario_perfil.pode_escrever ? "Sim" : "Não" %></td>
+                            <td><%= link_to "Ver registro", usuario_perfil_path(usuario_perfil), class: "tabela-botao-acao" %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 </div>

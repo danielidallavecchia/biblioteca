@@ -1,4 +1,3 @@
-
 <div class="index-topo-padrao">
     <div class="index-titulo">
         <p class="index-texto-titulo">Empréstimos</p>
@@ -92,13 +91,13 @@
                         <th class="emprestimo-coluna-links">Livro</th>
                         <th class="emprestimo-coluna-links">Usuário</th>
                         <th class="emprestimo-coluna-status">Status</th>
-                        <th class="emprestimo-coluna-acoes text-align-center">Ações</th>
+                        <th class="emprestimo-coluna-acoes">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% @emprestimos.each do |emprestimo| %>
                         <tr>
-                            <td class="text-align-center"><%= emprestimo.id %></td>
+                            <td><%= emprestimo.id %></td>
                             <td><%= l(emprestimo.created_at, format: :default) %> </td>
                             <td><%= l(emprestimo.data_prevista_devolucao, format: :short) %> </td>
                             <td>
@@ -124,7 +123,7 @@
                             </td>
                             <td class ="<%= "atrasado" if emprestimo.status == "ATRASADO" %>"><%= emprestimo.status %></td>
 
-                            <td class="text-align-center tabela-acoes">
+                            <td class="tabela-acoes">
                                 <%= link_to "Ver registro", emprestimo_path(emprestimo), class: "tabela-botao-acao" %> 
 
                                 <% if pode_escrever? %>

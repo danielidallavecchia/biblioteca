@@ -175,11 +175,6 @@ header {
     width: 300px;
 }
 
-.text-align-center {
-    align-items: center !important;
-    text-align: center !important;
-}
-
 /******************** CSS para show ********************/
 
 .voltar-padrao {

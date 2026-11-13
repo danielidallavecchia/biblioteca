@@ -36,14 +36,14 @@
                         <th>Nome</th>
                         <th>Login</th>
                         <th>E-mail</th>
-                        <th class="text-align-center">Cadastro</th>
-                        <th class="coluna-acoes text-align-center">Ações</th>
+                        <th>Cadastro</th>
+                        <th class="coluna-acoes">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% @usuarios.each do |usuario| %>
                     <tr>
-                        <td class="text-align"><%= usuario.id %></td>
+                        <td><%= usuario.id %></td>
                         <td><%= usuario.usuario_perfil.try(:nome) %></td>
                         <td><%= usuario.nome %></td>
                         <td>
@@ -54,9 +54,9 @@
                         </td>
                         <td><%= usuario.email %></td>
                         
-                        <td class="text-align-center"><%= l(usuario.created_at, format: :default) if usuario.created_at %></td>
+                        <td><%= l(usuario.created_at, format: :default) if usuario.created_at %></td>
                         
-                        <td class="text-align-center tabela-acoes">
+                        <td class="tabela-acoes">
                             <%= link_to "Ver registro", usuario_path(usuario), class: "tabela-botao-acao" %>
                             <% if pode_escrever? %> 
                                 <% if session[:usuario_id] != usuario.id && usuario.id != 1 %>
