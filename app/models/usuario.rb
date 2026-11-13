@@ -18,5 +18,10 @@ class Usuario < ActiveRecord::Base
   def id_e_nome
     "##{id} - #{nome}"
   end
+
+  def self.get_nome(id)
+    u = Usuario.where("id = ?", id).first 
+    u.nome if !u.blank?
+  end
   
 end
