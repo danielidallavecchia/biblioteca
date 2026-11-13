@@ -9,7 +9,11 @@ class EmprestimosController < ApplicationController
   end
 
   def index 
-    @emprestimos = Emprestimo.order("id desc")
+    if !pode_escrever?
+      @emprestimos = Emprestimo.where(usuario_id: session[:usuario_id]).order("id desc")
+    else 
+      @emprestimos = Emprestimo.order("id desc")
+    end
 
     ## usado no index pra mostrar filtro ou nao
     @tem_emprestimos = @emprestimos.length > 0
