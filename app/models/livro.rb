@@ -58,5 +58,15 @@ class Livro < ActiveRecord::Base
   def self.reserva_atual(id)
     Reserva.where(livro_id: id, data_expiracao: nil).order("posicao asc").first
   end
+
+  def self.autor_nome(id)
+    a = Autor.where(id: id).first
+    a.blank? ? "ID #{id}" : a.nome
+  end
+
+  def self.genero_nome(id)
+    g = Genero.where(id: id).first
+    g.blank? ? "ID #{id}" : g.nome
+  end
   
 end

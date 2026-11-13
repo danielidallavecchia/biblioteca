@@ -35,11 +35,11 @@
         
         <!-- mostra se houver filtro por usuario -->
         <% if !params[:autor_id].blank? %>
-            <span class="emprestimo-info-filtro">(Lista filtrada pelo Autor ID = <%= params[:autor_id] %>)</span>
+            <span class="emprestimo-info-filtro">(Lista filtrada pelo autor "<%= @livros.autor_nome(params[:autor_id]) %>")</span>
         <% end %>
 
         <% if !params[:genero_id].blank? %>
-            <span class="emprestimo-info-filtro">(Lista filtrada pelo Genero ID = <%= params[:genero_id] %>)</span>
+            <span class="emprestimo-info-filtro">(Lista filtrada pelo gênero "<%= @livros.genero_nome(params[:genero_id]) %>")</span>
         <% end %>
     </div>
 
