@@ -75,7 +75,7 @@ class EmprestimosController < ApplicationController
       @emprestimo.usuario_id = params[:usuario_id]
     end
     
-    @emprestimo.data_devolucao = Time.current
+    @emprestimo.data_devolucao = Date.today + 15 # Time.current
   end
 
   def create 
@@ -117,6 +117,7 @@ class EmprestimosController < ApplicationController
 
   def update 
     @emprestimo = Emprestimo.find(params[:id])
+    @emprestimo.data_devolucao = Time.current
 
     if @emprestimo.update_attributes(params[:emprestimo])
 
