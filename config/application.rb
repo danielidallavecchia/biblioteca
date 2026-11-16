@@ -58,5 +58,9 @@ module Biblioteca
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Configura timezone
+    config.time_zone = "Brasilia"
+
   end
 end

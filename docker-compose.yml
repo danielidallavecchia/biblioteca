@@ -15,6 +15,7 @@ services:
     environment:
       RAILS_ENV: development
       DATABASE_URL: postgres://postgres:postgres@db:5432/biblioteca_development
+      TZ: America/Sao_Paulo
 
   db:
     image: postgres:9.5
