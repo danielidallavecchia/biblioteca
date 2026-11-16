@@ -65,11 +65,11 @@ class UsuariosController < ApplicationController
 
     if tem_vinculo_emprestimo(@usuario.id)
       flash.now[:error] = "usuario_com_emprestimo"
-      @usuarios = Usuario.order(:nome)
+      @usuarios = Usuario.order("perfil_id asc, nome asc")
       render :index
     elsif tem_vinculo_reserva(@usuario.id)
       flash.now[:error] = "usuario_com_reserva"
-      @usuarios = Usuario.order(:nome)
+      @usuarios = Usuario.order("perfil_id asc, nome asc")
       render :index
     else
       exclui_emprestimos(@usuario.id)
