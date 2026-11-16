@@ -58,17 +58,33 @@ class UsuariosController < ApplicationController
     end
   end
 
-  def destroy
-    if session[:usuario_id] == @usuario.id
-      session[:usuario_id] = nil
+  def destroy 
+    @usuario = Usuario.find(params[:id])
+
+    if tem_vinculo_emprestimo(@usuario.id)
+      flash.now[:error] = "usuario_com_emprestimo"
+      @usuarios = Usuario.order(:nome)
+      render :index
+    elsif tem_vinculo_reserva(@usuario.id)
+      flash.now[:error] = "usuario_com_reserva"
+      @usuarios = Usuario.order(:nome)
+      render :index
+    else
+      exclui_emprestimos(@usuario.id)
+      exclui_reservas(@usuario.id)
+      @usuario.destroy
+      redirect_to usuarios_path
     end
+  end
 
-    exclui_emprestimos(@usuario.id)
-    exclui_reservas(@usuario.id)
+  def tem_vinculo_emprestimo(id)
+    emp = Emprestimo.where(usuario_id: id, data_devolucao: nil) # emprestimos ativos
+    !emp.blank? ? true : false
+  end
 
-    @usuario.destroy
-    flash[:success] = "Usuário removido com sucesso"
-    redirect_to usuarios_path
+  def tem_vinculo_reserva(id)
+    res = Reserva.where(usuario_id: id, data_expiracao: nil) # reservas ativas
+    !res.blank? ? true : false
   end
 
   private
