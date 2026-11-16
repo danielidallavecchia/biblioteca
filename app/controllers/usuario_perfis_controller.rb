@@ -20,11 +20,17 @@ class UsuarioPerfisController < ApplicationController
     @usuario_perfil = UsuarioPerfil.new(params[:usuario_perfil])
 
     if @usuario_perfil.save 
-      if @usuario_perfil.blank?
-        redirect_to usuario_perfis_path
+
+      if params[:salvar_e_continuar]
+        redirect_to new_usuario_perfil_path
       else
-        redirect_to usuario_perfil_path(@usuario_perfil)
+        if @usuario_perfil.blank?
+          redirect_to usuario_perfis_path
+        else
+          redirect_to usuario_perfil_path(@usuario_perfil)
+        end
       end
+
     else 
       render :new
     end
