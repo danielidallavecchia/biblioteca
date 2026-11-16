@@ -85,7 +85,16 @@
     </div>
 
     <div class="cartao-rodape">
+        <div>
         <%= link_to "Cancelar", livros_path, class: "btn" %>
-        <%= f.submit "Salvar", class: "btn btn-primario" %>
-    </div>
+        <%= f.submit(@livro.new_record? ? "Cadastrar" : "Salvar", class: "btn btn-primario") %>
+        </div>
+
+        <% if @livro.new_record? %>
+        <div class="salvar-continuar">
+            <%= f.submit "Salvar e continuar", name: "salvar_e_continuar", class: "btn botao-continuar" %>
+        </div>
+        <% end %>
+  </div>
+
 <% end %>

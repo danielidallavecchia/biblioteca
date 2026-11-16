@@ -33,21 +33,31 @@
     </div>
 
     <div>
-    <% if @usuario.new_record? %>
-    <div class="campo">
-    <p class="form-nome">
-      <%= f.label :senha do %>
-        Senha <span class="campo-required">*</span>
+      <% if @usuario.new_record? %>
+        <div class="campo">
+          <p class="form-nome">
+            <%= f.label :senha do %>
+              Senha <span class="campo-required">*</span>
+            <% end %>
+          </p>
+          <%= f.password_field :senha, class: "form-input" %>
+        </div>
       <% end %>
-    </p>
-    <%= f.password_field :senha, class: "form-input" %>
     </div>
-  </div>
-  <% end %>
+  
   </div>
 
   <div class="cartao-rodape">
-    <%= link_to "Cancelar", usuarios_path, class: "btn" %>
-    <%= f.submit(@usuario.new_record? ? "Cadastrar" : "Salvar", class: "btn btn-primario") %>
+    <div>
+      <%= link_to "Cancelar", usuarios_path, class: "btn" %>
+      <%= f.submit(@usuario.new_record? ? "Cadastrar" : "Salvar", class: "btn btn-primario") %>
+    </div>
+
+    <% if @usuario.new_record? %>
+      <div class="salvar-continuar">
+        <%= f.submit "Salvar e continuar", name: "salvar_e_continuar", class: "btn botao-continuar" %>
+      </div>
+    <% end %>
   </div>
+
 <% end %>
