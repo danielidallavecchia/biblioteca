@@ -22,6 +22,24 @@ var mensagens = {
             title: $css_titulo,
             icon: $css_icone
         }
+    },
+    livro_em_uso_emprestimo: {
+        title: "Livro emprestado não pode ser excluído",
+        customClass: {
+            popup: $css_popup,
+            confirmButton: $css_confirm,
+            title: $css_titulo,
+            icon: $css_icone
+        }
+    },
+    livro_em_uso_reserva: {
+        title: "Livro reservado não pode ser excluído",
+        customClass: {
+            popup: $css_popup,
+            confirmButton: $css_confirm,
+            title: $css_titulo,
+            icon: $css_icone
+        }
     }
 }
 

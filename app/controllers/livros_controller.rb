@@ -87,13 +87,40 @@ class LivrosController < ApplicationController
   end
 
   def destroy 
-    exclui_emprestimos(params[:id])
-    exclui_reservas(params[:id])
-
     @livro = Livro.find(params[:id])
-    @livro.destroy 
 
-    redirect_to livros_path
+    if tem_vinculo_emprestimo(@livro.id)
+      ## não permite excluir se estiver vinculado a emprestimo ativo
+      flash.now[:error] = "livro_em_uso_emprestimo"
+      
+      @livros = Livro.joins(:autor, :genero).order("livros.id ASC")
+      render :index
+
+    elsif tem_vinculo_reserva(@livro.id)
+      ## não permite excluir se estiver vinculado a reserva ativa
+      flash.now[:error] = "livro_em_uso_reserva"
+
+      @livros = Livro.joins(:autor, :genero).order("livros.id ASC")
+      render :index
+
+    else 
+      exclui_emprestimos(params[:id])
+      exclui_reservas(params[:id])
+
+      @livro.destroy 
+
+      redirect_to livros_path
+    end
+  end
+
+  def tem_vinculo_emprestimo(id)
+    emp = Emprestimo.where(livro_id: id, data_devolucao: nil) # emprestimos ativos
+    !emp.blank? ? true : false
+  end
+
+  def tem_vinculo_reserva(id)
+    res = Reserva.where(livro_id: id, data_expiracao: nil) # reservas ativas
+    !res.blank? ? true : false
   end
 
   def info 
