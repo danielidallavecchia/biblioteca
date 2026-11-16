@@ -38,7 +38,13 @@
 
         <div class="show-campo">
             <p class="show-rotulo">Perfil</p>
-            <p class="show-valor"><%= @usuario.usuario_perfil.try(:nome) %> </p>
+            <p class="show-valor">
+                <% if @usuario.id == 1 %> 
+                    Sysadmin <!-- perfil do sysadmin é sempre esse -->
+                <% else %>
+                    <%= @usuario.usuario_perfil.nome %> 
+                <% end %>
+            </p>
         </div>
 
          <div class="show-campo">
@@ -48,7 +54,10 @@
 
         <% if pode_escrever? %>
             <div class="show-botoes">
-                <%= link_to "Editar", edit_usuario_path(@usuario), class: "show-botao-editar" %> 
+                <% if @usuario.id == 1 && session[:usuario_id] == 1 %> <!-- somente usuario 1 pode editar ele mesmo -->
+                    <%= link_to "Editar", edit_usuario_path(@usuario), class: "show-botao-editar" %>
+                <% end %>
+
                 <% if session[:usuario_id] != @usuario.id && @usuario.id != 1 %>
                     <%= link_to "Excluir", usuario_path(@usuario), data: { method: :delete, confirm: "Tem certeza?" }, class: "show-botao-excluir" %>
                 <% end %>

@@ -2,7 +2,7 @@
   <div class="cartao-corpo">
   
     <div class="campo">
-    <p class="form-nome">
+      <p class="form-nome">
       <%= f.label :nome do %>Nome <span class="campo-required">*</span><% end %>
       </p>
       <%= f.text_field :nome, class:"form-input"%>
@@ -10,27 +10,29 @@
 
     <div class="linha">
       <div class="campo">
-      <p class="form-nome">
-        <%= f.label :login do %>Login <span class="campo-required">*</span><% end %>
-      </p>
+        <p class="form-nome">
+          <%= f.label :login do %>Login <span class="campo-required">*</span><% end %>
+        </p>
         <%= f.text_field :login, class:"form-input" %>
       </div>
       <div class="campo">
-      <p class="form-nome">
-        <%= f.label :email do %>E-mail <span class="campo-required">*</span><% end %>
-      </p>
+        <p class="form-nome">
+          <%= f.label :email do %>E-mail <span class="campo-required">*</span><% end %>
+        </p>
         <%= f.text_field :email, class:"form-input" %>
       </div>
     </div>
 
-    <div class="form-campo">
-      <p class="form-nome">
-        <%= f.label :perfil_id do %>Perfil <span class="campo-required">*</span><% end %>
-      </p>
-      <%= f.collection_select :perfil_id, @usuario_perfis, :id, :nome,
-          { prompt: "Selecione um perfil" },
-          { class: "form-input", required: true } %>
-    </div>
+    <% if @usuario.id != 1 %>  <!-- não altera perfil do sysadmin -->
+      <div class="form-campo">
+        <p class="form-nome">
+          <%= f.label :perfil_id do %>Perfil <span class="campo-required">*</span><% end %>
+        </p>
+        <%= f.collection_select :perfil_id, @usuario_perfis, :id, :nome,
+            { prompt: "Selecione um perfil" },
+            { class: "form-input", required: true } %>
+      </div>
+    <% end %>
 
     <div>
       <% if @usuario.new_record? %>
@@ -42,22 +44,13 @@
           </p>
           <%= f.password_field :senha, class: "form-input" %>
         </div>
-      <% end %>
+      <% end %> 
     </div>
   
   </div>
 
   <div class="cartao-rodape">
-    <div>
-      <%= link_to "Cancelar", usuarios_path, class: "btn" %>
-      <%= f.submit(@usuario.new_record? ? "Cadastrar" : "Salvar", class: "btn btn-primario") %>
-    </div>
-
-    <% if @usuario.new_record? %>
-      <div class="salvar-continuar">
-        <%= f.submit "Salvar e continuar", name: "salvar_e_continuar", class: "btn botao-continuar" %>
-      </div>
-    <% end %>
+    <%= link_to "Cancelar", usuarios_path, class: "btn" %>
+    <%= f.submit(@usuario.new_record? ? "Cadastrar" : "Salvar", class: "btn btn-primario") %>
   </div>
-
 <% end %>
