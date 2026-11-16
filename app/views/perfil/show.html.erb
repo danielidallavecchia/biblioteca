@@ -27,9 +27,28 @@
   <div>
     <div class="principal">
 
-      <div class="show-campo">
-        <p class="show-rotulo">ID</p>
-        <p class="show-valor"><%= @usuario.id %></p>
+      <div class="usuario-campos-lado">
+        <div class="show-campo">
+          <p class="show-rotulo">ID</p>
+          <p class="show-valor"><%= @usuario.id %></p>
+        </div>
+
+        <div class="show-campo">
+          <p class="show-rotulo">Nome</p>
+          <p class="show-valor"><%= @usuario.nome %></p>
+        </div>
+      </div>
+
+      <div class="usuario-campos-lado">
+        <div class="show-campo">
+          <p class="show-rotulo">Login</p>
+          <p class="show-valor"><%= @usuario.login %></p>
+        </div>
+
+        <div class="show-campo">
+          <p class="show-rotulo">E-mail</p>
+          <p class="show-valor"><%= @usuario.email %></p>
+        </div>
       </div>
 
       <div class="show-campo">
@@ -37,27 +56,12 @@
         <p class="show-valor"><%= @usuario.usuario_perfil.try(:nome)  %></p>
       </div>
 
-      <div class="show-campo">
-        <p class="show-rotulo">Nome</p>
-        <p class="show-valor"><%= @usuario.nome %></p>
-      </div>
-
-      <div class="show-campo">
-        <p class="show-rotulo">Login</p>
-        <p class="show-valor"><%= @usuario.login %></p>
-      </div>
-
-      <div class="show-campo">
-        <p class="show-rotulo">E-mail</p>
-        <p class="show-valor"><%= @usuario.email %></p>
-      </div>
-
-      <% if pode_escrever? %>
-        <div class="show-botoes">
+      <div class="show-botoes">
+        <% if pode_escrever? %>
           <%= link_to "Editar", edit_usuario_path(@usuario), class: "show-botao-editar" %>
-          <%= link_to "Alterar senha", alterar_senha_perfil_path(@usuario), class: "show-botao-excluir" %>
-        </div>
-      <% end %>
+        <% end %>
+        <%= link_to "Alterar senha", alterar_senha_perfil_path(@usuario), class: "show-botao-excluir" %>
+      </div>
 
     </div>
   </div>

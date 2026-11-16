@@ -8,9 +8,11 @@
             <p class="show-texto-subtitulo">Consulte as informações do usuário cadastrado</p>
         </div>
 
-        <div class="usuarios-titulo-botao">
-            <%= link_to "Ver empréstimos", emprestimos_path(usuario_id: @usuario.id), class: "usuarios-botao-ver-emprestimo" %> 
-        </div>
+        <% if pode_escrever? || @usuario.id == session[:usuario_id] %>
+            <div class="usuarios-titulo-botao">
+                <%= link_to "Ver empréstimos", emprestimos_path(usuario_id: @usuario.id), class: "usuarios-botao-ver-emprestimo" %> 
+            </div>
+        <% end %>
     </div>
 
     <div class="show-card">
@@ -67,7 +69,7 @@
                 <% end %>  
             </div>
 
-            <% if @usuario.id != 1 %>
+            <% if @usuario.id != 1 && session[:usuario_id] == 1 %>
             <div class="show-botoes">
                 <%= link_to "Gerar senha aleatória", gera_senha_usuario_path(@usuario), class: "btn botao-gerar-senha" %>
             </div>
