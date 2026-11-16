@@ -44,7 +44,15 @@
                     <% @usuarios.each do |usuario| %>
                     <tr>
                         <td><%= usuario.id %></td>
-                        <td><%= usuario.usuario_perfil.try(:nome) %></td>
+                        <td>
+                            <% if usuario.id == 1 %> <!-- perfil do sysadmin é sempre esse -->
+                                Sysadmin
+                            <% elsif usuario.usuario_perfil.blank? %>
+                                <span class="show-sem-dados">—</span>
+                            <% else %>
+                                <%= usuario.usuario_perfil.nome %>
+                            <% end %>
+                        </td>
                         <td><%= usuario.nome %></td>
                         <td>
                             <%= usuario.login %>

@@ -5,7 +5,8 @@ class UsuariosController < ApplicationController
   before_filter :carregar_perfis, only: [:new, :create, :edit, :update]
 
   def index
-    @usuarios = Usuario.order(:nome)
+    @usuarios = Usuario.order("perfil_id asc, nome asc")
+    
     if !params[:busca].blank?
       termo = "%#{params[:busca]}%"
       @usuarios = @usuarios.where("nome LIKE ? OR login LIKE ? OR email LIKE ?", termo, termo, termo)
