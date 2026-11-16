@@ -40,7 +40,25 @@ var mensagens = {
             title: $css_titulo,
             icon: $css_icone
         }
-    }
+    },
+    usuario_com_emprestimo: {
+        title: "Usuario com emprestimo não pode ser excluído",
+        customClass: {
+            popup: $css_popup,
+            confirmButton: $css_confirm,
+            title: $css_titulo,
+            icon: $css_icone
+        }
+    },
+    usuario_com_reserva: {
+        title: "Usuario com reserva não pode ser excluído",
+        customClass: {
+            popup: $css_popup,
+            confirmButton: $css_confirm,
+            title: $css_titulo,
+            icon: $css_icone
+        }
+    },
 }
 
 function alerta(chave) {
