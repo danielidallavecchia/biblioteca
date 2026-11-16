@@ -13,6 +13,8 @@ class UsuariosController < ApplicationController
   end
 
   def new
+    @usuario = nil
+    params[:usuario] = nil
     @usuario = Usuario.new
   end
 
@@ -24,10 +26,14 @@ class UsuariosController < ApplicationController
     if @usuario.save
       flash[:success] = "Usuário criado com sucesso"
 
-      if @usuario.id.blank?
-        redirect_to usuarios_path 
+      if params[:salvar_e_continuar]
+        redirect_to new_usuario_path
       else 
-        redirect_to usuario_path(@usuario)
+        if @usuario.id.blank?
+          redirect_to usuarios_path 
+        else 
+          redirect_to usuario_path(@usuario)
+        end
       end
 
     else
