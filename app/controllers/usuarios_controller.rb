@@ -20,6 +20,7 @@ class UsuariosController < ApplicationController
   end
 
   def show
+    @usuario = Usuario.find(params[:id])
   end
 
   def create
@@ -86,6 +87,12 @@ class UsuariosController < ApplicationController
   def tem_vinculo_reserva(id)
     res = Reserva.where(usuario_id: id, data_expiracao: nil) # reservas ativas
     !res.blank? ? true : false
+  end
+
+  def gera_senha
+    @usuario = Usuario.find(params[:id])
+
+    @usuario_nova_senha = "teste123"
   end
 
   private
