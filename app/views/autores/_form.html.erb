@@ -45,7 +45,7 @@
 
     <div class="cartao-rodape">
         <%= link_to "Cancelar", autores_path, class: "btn" %>
-        <%= f.submit "Salvar", class: "btn btn-primario" %>
+        <%= f.submit(@autor.new_record? ? "Cadastrar" : "Salvar", class: "btn btn-primario") %>
     </div>
     
 <% end %>
