@@ -48,9 +48,22 @@ class GenerosController < ApplicationController
 
   def destroy
     @genero = Genero.find(params[:id])
-    @genero.destroy
 
-    redirect_to generos_path, notice: "sucesso"
+    if tem_vinculos(@genero.id)
+      ## não permite excluir se estiver vinculado a um livro
+      flash.now[:error] = "genero_em_uso"
+      
+      @generos = Genero.order("id asc")
+      render :index
+    else
+      @genero.destroy
+      redirect_to generos_path, notice: "sucesso"
+    end
+  end
+
+  def tem_vinculos(id)
+    livros = Livro.where(genero_id: id)
+    !livros.blank? ? true : false
   end
 
 end

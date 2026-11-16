@@ -13,6 +13,15 @@ var mensagens = {
             title: $css_titulo,
             icon: $css_icone
         }
+    },
+    genero_em_uso: {
+        title: "Gênero em uso não pode ser excluído",
+        customClass: {
+            popup: $css_popup,
+            confirmButton: $css_confirm,
+            title: $css_titulo,
+            icon: $css_icone
+        }
     }
 }
 
