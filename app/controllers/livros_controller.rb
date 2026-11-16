@@ -60,10 +60,15 @@ class LivrosController < ApplicationController
     @livro = Livro.new(params[:livro])
 
     if @livro.save 
-      if @livro.id.blank?
-        redirect_to livros_path 
-      else 
-        redirect_to info_livro_path(@livro)
+
+      if params[:salvar_e_continuar]
+        redirect_to new_livro_path
+      else
+        if @livro.id.blank?
+          redirect_to livros_path 
+        else 
+          redirect_to info_livro_path(@livro)
+        end
       end
 
     else
