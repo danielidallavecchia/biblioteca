@@ -91,8 +91,10 @@ class UsuariosController < ApplicationController
 
   def gera_senha
     @usuario = Usuario.find(params[:id])
+    
+    @usuario_nova_senha = SecureRandom.hex(10)
 
-    @usuario_nova_senha = "teste123"
+    @usuario.update_attributes(senha: @usuario_nova_senha)
   end
 
   private
