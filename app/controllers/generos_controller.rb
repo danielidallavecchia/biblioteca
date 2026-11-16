@@ -20,10 +20,14 @@ class GenerosController < ApplicationController
     @genero = Genero.new(params[:genero])
 
     if @genero.save 
-      if @genero.id.blank?
-        redirect_to generos_path 
-      else 
-        redirect_to genero_path(@genero)
+      if params[:salvar_e_continuar]
+        redirect_to new_genero_path
+      else
+        if @genero.id.blank?
+          redirect_to generos_path 
+        else 
+          redirect_to genero_path(@genero)
+        end
       end
       
     else 
