@@ -47,9 +47,22 @@ class AutoresController < ApplicationController
 
   def destroy
     @autor = Autor.find(params[:id])
-    @autor.destroy
 
-    redirect_to autores_path, notice: "sucesso"
+    if tem_vinculos(@autor.id)
+      ## não permite excluir se estiver vinculado a um livro
+      flash.now[:error] = "autor_em_uso"
+      
+      @autores = Autor.order("id asc")
+      render :index
+    else
+      @autor.destroy
+      redirect_to autores_path, notice: "sucesso"
+    end
+  end
+
+  def tem_vinculos(id)
+    livros = Livro.where(autor_id: id)
+    !livros.blank? ? true : false
   end
 
 end

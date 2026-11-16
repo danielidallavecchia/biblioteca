@@ -41,6 +41,7 @@
     </header>
 
     <div class="body-corpo">
+        <div id="alerta" data-alerta="<%= flash[:notice] || flash[:alert] || flash[:error] %>"></div>
         <%= yield %>
     </div>
 </body>
