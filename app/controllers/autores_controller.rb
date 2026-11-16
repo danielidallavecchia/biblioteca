@@ -20,11 +20,16 @@ class AutoresController < ApplicationController
     @autor = Autor.new(params[:autor])
 
     if @autor.save 
-      if @autor.id.blank?
-        redirect_to autores_path
+      if params[:salvar_e_continuar]
+        redirect_to new_autor_path
       else 
-        redirect_to autor_path(@autor)
-      end
+        if @autor.id.blank?
+          redirect_to autores_path
+        else 
+          redirect_to autor_path(@autor)
+        end
+      end 
+
     else 
       flash.now[:error] = "erro_create"
       render :new
