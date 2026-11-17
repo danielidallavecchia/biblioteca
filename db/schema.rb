@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20261112125235) do
+ActiveRecord::Schema.define(:version => 20261117125116) do
 
   create_table "autores", :force => true do |t|
     t.string   "nome"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20261112125235) do
     t.boolean  "pode_escrever", :default => false
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
+    t.boolean  "eh_padrao",     :default => false
   end
 
   create_table "usuarios", :force => true do |t|
