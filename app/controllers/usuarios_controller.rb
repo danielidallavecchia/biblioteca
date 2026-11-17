@@ -20,6 +20,7 @@ class UsuariosController < ApplicationController
   end
 
   def show
+    @usuario = Usuario.find(params[:id])
   end
 
   def create
@@ -64,11 +65,11 @@ class UsuariosController < ApplicationController
 
     if tem_vinculo_emprestimo(@usuario.id)
       flash.now[:error] = "usuario_com_emprestimo"
-      @usuarios = Usuario.order(:nome)
+      @usuarios = Usuario.order("perfil_id asc, nome asc")
       render :index
     elsif tem_vinculo_reserva(@usuario.id)
       flash.now[:error] = "usuario_com_reserva"
-      @usuarios = Usuario.order(:nome)
+      @usuarios = Usuario.order("perfil_id asc, nome asc")
       render :index
     else
       exclui_emprestimos(@usuario.id)
@@ -86,6 +87,14 @@ class UsuariosController < ApplicationController
   def tem_vinculo_reserva(id)
     res = Reserva.where(usuario_id: id, data_expiracao: nil) # reservas ativas
     !res.blank? ? true : false
+  end
+
+  def gera_senha
+    @usuario = Usuario.find(params[:id])
+    
+    @usuario_nova_senha = SecureRandom.hex(10)
+
+    @usuario.update_attributes(senha: @usuario_nova_senha)
   end
 
   private

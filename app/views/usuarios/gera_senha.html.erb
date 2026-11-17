@@ -1,0 +1,20 @@
+
+<div class="margem show-corpo-padrao">
+
+    <%= render "voltar" %>
+
+    <div>
+        <p class="gerar-senha-titulo">Senha gerada com sucesso!</p>
+        <p class="gerar-senha-subtitulo">A nova senha de <%= @usuario.nome %> é: </p>
+    </div>
+
+    <div class="gera-senha-texto">
+        <%= @usuario_nova_senha %>
+    </div>
+    
+    <div class="gera-senha-aviso">
+        <%= image_tag "notificacao.png", class: "gera-senha-img" %>
+        <p>Certifique-se de copiar a nova senha agora. Você não poderá vê-la novamente!</p>
+    </div>
+
+</div>

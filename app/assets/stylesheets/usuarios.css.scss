@@ -36,3 +36,63 @@
     width: 50%;
 }
 
+.botoes-usuario {
+    display: flex;
+    justify-content: space-between;
+}
+
+.botao-gerar-senha {
+    background-color: rgb(230, 233, 251);
+    color: #1e1e47;
+    border: 1px solid rgb(139, 141, 198);
+}
+.botao-gerar-senha:hover {
+    background-color: rgb(193, 190, 230);
+}
+
+.gerar-senha-titulo {
+    font-size: 21px;
+    padding-bottom: 8px;
+}
+.gerar-senha-subtitulo {
+    font-size: 16px;
+    color: rgb(85, 85, 85);
+    margin-bottom: 8px;
+    margin-top: 5px;
+}
+
+.gera-senha-aviso {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(203, 203, 253);
+    border-radius: 10px;
+    border: 1px solid #070CDC;
+    padding: 15px;
+    font-size: 14.5px;
+    color: #030581;
+    margin-top: 20px;
+}
+
+.gera-senha-aviso p {
+    margin-left: 5px;
+}
+
+.gera-senha-img {
+    width: 20px;
+}
+
+.gera-senha-texto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(249, 224, 179);
+    border-radius: 10px;
+    border: 1px solid rgb(169, 169, 1);
+    padding: 13px 0 13px 0;
+    font-size: 15px;
+    color: rgb(97, 97, 1);
+}
+.gera-senha-texto:hover {
+    background-color: rgb(235, 213, 171);
+}

@@ -3,13 +3,14 @@ Biblioteca::Application.routes.draw do
   root to: "livros#index"
 
   # Usuarios
-  get    'usuarios',          to: 'usuarios#index',   as: :usuarios
-  post   'usuarios',          to: 'usuarios#create'
-  get    'usuarios/new',      to: 'usuarios#new',     as: :new_usuario
-  get    'usuarios/:id/edit', to: 'usuarios#edit',    as: :edit_usuario
-  get    'usuarios/:id',      to: 'usuarios#show',    as: :usuario
-  put    'usuarios/:id',      to: 'usuarios#update'
-  delete 'usuarios/:id',      to: 'usuarios#destroy'
+  get    "usuarios"             => "usuarios#index",      :as => :usuarios
+  post   "usuarios"             => "usuarios#create"
+  get    "usuarios/new"         => "usuarios#new",        :as => :new_usuario
+  get    "usuarios/:id/edit"    => "usuarios#edit",       :as => :edit_usuario
+  get    "usuarios/:id"         => "usuarios#show",       :as => :usuario
+  put    "usuarios/:id"         => "usuarios#update"
+  delete "usuarios/:id"         => "usuarios#destroy"
+  get    "usuarios/:id/gera_senha"  => "usuarios#gera_senha", :as => :gera_senha_usuario
 
   # Generos
   get    "generos"          => "generos#index",   :as => :generos
