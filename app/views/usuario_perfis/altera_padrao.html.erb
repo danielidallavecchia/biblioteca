@@ -1,0 +1,28 @@
+<div class="margem">
+
+    <div class="voltar-padrao">
+        <%= link_to "⇦ Voltar", usuario_perfis_path, class: "voltar-botao" %>
+    </div>
+
+    <%= form_tag atualiza_padrao_usuario_perfil_path, method: :put, class: "cartao" do %>
+        <div class="cartao-corpo">
+            <div class="form-campo">
+                <p class="form-nome-maior">
+                    Selecione o perfil padrão:
+                </p>
+                <%= select_tag :usuario_perfil_id, 
+                    options_from_collection_for_select(@usuario_perfis, :id, :nome, @usuario_perfil_padrao.try(:id) ),
+                    class: "form-input" 
+                %>
+            </div>
+        </div>
+
+        <div class="cartao-rodape">
+            <div>
+                <%= link_to "Cancelar", usuario_perfis_path, class: "btn" %>
+                <%= submit_tag "Salvar", class: "btn btn-primario" %>
+            </div>
+        </div>
+    <% end %>
+
+</div>

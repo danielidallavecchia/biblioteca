@@ -3,7 +3,7 @@ class UsuarioPerfil < ActiveRecord::Base
 
   has_many :usuarios
 
-  attr_accessible :nome, :pode_escrever
+  attr_accessible :nome, :pode_escrever, :eh_padrao
 
   validates :nome, presence: { message: "é obrigatório" }, length: { maximum: 200, message: "não pode exceder 200 caracteres" }
   validate :valida_pode_escrever
