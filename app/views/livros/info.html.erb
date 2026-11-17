@@ -2,7 +2,7 @@
 
 <div class="livro-pagina">
   <div class="livro-card">
-  <div class="capa">
+  <div class=<%= !@livro.imagem.blank? ? "capa" : "sem-capa" %> >
       <% if !@livro.imagem.blank? %>
         <%= image_tag @livro.imagem.url, class: "livro-capa-imagem" %>
       <% else %>
