@@ -1,5 +1,5 @@
 class Livro < ActiveRecord::Base 
-  attr_accessible :titulo, :sinopse, :ano_publicacao, :qtd_paginas, :autor_id, :genero_id, :imagem_url
+  attr_accessible :titulo, :sinopse, :ano_publicacao, :qtd_paginas, :autor_id, :genero_id, :imagem
 
   belongs_to :autor # um livro pertence a somente um autor
   belongs_to :genero # um livro pertence a somente um genero
@@ -15,6 +15,9 @@ class Livro < ActiveRecord::Base
   validates :ano_publicacao, presence: {message: "é obrigatório"}
 
   validate :valida_ano_publicacao_futuro
+
+  has_attached_file :imagem
+  validates_attachment_content_type :imagem, content_type: /\Aimage\/.*\z/
 
   def valida_ano_publicacao_futuro
     if !ano_publicacao.blank? && ano_publicacao > Date.today.year

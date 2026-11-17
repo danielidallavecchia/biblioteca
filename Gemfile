@@ -6,6 +6,7 @@ gem 'rails', '3.2.22.5'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg', '~> 0.20.0'
+gem 'paperclip', '4.2.4'
 
 gem 'execjs', '2.7.0'
 

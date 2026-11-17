@@ -1,5 +1,4 @@
-<%= form_for @livro, html: { class: "cartao" } do |f| %>
-
+<%= form_for @livro, html: { class: "cartao", multipart: true } do |f| %>
     <div class="cartao-corpo">
 
         <% if !@livro.id.blank? %>
@@ -54,17 +53,6 @@
             <%= f.text_field :sinopse, class:"form-input"  %>
         </div>
 
-        <div class="campo">
-            <p class="form-nome">
-                <%=f.label :imagem_url do %>
-                    URL da capa do livro
-                <% end %>
-            </p>
-
-            <%= f.text_field :imagem_url, class: "form-input", placeholder: "https://exemplo.com/capa.jpg" %>
-        </div>
-
-
         <div class="livro-campos-lado">
             <div class="form-campo">
                 <p class="form-nome">
@@ -82,6 +70,17 @@
                 <%= f.collection_select :genero_id, @generos, :id, :id_e_nome, {}, { class: "form-input form" } %>
             </div>
         </div>
+
+        <div class="imagem">
+            <p class="form-nome">
+                <%= f.label :imagem do %>
+                    Capa do livro
+                <% end %>
+            </p>
+
+            <%= f.file_field :imagem, class: "form-input" %>
+        </div>
+
     </div>
 
     <div class="cartao-rodape">
