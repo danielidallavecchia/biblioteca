@@ -80,5 +80,7 @@ Biblioteca::Application.routes.draw do
   get    "usuario_perfis/:id"      => "usuario_perfis#show",    :as => :usuario_perfil
   put    "usuario_perfis/:id"      => "usuario_perfis#update"
   delete "usuario_perfis/:id"      => "usuario_perfis#destroy"
+  get    "usuario_perfis/padrao/alterar" => "usuario_perfis#altera_padrao", :as => :altera_padrao_usuario_perfil
+  put    "usuario_perfis/padrao/alterar" => "usuario_perfis#atualiza_padrao", :as => :atualiza_padrao_usuario_perfil
 
 end
