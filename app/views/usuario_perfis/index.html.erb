@@ -21,9 +21,10 @@
             <table>
                 <thead>
                     <tr>
-                        <th class="coluna-id">ID</th>
+                        <th class="coluna-id-perfil">ID</th>
                         <th>Nome</th>
                         <th>Permite escrita</th>
+                        <th>É perfil padrão</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -33,7 +34,14 @@
                             <td><%= usuario_perfil.id %></td>
                             <td><%= usuario_perfil.nome %> </td>
                             <td><%= usuario_perfil.pode_escrever ? "Sim" : "Não" %></td>
-                            <td><%= link_to "Ver registro", usuario_perfil_path(usuario_perfil), class: "tabela-botao-acao" %></td>
+                            <td><%= @usuario_perfil_padrao.id == usuario_perfil.id ? "Sim" : "Não" %> </td>
+                            <td>
+                                <%= link_to "Ver registro", usuario_perfil_path(usuario_perfil), class: "tabela-botao-acao" %>
+
+                                <% if @usuario_perfil_padrao.id == usuario_perfil.id %>
+                                    | <%= link_to "Alterar padrão", altera_padrao_usuario_perfil_path, class: "tabela-botao-acao" %>
+                                <% end %>
+                            </td>
                         </tr>
                     <% end %>
                 </tbody>

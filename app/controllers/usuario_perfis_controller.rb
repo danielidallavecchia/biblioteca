@@ -6,6 +6,8 @@ class UsuarioPerfisController < ApplicationController
     if !params[:busca].blank?
       @usuario_perfis = @usuario_perfis.where("nome LIKE ?", "%#{params[:busca]}%")
     end
+
+    @usuario_perfil_padrao = UsuarioPerfil.where("eh_padrao is true").first
   end
 
   def show
