@@ -24,14 +24,16 @@
     </div>
 
     <% if @usuario.id != 1 %>  <!-- não altera perfil do sysadmin -->
-      <div class="form-campo">
-        <p class="form-nome">
-          <%= f.label :perfil_id do %>Perfil <span class="campo-required">*</span><% end %>
-        </p>
-        <%= f.collection_select :perfil_id, @usuario_perfis, :id, :nome,
-            { prompt: "Selecione um perfil" },
-            { class: "form-input", required: true } %>
-      </div>
+      <% if session[:usuario_id] == 1 %> <!-- só o sysadmin pode alterar o perfil de outros usuarios -->
+        <div class="form-campo">
+          <p class="form-nome">
+            <%= f.label :perfil_id do %>Perfil <span class="campo-required">*</span><% end %>
+          </p>
+          <%= f.collection_select :perfil_id, @usuario_perfis, :id, :nome,
+              { prompt: "Selecione um perfil" },
+              { class: "form-input", required: true } %>
+        </div>
+      <% end %>
     <% end %>
 
     <div>

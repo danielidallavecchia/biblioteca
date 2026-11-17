@@ -24,6 +24,11 @@ class UsuariosController < ApplicationController
 
   def create
     @usuario = Usuario.new(params[:usuario])
+
+    if @usuario.perfil_id.blank?
+      @usuario.perfil_id = 2 ## perfil_id default
+    end
+
     if @usuario.save
       flash[:success] = "Usuário criado com sucesso"
 
