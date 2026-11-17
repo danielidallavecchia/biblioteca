@@ -7,7 +7,13 @@ class UsuarioPerfisController < ApplicationController
       @usuario_perfis = @usuario_perfis.where("nome LIKE ?", "%#{params[:busca]}%")
     end
 
-    @usuario_perfil_padrao = UsuarioPerfil.where("eh_padrao is true").first
+    usuario_perfil = UsuarioPerfil.where("eh_padrao is true").first
+
+    if usuario_perfil.blank?
+      @usuario_perfil_id_padrao = 2
+    else 
+      @usuario_perfil_id_padrao = usuario_perfil.id
+    end
   end
 
   def show
@@ -65,6 +71,25 @@ class UsuarioPerfisController < ApplicationController
       redirect_to usuario_perfis_path
     end
 
+  end
+
+  def altera_padrao
+    @usuario_perfis = UsuarioPerfil.order("id asc")
+    @usuario_perfil_padrao = UsuarioPerfil.where(eh_padrao: true).first
+  end
+
+  def atualiza_padrao
+    @usuario_perfil = UsuarioPerfil.find(params[:usuario_perfil_id])
+
+    UsuarioPerfil.update_all(eh_padrao: false)
+
+    if @usuario_perfil.update_attributes(eh_padrao: true)
+      redirect_to usuario_perfis_path
+    else
+      @usuario_perfis = UsuarioPerfil.order("id asc")
+      @usuario_perfil_padrao = UsuarioPerfil.where(eh_padrao: true).first
+      render :altera_padrao
+    end
   end
 
 end
