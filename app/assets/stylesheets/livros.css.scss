@@ -347,3 +347,22 @@ transform: scale(1.03);
     color: rgb(94, 93, 93);
 }
 
+/*** botao upload ***/
+.imagem {
+    margin-bottom: 16px;
+  }
+  
+  .imagem .form-input {
+    width: 100%;
+    height: auto;
+    padding: 6px;
+  }
+  
+  .imagem .form-input::file-selector-button {
+    background: #357657;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }

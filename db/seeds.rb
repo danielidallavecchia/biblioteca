@@ -205,7 +205,7 @@ Livro.create([
     :qtd_paginas => 136,
     :autor_id => 1,
     :genero_id => 1,
-    :imagem_url => "https://m.media-amazon.com/images/I/914sM98HUAL.jpg"
+    :imagem => File.open(Rails.root.join("app/assets/images/Enterre_seus_mortos.jpg"))
   },
   {
     # 2
@@ -215,7 +215,7 @@ Livro.create([
     :qtd_paginas => 203,
     :autor_id => 1,
     :genero_id => 10,
-    :imagem_url => "https://m.media-amazon.com/images/I/81mEFzYPcSL.jpg"
+    :imagem => File.open(Rails.root.join("app/assets/images/Búfalos_Selvagens.jpg"))
   },
   {
     # 3
@@ -225,7 +225,7 @@ Livro.create([
     :qtd_paginas => 143,
     :autor_id => 1,
     :genero_id => 5,
-    :imagem_url => "https://m.media-amazon.com/images/I/915GvEbmRjL._AC_UF1000,1000_QL80_.jpg"
+    :imagem => File.open(Rails.root.join("app/assets/images/Assim_na_terra_como_em_baixo_da_terra.jpg"))
   },
   {
     # 4
@@ -235,7 +235,7 @@ Livro.create([
     :qtd_paginas => 132,
     :autor_id => 2,
     :genero_id => 10,
-    :imagem_url => "https://m.media-amazon.com/images/I/81rKkgH1vgL.jpg"
+    :imagem => File.open(Rails.root.join("app/assets/images/Becos_da_Memória.jpg"))
   },
   {
     # 5
@@ -245,7 +245,7 @@ Livro.create([
     :qtd_paginas => 116,
     :autor_id => 2,
     :genero_id => 6,
-    :imagem_url => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-NhWj3nlaKnWD1n59gnFKfgp3o3qQn7MidTJgELQcBw&s=10"
+    :imagem => File.open(Rails.root.join("app/assets/images/Olhos d'agua.jpeg"))
   },
   {
     # 6
@@ -255,7 +255,7 @@ Livro.create([
     :qtd_paginas => 298,
     :autor_id => 2,
     :genero_id => 2,
-    :imagem_url => "https://m.media-amazon.com/images/I/81EULWTz2PL._AC_UF1000,1000_QL80_.jpg"
+    :imagem => File.open(Rails.root.join("app/assets/images/Ponciá_Vicêncio.jpg"))
   },
   {
     # 7
@@ -265,7 +265,7 @@ Livro.create([
     :qtd_paginas => 177,
     :autor_id => 2,
     :genero_id => 3,
-    :imagem_url => "https://m.media-amazon.com/images/I/61u-HWzo8nL.jpg"
+    :imagem => File.open(Rails.root.join("app/assets/images/Cancao_para_ninar_menino_grande.jpg"))
   },
   {
     # 8
@@ -275,7 +275,7 @@ Livro.create([
     :qtd_paginas => 401,
     :autor_id => 3,
     :genero_id => 1,
-    :imagem_url => "https://m.media-amazon.com/images/I/91AHNAr638L._AC_UF1000,1000_QL80_.jpg"
+    :imagem => File.open(Rails.root.join("app/assets/images/O_conto_de_aia.jpg"))
   },
   {
     # 9
@@ -285,7 +285,7 @@ Livro.create([
     :qtd_paginas => 142,
     :autor_id => 4,
     :genero_id => 7,
-    :imagem_url => "https://m.media-amazon.com/images/I/71CDcBHXuDL._AC_UF1000,1000_QL80_.jpg"
+    :imagem => File.open(Rails.root.join("app/assets/images/Torto_arado.jpg"))
   },
   {
     # 10
@@ -295,7 +295,7 @@ Livro.create([
     :qtd_paginas => 345,
     :autor_id => 5,
     :genero_id => 8,
-    :imagem_url => "https://m.media-amazon.com/images/I/618-b9Im6dL.jpg"
+    :imagem => File.open(Rails.root.join("app/assets/images/Vidas_secas.jpg"))
   },
   {
     # 11
@@ -305,7 +305,7 @@ Livro.create([
     :qtd_paginas => 230,
     :autor_id => 6,
     :genero_id => 9,
-    :imagem_url => "https://m.media-amazon.com/images/I/81t7altQZxL.jpg"
+    :imagem => File.open(Rails.root.join("app/assets/images/Capitaes_da_areia.jpg"))
   },
   {
     # 12
@@ -315,7 +315,7 @@ Livro.create([
     :qtd_paginas => 333,
     :autor_id => 6,
     :genero_id => 11,
-    :imagem_url => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTof-9PNdxIUcavsiWUPVYT8D7XP7iSFhmqqda29fasAyGItFACar5cz5o&s=10"
+    :imagem => File.open(Rails.root.join("app/assets/images/Dona_flor_e_seus_dois_maridos.jpeg"))
   },
   {
     # 13
@@ -325,7 +325,7 @@ Livro.create([
     :qtd_paginas => 368,
     :autor_id => 7,
     :genero_id => 12,
-    :imagem_url => "https://m.media-amazon.com/images/I/71OL9RU2tJL.jpg"
+    :imagem => File.open(Rails.root.join("app/assets/images/Memorias_postumas_de_bras_cubas.jpg"))
   },
   {
     # 14
@@ -335,7 +335,7 @@ Livro.create([
     :qtd_paginas => 232,
     :autor_id => 7,
     :genero_id => 13,
-    :imagem_url => "https://m.media-amazon.com/images/I/61x1ZHomWUL.jpg"
+    :imagem => File.open(Rails.root.join("app/assets/images/Dom_casmurro.jpg"))
   },
   {
     # 15
@@ -345,7 +345,7 @@ Livro.create([
     :qtd_paginas => 101,
     :autor_id => 7,
     :genero_id => 14,
-    :imagem_url => "https://m.media-amazon.com/images/I/61+cCiPBnWL.jpg"
+    :imagem => File.open(Rails.root.join("app/assets/images/O_alienista.jpg"))
   },
   {
     # 16
@@ -355,7 +355,7 @@ Livro.create([
     :qtd_paginas => 176,
     :autor_id => 8,
     :genero_id => 1,
-    :imagem_url => "https://m.media-amazon.com/images/I/810Vj9zyi-L._AC_UF1000,1000_QL80_.jpg"
+    :imagem => File.open(Rails.root.join("app/assets/images/A_hora_da_estrela.jpg"))
   },
   {
     # 17
@@ -365,7 +365,7 @@ Livro.create([
     :qtd_paginas => 234,
     :autor_id => 9,
     :genero_id => 6,
-    :imagem_url => "https://m.media-amazon.com/images/I/91vUYaiay0L._UF1000,1000_QL80_.jpg"
+    :imagem => File.open(Rails.root.join("app/assets/images/um_defeito_de_cor.jpg"))
   },
   {
     # 18
@@ -375,7 +375,7 @@ Livro.create([
     :qtd_paginas => 118,
     :autor_id => 10,
     :genero_id => 3,
-    :imagem_url => "https://biblioteca.letras.ufrj.br/wp-content/uploads/2022/08/58755390._SY475_.jpg"
+    :imagem => File.open(Rails.root.join("app/assets/images/Ursula.jpg"))
   },
   {
     # 19
@@ -385,7 +385,7 @@ Livro.create([
     :qtd_paginas => 111,
     :autor_id => 11,
     :genero_id => 2,
-    :imagem_url => "https://m.media-amazon.com/images/I/71kADstk2gL._AC_UF1000,1000_QL80_.jpg"
+    :imagem => File.open(Rails.root.join("app/assets/images/Macunaima.jpg"))
   }
 ])
 

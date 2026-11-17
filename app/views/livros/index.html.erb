@@ -51,13 +51,13 @@
                 <% @livros.each do |livro| %>
                     <div class="card-livro">
                         <div class="capa">
-                        <%= link_to info_livro_path(livro), class: "capa-link" do %>
-                            <% if !livro.imagem_url.blank? %>
-                                <%= image_tag livro.imagem_url, class: "livro-capa-imagem" %>
-                            <% else %>
-                            <span class="format-sem-capa">Sem capa</span>
+                            <%= link_to info_livro_path(livro), class: "capa-link" do %>
+                                <% if !livro.imagem.blank? %>
+                                    <%= image_tag livro.imagem.url, class: "livro-capa-imagem" %>
+                                <% else %>
+                                    <span class="format-sem-capa">Sem capa</span>
+                                <% end %>
                             <% end %>
-                        <% end %>
                         </div>
                         
                         <div class="botao-acao">

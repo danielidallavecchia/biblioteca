@@ -3,11 +3,11 @@
 <div class="livro-pagina">
   <div class="livro-card">
   <div class="capa">
-    <% if !@livro.imagem_url.blank? %>
-      <%= image_tag @livro.imagem_url, class: "livro-capa-imagem"%>
-    <% else %>
-      <span class="format-sem-capa">Sem capa</span>
-    <% end %>
+      <% if !@livro.imagem.blank? %>
+        <%= image_tag @livro.imagem.url, class: "livro-capa-imagem" %>
+      <% else %>
+        <span class="format-sem-capa">Sem capa</span>
+      <% end %>
   </div>
 
     <div class="coluna-conteudo">

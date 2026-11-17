@@ -8,10 +8,10 @@
     <div class="livro-sublista-dados">
         <% @livros_com_mesmo_autor.each do |livro| %>
             <div class="livro-sublista-card">
-                <div class="livro-sublista-capa-imagem">
+                <div class="livro-sublista-capa">
                     <%= link_to info_livro_path(livro), class: "capa-link" do %>
-                        <% if !livro.imagem_url.blank? %>
-                            <%= image_tag livro.imagem_url, class: "livro-sublista-capa-imagem"%>
+                        <% if !livro.imagem.blank? %>
+                            <%= image_tag livro.imagem.url, class: "livro-sublista-capa-imagem" %>
                         <% else %>
                             <span class="format-sem-capa">Sem capa</span>
                         <% end %>

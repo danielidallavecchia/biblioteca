@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20261112125235) do
+ActiveRecord::Schema.define(:version => 20261116192440) do
 
   create_table "autores", :force => true do |t|
     t.string   "nome"
@@ -50,9 +50,12 @@ ActiveRecord::Schema.define(:version => 20261112125235) do
     t.integer  "qtd_paginas"
     t.integer  "autor_id"
     t.integer  "genero_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.string   "imagem_url"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "imagem_file_name"
+    t.string   "imagem_content_type"
+    t.integer  "imagem_file_size"
+    t.datetime "imagem_updated_at"
   end
 
   create_table "reservas", :force => true do |t|
