@@ -28,7 +28,7 @@ class UsuariosController < ApplicationController
 
     if @usuario.perfil_id.blank?
       @usuario_perfil_padrao = UsuarioPerfil.where("eh_padrao is true").first
-      @usuario.perfil_id = @usuario_perfil_padrao ## perfil_id default
+      @usuario.perfil_id = @usuario_perfil_padrao.id ## perfil_id default
     end
 
     if @usuario.save
