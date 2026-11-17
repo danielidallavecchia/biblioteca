@@ -41,7 +41,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% @usuarios.each do |usuario| %>
+                <% @usuarios.each do |usuario| %>
+                    <% next if !pode_escrever? && usuario.id == 1 %> <!-- não exibe usuario sysadmin para usuarios comuns -->
+
                     <tr>
                         <td><%= usuario.id %></td>
                         <td>
@@ -73,7 +75,7 @@
                             <% end %>
                         </td>
                     </tr>
-                    <% end %>
+                <% end %>
                 </tbody>
             </table>
         <% end %>

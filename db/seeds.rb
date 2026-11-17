@@ -35,13 +35,21 @@ Usuario.create([
     :email => "danieli@gmail.com",
     :login => "danieli",
     :senha => "admin123",
-    :perfil_id => 2
+    :perfil_id => 1
   },
   {
     # 3
     :nome => "Felipe Lima",
     :email => "felipe@gmail.com",
     :login => "felipe",
+    :senha => "admin123",
+    :perfil_id => 1
+  },
+  {
+    # 4
+    :nome => "Xena Padilha",
+    :email => "xena@gmail.com",
+    :login => "xena",
     :senha => "admin123",
     :perfil_id => 2
   }
