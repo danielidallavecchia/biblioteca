@@ -98,15 +98,15 @@ class LivrosController < ApplicationController
       ## não permite excluir se estiver vinculado a emprestimo ativo
       flash.now[:error] = "livro_em_uso_emprestimo"
       
-      @livros = Livro.joins(:autor, :genero).order("livros.id ASC")
-      render :index
+      @livros_com_mesmo_autor = Livro.where("autor_id = ? and id <> ?", @livro.autor_id, @livro.id).order("id asc")
+      render :info
 
     elsif tem_vinculo_reserva(@livro.id)
       ## não permite excluir se estiver vinculado a reserva ativa
       flash.now[:error] = "livro_em_uso_reserva"
 
-      @livros = Livro.joins(:autor, :genero).order("livros.id ASC")
-      render :index
+      @livros_com_mesmo_autor = Livro.where("autor_id = ? and id <> ?", @livro.autor_id, @livro.id).order("id asc")
+      render :info
 
     else 
       exclui_emprestimos(params[:id])
