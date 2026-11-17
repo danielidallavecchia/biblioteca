@@ -50,7 +50,7 @@
             <div class="grade-livros">
                 <% @livros.each do |livro| %>
                     <div class="card-livro">
-                        <div class="capa">
+                        <div class=<%= !livro.imagem.blank? ? "capa" : "sem-capa" %> >
                             <%= link_to info_livro_path(livro), class: "capa-link" do %>
                                 <% if !livro.imagem.blank? %>
                                     <%= image_tag livro.imagem.url, class: "livro-capa-imagem" %>

@@ -8,7 +8,7 @@
     <div class="livro-sublista-dados">
         <% @livros_com_mesmo_autor.each do |livro| %>
             <div class="livro-sublista-card">
-                <div class="livro-sublista-capa">
+                <div class="capa">
                     <%= link_to info_livro_path(livro), class: "capa-link" do %>
                         <% if !livro.imagem.blank? %>
                             <%= image_tag livro.imagem.url, class: "livro-sublista-capa-imagem" %>
@@ -18,7 +18,7 @@
                     <% end %>
                 </div>
 
-                <div>
+                <div class="livro-sublista-margem">
                     <%= link_to "#{livro.titulo}", info_livro_path(livro),class: "livro-sublista-titulo" %>
                 </div>
             </div>
