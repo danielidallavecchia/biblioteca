@@ -33,12 +33,24 @@
                         <tr>
                             <td><%= usuario_perfil.id %></td>
                             <td><%= usuario_perfil.nome %> </td>
-                            <td><%= usuario_perfil.pode_escrever ? "Sim" : "Não" %></td>
-                            <td><%= @usuario_perfil_padrao.id == usuario_perfil.id ? "Sim" : "Não" %> </td>
+                            <td>
+                                <% if usuario_perfil.pode_escrever %>
+                                    <span class="usuario-perfil-sim">Sim</span>
+                                <% else %>
+                                    <span class="usuario-perfil-nao">Não</span> 
+                                <% end %>
+                            </td>
+                            <td>
+                                <% if @usuario_perfil_id_padrao == usuario_perfil.id %> 
+                                    <span class="usuario-perfil-sim">Sim</span>
+                                <% else %>
+                                    <span class="usuario-perfil-nao">Não</span> 
+                                <% end %>
+                            </td>
                             <td>
                                 <%= link_to "Ver registro", usuario_perfil_path(usuario_perfil), class: "tabela-botao-acao" %>
 
-                                <% if @usuario_perfil_padrao.id == usuario_perfil.id %>
+                                <% if session[:usuario_id] == 1 && @usuario_perfil_id_padrao == usuario_perfil.id %>
                                     | <%= link_to "Alterar padrão", altera_padrao_usuario_perfil_path, class: "tabela-botao-acao" %>
                                 <% end %>
                             </td>
