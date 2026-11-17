@@ -12,11 +12,13 @@
 UsuarioPerfil.create([
   {
     :nome => "Administrador",
-    :pode_escrever => true
+    :pode_escrever => true,
+    :eh_padrao => false
   },
   {
     :nome => "Comum",
-    :pode_escrever => false
+    :pode_escrever => false,
+    :eh_padrao => true
   }
 ])
 
