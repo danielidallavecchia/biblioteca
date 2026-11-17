@@ -105,18 +105,34 @@
     width: 100%;
     max-width: 200px;
     aspect-ratio: 2 / 3;
-    background: #e9e9e9;
-    border-radius: 8px;
-
+    background: #eae9e9;
+    border-radius: 10px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform .2s;
-    box-shadow: 0 2px 4px #0000001a;;
+    box-shadow: 0 2px 4px #0000001a;
+}
+.capa:hover {
+    transform: scale(1.03);
 }
 
-.capa:hover {
+.sem-capa {
+    width: 100%;
+    max-width: 200px;
+    aspect-ratio: 2 / 3;
+    background: #eae9e9;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .2s;
+    box-shadow: 0 2px 4px #0000001a;
+    border: 1px solid rgb(211, 211, 211);
+}
+.sem-capa:hover {
     transform: scale(1.03);
 }
 
@@ -284,17 +300,16 @@
 /******* Imagem ********/
 
 .livro-capa-imagem {
-    object-fit: cover;
+    object-fit: contain; // imagem dimensiona dentro do elemento pai
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 8px;    
     width: 200px;
     height: 300px;
-    transition: transform .2s;
     box-shadow: 0 4px 8px #0000001a;
 }
 
 .livro-capa-imagem:hover {
-transform: scale(1.03);
+    transform: scale(1.03);
 }
 
 .livro-sublista {
@@ -315,20 +330,16 @@ transform: scale(1.03);
     gap: 20px;
 }
 
-.livro-sublista-capa-imagem {
-    border-radius: 8px;
-    width: 150px;
-    height: 210px;
-    aspect-ratio: 2 / 3;
-    object-fit: cover;
-    background: #e9e9e9;
-    flex-shrink: 0;
+.livro-sublista-capa-imagem  {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 4px #0000001a;;
+    object-fit: contain; // imagem dimensiona dentro do elemento pai
+    border-radius: 8px;
+    width: 160px;
+    height: 240px;
 }
-.livro-sublista-capa-imagem:hover {
+.livro-sublista-capa-imagem :hover {
     transform: scale(1.02);
 }
 
@@ -345,6 +356,9 @@ transform: scale(1.03);
 }
 .livro-sublista-titulo:hover {
     color: rgb(94, 93, 93);
+}
+.livro-sublista-margem {
+    margin-top: 10px;
 }
 
 /*** botao upload ***/
