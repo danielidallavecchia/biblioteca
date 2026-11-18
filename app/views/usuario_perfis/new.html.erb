@@ -6,12 +6,18 @@
         <p class="show-texto-titulo">Cadastrar perfil de usuário</p>
         <p class="show-texto-subtitulo">Crie um novo perfil de usuário</p>
     </div>
+    
+    <% if !@usuario_perfil.errors.blank? %>
+        <div class="erro-form">
+            Erro:
+            <ul>
+                <% @usuario_perfil.errors.full_messages.each do |erro| %>
+                <li><%= erro %>.</li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
 
     <%= render "form" %>
 
-    <% if !@usuario_perfil.errors.blank? %>
-        <div class="erro-form">
-            Erro: <%= @usuario_perfil.errors.full_messages.first %>
-        </div>
-    <% end %>
 </div>

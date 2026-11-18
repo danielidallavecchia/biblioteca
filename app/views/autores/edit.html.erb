@@ -7,12 +7,18 @@
         <p class="show-texto-titulo">Editar autor</p>
         <p class="show-texto-subtitulo">Altere as informações do autor cadastrado</p>
     </div>
+    
+    <% if !@autor.errors.blank? %>
+        <div class="erro-form">
+            Erro:
+            <ul>
+                <% @autor.errors.full_messages.each do |erro| %>
+                <li><%= erro %>.</li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
 
     <%= render "form" %>
 
-    <% if !@autor.errors.blank? %>
-    <div class="erro-form">
-        Erro: <%= @autor.errors.full_messages.first %>
-    </div>
-    <% end %>
 </div>

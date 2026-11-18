@@ -1,3 +1,4 @@
+
 <div class="form-corpo-padrao">
   <%= render "voltar" %>
 
@@ -6,11 +7,17 @@
     <p class="show-texto-subtitulo">Cadastre novos usuários para se conectar ao sistema</p>
   </div>
 
-  <%= render 'form' %>
-
   <% if !@usuario.errors.blank? %>
     <div class="erro-form">
-      Erro: <%= @usuario.errors.full_messages.first %>
+      Erro:
+      <ul>
+        <% @usuario.errors.full_messages.each do |erro| %>
+          <li><%= erro %>.</li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
+
+  <%= render 'form' %>
+
 </div>

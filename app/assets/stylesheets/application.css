@@ -418,9 +418,17 @@ header {
 
 .erro-form {
     color: red;
-    padding-top: 10px;
-    font-size: 14px;
+    padding: 8px 8px 8px 8px;
+    font-size: 14.5px;
+    border: 1.3px solid red;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: rgb(255, 225, 225);
 }
+.erro-form ul {
+    padding-left: 30px;
+}
+
 /*****/
 .cartao {
   background-color: white;

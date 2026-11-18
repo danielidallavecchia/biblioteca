@@ -7,12 +7,18 @@
         <p class="show-texto-titulo">Editar gênero</p>
         <p class="show-texto-subtitulo">Altere as informações do gênero</p>
     </div>
+    
+    <% if !@genero.errors.blank? %>
+        <div class="erro-form">
+            Erro:
+            <ul>
+                <% @genero.errors.full_messages.each do |erro| %>
+                <li><%= erro %>.</li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
 
     <%= render "form" %>
 
-    <% if !@genero.errors.blank? %>
-    <div class="erro-form">
-        Erro: <%= @genero.errors.full_messages.first %>
-    </div>
-    <% end %>
 </div>

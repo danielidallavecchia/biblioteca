@@ -7,13 +7,18 @@
         <p class="show-texto-titulo">Editar configurações</p>
         <p class="show-texto-subtitulo">Altere as configurações da bibliteca</p>
     </div>
+    
+    <% if !@configuracao.errors.blank? %>
+        <div class="erro-form">
+            Erro:
+            <ul>
+                <% @configuracao.errors.full_messages.each do |erro| %>
+                <li><%= erro %>.</li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
 
     <%= render "form" %>
-
-    <% if !@configuracao.errors.blank? %>
-    <div class="erro-form">
-        Erro: <%= @configuracao.errors.full_messages.first %>
-    </div>
-    <% end %>
 
 </div>

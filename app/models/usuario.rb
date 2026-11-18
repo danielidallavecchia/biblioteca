@@ -12,7 +12,7 @@ class Usuario < ActiveRecord::Base
 
     validates :email, format: { 
     with: /\A[^@\s]+@[^@\s]+\z/, 
-    message: "Este e-mail não tem um formato válido" 
+    message: "não tem um formato válido" 
   }
 
   def id_e_nome
