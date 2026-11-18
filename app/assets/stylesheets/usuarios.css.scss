@@ -36,9 +36,22 @@
     width: 50%;
 }
 
+.show-card-usuario {
+    padding: 30px 30px 0px 30px !important;
+}
+
 .botoes-usuario {
     display: flex;
     justify-content: space-between;
+}
+
+.show-botoes-usuario {
+    display: flex;
+    gap: 8px;
+}
+
+.padding-botao-usuario {
+    margin-bottom: 30px;
 }
 
 .botao-gerar-senha {
