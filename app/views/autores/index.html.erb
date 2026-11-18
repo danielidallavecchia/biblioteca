@@ -1,7 +1,9 @@
 <div class="index-topo-padrao">
     <div class="index-titulo">
         <p class="index-texto-titulo">Autores</p>
-        <p class="index-texto-subtitulo">Consulte os autores cadastrados e adicione novos ao seu acervo.</p>
+        <p class="index-texto-subtitulo">
+            Consulte os autores cadastrados <%= pode_escrever? ? "e adicione novos ao acervo." : "no acervo." %>
+        </p>
     </div>
 
     <div class="index-botao">

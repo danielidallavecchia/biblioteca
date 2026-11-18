@@ -1,7 +1,9 @@
 <div class="index-topo-padrao">
     <div class="index-titulo">
         <p class="index-texto-titulo">Usuários</p>
-        <p class="index-texto-subtitulo">Consulte os usuários existentes e cadastre novos nomes ao sistema.</p>
+        <p class="index-texto-subtitulo">
+            Consulte os usuários existentes<%= pode_escrever? ? " e cadastre novos nomes ao sistema." : "." %>
+        </p>
     </div>
 
     <% if pode_escrever? %>

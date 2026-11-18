@@ -7,6 +7,9 @@
     <div class="usuarios-titulo-lado">
         <div class="index-titulo">
             <p class="show-texto-titulo">Perfis de usuário</p>
+            <p class="show-texto-subtitulo">
+                <%= session[:usuario_id] == 1 ? "Consulte e gerencie os perfis existentes." : "Consulte os perfis existentes." %>
+            </p>
         </div>
 
         <% if session[:usuario_id] == 1 %>

@@ -1,7 +1,9 @@
 <div class="index-topo-padrao">
     <div class="index-titulo">
         <p class="index-texto-titulo">Empréstimos</p>
-        <p class="index-texto-subtitulo">Gerencia os empréstimos cadastrados e crie novos.</p>
+        <p class="index-texto-subtitulo">
+            <%= pode_escrever? ? "Consulte os empréstimos cadastrados e crie novos." : "Consulte seus empréstimos cadastrados." %>
+        </p>
     </div>
 
     <% if pode_escrever? %>
