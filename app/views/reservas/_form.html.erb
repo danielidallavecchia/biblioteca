@@ -29,7 +29,7 @@
                 <%= f.label :livro_id, "Livro" %>
             </p>
 
-            <%= f.collection_select :livro_id, @livros, :id, :id_e_titulo, {}, { class: "form-input" } %>
+            <%= f.collection_select :livro_id, @livros_emprestados, :id, :id_e_titulo, {}, { class: "form-input" } %>
         </div>
     </div>
 
