@@ -6,12 +6,18 @@
         <p class="show-texto-titulo">Cadastrar empréstimo</p>
         <p class="show-texto-subtitulo">Crie um novo empréstimo de um livro do acervo</p>
     </div>
+    
+    <% if !@emprestimo.errors.blank? %>
+        <div class="erro-form">
+            Erro:
+            <ul>
+                <% @emprestimo.errors.full_messages.each do |erro| %>
+                <li><%= erro %>.</li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
 
     <%= render "form" %>
 
-    <% if !@emprestimo.errors.blank? %>
-    <div class="erro-form">
-        Erro: <%= @emprestimo.errors.full_messages.first %>
-    </div>
-    <% end %>
 </div>

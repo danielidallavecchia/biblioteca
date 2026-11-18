@@ -11,12 +11,18 @@
             <% end %>
         </p>
     </div>
+    
+    <% if !@reserva.errors.blank? %>
+        <div class="erro-form">
+            Erro:
+            <ul>
+                <% @reserva.errors.full_messages.each do |erro| %>
+                <li><%= erro %>.</li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
 
     <%= render "form" %>
 
-    <% if !@reserva.errors.blank? %>
-    <div class="erro-form">
-        Erro: <%= @reserva.errors.full_messages.first %>
-    </div>
-    <% end %>
 </div>

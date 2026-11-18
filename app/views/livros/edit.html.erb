@@ -6,12 +6,18 @@
         <p class="show-texto-titulo">Editar livro</p>
         <p class="show-texto-subtitulo">Altere as informações do livro cadastrados</p>
     </div>
+    
+    <% if !@livro.errors.blank? %>
+        <div class="erro-form">
+            Erro:
+            <ul>
+                <% @livro.errors.full_messages.each do |erro| %>
+                <li><%= erro %>.</li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
 
     <%= render "form" %>
 
-    <% if !@livro.errors.blank? %>
-    <div class="erro-form">
-        Erro: <%= @livro.errors.full_messages.first %>
-    </div>
-    <% end %>
 </div>
