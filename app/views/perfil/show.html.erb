@@ -3,11 +3,13 @@
   <div class="usuarios-titulo-lado">
     <%= render "voltar" %>
 
-    <div class="perfil-cfg">
-      <%= link_to configuracao_path, class: "perfil-botao-cfg" do %>
-          <%= image_tag "configuracao.png", class: "botao-cfg-img" %>
-      <% end %>
-    </div>
+    <% if pode_escrever? %>
+      <div class="perfil-cfg">
+        <%= link_to configuracao_path, class: "perfil-botao-cfg" do %>
+            <%= image_tag "configuracao.png", class: "botao-cfg-img" %>
+        <% end %>
+      </div>
+    <% end %>
 
   </div>
 
