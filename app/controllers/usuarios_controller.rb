@@ -9,7 +9,7 @@ class UsuariosController < ApplicationController
     
     if !params[:busca].blank?
       termo = "%#{params[:busca]}%"
-      @usuarios = @usuarios.where("nome LIKE ? OR login LIKE ? OR email LIKE ?", termo, termo, termo)
+      @usuarios = @usuarios.where("nome ILIKE ? OR login ILIKE ? OR email ILIKE ?", termo, termo, termo)
     end
   end
 
@@ -27,7 +27,7 @@ class UsuariosController < ApplicationController
     @usuario = Usuario.new(params[:usuario])
 
     if @usuario.perfil_id.blank?
-      @usuario_perfil_padrao = UsuarioPerfil.where("eh_padrao is true").first
+      @usuario_perfil_padrao = UsuarioPerfil.where(eh_padrao: true).first
       @usuario.perfil_id = @usuario_perfil_padrao.id ## perfil_id default
     end
 
@@ -106,7 +106,7 @@ class UsuariosController < ApplicationController
   private
 
   def exclui_emprestimos(id)
-    emprestimos = Emprestimo.where("usuario_id = ?", id)
+    emprestimos = Emprestimo.where(usuario_id: id)
 
     if !emprestimos.blank?
       emprestimos.each do |e|
@@ -116,7 +116,7 @@ class UsuariosController < ApplicationController
   end
 
   def exclui_reservas(id)
-    reservas = Reserva.where("usuario_id = ?", id)
+    reservas = Reserva.where(usuario_id: id)
 
     if !reservas.blank?
       reservas.each do |r|

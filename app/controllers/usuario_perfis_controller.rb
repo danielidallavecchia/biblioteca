@@ -7,7 +7,7 @@ class UsuarioPerfisController < ApplicationController
       @usuario_perfis = @usuario_perfis.where("nome LIKE ?", "%#{params[:busca]}%")
     end
 
-    usuario_perfil = UsuarioPerfil.where("eh_padrao is true").first
+    usuario_perfil = UsuarioPerfil.where(eh_padrao: true).first
 
     if usuario_perfil.blank?
       @usuario_perfil_id_padrao = 2
@@ -61,7 +61,7 @@ class UsuarioPerfisController < ApplicationController
   def destroy
     @usuario_perfil = UsuarioPerfil.find(params[:id])
 
-    usado = Usuario.where("perfil_id = ?", @usuario_perfil.id)
+    usado = Usuario.where(perfil_id: @usuario_perfil.id)
 
     if !usado.blank?
       @erro = "Perfil não pode ser excluído pois está vinculado a usuário(s)."
