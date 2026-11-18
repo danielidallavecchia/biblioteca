@@ -8,14 +8,18 @@
             <p class="show-texto-subtitulo">Consulte as informações do usuário cadastrado</p>
         </div>
 
-        <% if pode_escrever? || @usuario.id == session[:usuario_id] %>
+        <% if pode_escrever? %>
             <div class="usuarios-titulo-botao">
                 <%= link_to "Ver empréstimos", emprestimos_path(usuario_id: @usuario.id), class: "usuarios-botao-ver-emprestimo" %> 
+            </div>
+        <% elsif @usuario.id == session[:usuario_id] %>
+            <div class="usuarios-titulo-botao">
+                <%= link_to "Ver meus empréstimos", emprestimos_path, class: "usuarios-botao-ver-emprestimo" %> 
             </div>
         <% end %>
     </div>
 
-    <div class="show-card">
+    <div class="show-card show-card-usuario">
         <div class="show-campo">
             <p class="show-rotulo">ID</p>
             <p class="show-valor"><%= @usuario.id %> </p> 
@@ -51,34 +55,37 @@
             </div>
         </div>
 
-         <div class="show-campo">
+        <div class="show-campo">
             <p class="show-rotulo">Cadastro</p>
             <p class="show-valor"><%= @usuario.created_at.strftime("%d/%m/%Y %H:%M") %></p>
         </div>
 
         <% if pode_escrever? %>
-        <div class="botoes-usuario">
-            <div class="show-botoes">
-                <% if (@usuario.id == 1 && session[:usuario_id] != 1) %> <!-- somente usuario 1 pode editar ele mesmo -->
-                <% else %>
-                    <%= link_to "Editar", edit_usuario_path(@usuario), class: "show-botao-editar" %>
-                <% end %>
+            <div class="botoes-usuario">
+                <div class="show-botoes-usuario">
+                    <% if (@usuario.id == 1 && session[:usuario_id] != 1) %> <!-- somente usuario 1 pode editar ele mesmo -->
+                    <% else %>
+                        <%= link_to "Editar", edit_usuario_path(@usuario), class: "show-botao-editar padding-botao-usuario" %>
+                    <% end %>
 
-                <% if session[:usuario_id] != @usuario.id && @usuario.id != 1 %>
-                    <%= link_to "Excluir", usuario_path(@usuario), data: { method: :delete, confirm: "Tem certeza?" }, class: "show-botao-excluir" %>
+                    <% if session[:usuario_id] != @usuario.id && @usuario.id != 1 %>
+                        <%= link_to "Excluir", usuario_path(@usuario), data: { method: :delete, confirm: "Tem certeza?" }, 
+                            class: "show-botao-excluir padding-botao-usuario" %>
+                    <% end %>  
+                </div>
+
+                <% if @usuario.id != 1 && session[:usuario_id] == 1 %>
+                <div class="show-botoes-usuario">
+                    <%= link_to "Gerar senha aleatória", gera_senha_usuario_path(@usuario), 
+                        data: { confirm: "Essa operação irá alterar a senha do usuário #{@usuario.nome}. Deseja continuar?" }, 
+                        class: "btn botao-gerar-senha" 
+                    %>
+                </div>
                 <% end %>  
             </div>
-
-            <% if @usuario.id != 1 && session[:usuario_id] == 1 %>
-            <div class="show-botoes">
-                <%= link_to "Gerar senha aleatória", gera_senha_usuario_path(@usuario), 
-                    data: { confirm: "Essa operação irá alterar a senha do usuário #{@usuario.nome}. Deseja continuar?" }, 
-                    class: "btn botao-gerar-senha" 
-                %>
-            </div>
-            <% end %>  
-        </div>
-        <% end %>
+        <% else %>
+            <div></div>
+        <% end %> 
     
     </div>
 </div>
