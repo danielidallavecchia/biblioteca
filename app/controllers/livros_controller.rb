@@ -94,18 +94,16 @@ class LivrosController < ApplicationController
   def destroy 
     @livro = Livro.find(params[:id])
 
+    @livros_com_mesmo_autor = Livro.where(autor_id: @livro.autor_id).where("id <> ?", @livro.id).order("id asc")
+
     if tem_vinculo_emprestimo(@livro.id)
       ## não permite excluir se estiver vinculado a emprestimo ativo
       flash.now[:error] = "livro_em_uso_emprestimo"
-      
-      @livros_com_mesmo_autor = Livro.where("autor_id = ? and id <> ?", @livro.autor_id, @livro.id).order("id asc")
       render :info
 
     elsif tem_vinculo_reserva(@livro.id)
       ## não permite excluir se estiver vinculado a reserva ativa
       flash.now[:error] = "livro_em_uso_reserva"
-
-      @livros_com_mesmo_autor = Livro.where("autor_id = ? and id <> ?", @livro.autor_id, @livro.id).order("id asc")
       render :info
 
     else 
@@ -130,11 +128,11 @@ class LivrosController < ApplicationController
 
   def info 
     @livro = Livro.find(params[:id]) 
-    @livros_com_mesmo_autor = Livro.where("autor_id = ? and id <> ?", @livro.autor_id, @livro.id).order("id asc")
+    @livros_com_mesmo_autor = Livro.where(autor_id: @livro.autor_id).where("id <> ?", @livro.id).order("id asc")
   end
   
    def exclui_emprestimos(id)
-    emprestimos = Emprestimo.where("livro_id = ?", id)
+    emprestimos = Emprestimo.where(livro_id: id)
 
     if !emprestimos.blank?
       emprestimos.each do |e|
@@ -144,7 +142,7 @@ class LivrosController < ApplicationController
   end
 
   def exclui_reservas(id)
-    reservas = Reserva.where("livro_id = ?", id)
+    reservas = Reserva.where(livro_id: id)
     
     if !reservas.blank?
       reservas.each do |r|
