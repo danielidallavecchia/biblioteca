@@ -12,7 +12,11 @@
 
         <% if pode_escrever? %>
         <div class="cfg-perfil">
-            <%= link_to "Configurar perfis de usuários", usuario_perfis_path, class: "cfg-perfil-botao" %>
+            <% if session[:usuario_id] == 1 %>
+                <%= link_to "Configurar perfis de usuários", usuario_perfis_path, class: "cfg-perfil-botao" %>
+            <% else %>
+                <%= link_to "Ver perfis de usuários", usuario_perfis_path, class: "cfg-perfil-botao" %>
+            <% end %>
         </div>
         <% end %>
     </div>
