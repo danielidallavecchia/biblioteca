@@ -5,6 +5,14 @@ class ReservasController < ApplicationController
   def carregar_auxiliares 
     @usuarios = Usuario.order(:id)
     @livros = Livro.order(:id) 
+    if @livros.blank?
+      @livros = []
+    end
+
+    @livros_emprestados = Livro.joins(:emprestimos).where("emprestimos.livro_id = livros.id and emprestimos.data_devolucao is null")
+    if  @livros_emprestados.blank?
+      @livros_emprestados = @livros
+    end
   end
 
   def index 
