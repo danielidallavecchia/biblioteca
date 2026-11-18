@@ -429,8 +429,12 @@ header {
 }
 
 .cartao-corpo {
-
-  padding: 24px 24px 8px 24px;
+    display: flex;
+    flex-direction: column; 
+    background-color: white;
+    border-radius: 7px;
+    border: 1px solid lightgray;
+    padding: 24px 24px 8px 24px;
 }
 
 .cartao-rodape {

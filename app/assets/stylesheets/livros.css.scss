@@ -191,9 +191,11 @@
     display: flex;
     gap: 40px;
     align-items: flex-start;
-    background: #fff;
-    border-radius: 20px;
+    background: white;
+    border-radius: 7px;
     padding: 40px;
+    border: 1px solid lightgray;
+    margin-top: 39px;
 }
 
 .coluna-conteudo {
@@ -314,7 +316,8 @@
 
 .livro-sublista {
     background: white;
-    border-radius: 20px;
+    border-radius: 7px;
+    border: 1px solid lightgray;
     padding: 40px;
     margin-top: 15px;
 }
