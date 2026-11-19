@@ -16,6 +16,9 @@ class Livro < ActiveRecord::Base
 
   validate :valida_ano_publicacao_futuro
 
+  scope :ordena_select, order("livros.titulo")
+  scope :ordena_lista, order("livros.id asc")
+
   has_attached_file :imagem
   validates_attachment_content_type :imagem, content_type: /\Aimage\/.*\z/
 
@@ -33,10 +36,6 @@ class Livro < ActiveRecord::Base
   def emprestimo_atual_id(id) 
     emp = Emprestimo.where(livro_id: id, data_devolucao: nil).first
     emp.id if !emp.blank? # retorna o id do emprestimo, se houver
-  end
-
-  def id_e_titulo
-    "##{id} - #{titulo}"
   end
 
   def self.esta_emprestado?(id)

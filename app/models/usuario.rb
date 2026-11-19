@@ -11,17 +11,15 @@ class Usuario < ActiveRecord::Base
     validates :login, :email, uniqueness: { message: "já existe" }
 
     validates :email, format: { 
-    with: /\A[^@\s]+@[^@\s]+\z/, 
-    message: "não tem um formato válido" 
-  }
+      with: /\A[^@\s]+@[^@\s]+\z/, 
+      message: "não tem um formato válido" 
+    }
 
-  def id_e_nome
-    "##{id} - #{nome}"
-  end
+    scope :ordena_select, order("usuarios.nome")
 
-  def self.get_nome(id)
-    u = Usuario.where("id = ?", id).first 
-    u.nome if !u.blank?
-  end
+    def self.get_nome(id)
+      u = Usuario.where("id = ?", id).first 
+      u.nome if !u.blank?
+    end
   
 end
