@@ -65,7 +65,7 @@ class EmprestimosController < ApplicationController
   end
 
   def show 
-    @emprestimo = Emprestimo.find(params[:id])
+    @emprestimo = Emprestimo.find_by_id(params[:id])
   end
 
   def new 
@@ -111,7 +111,7 @@ class EmprestimosController < ApplicationController
   end
 
   def edit 
-    @emprestimo = Emprestimo.find(params[:id])
+    @emprestimo = Emprestimo.find_by_id(params[:id])
     
     # @emprestimo.data_devolucao = Date.today
     @emprestimo.data_devolucao = Time.current
@@ -120,7 +120,7 @@ class EmprestimosController < ApplicationController
   end
 
   def update 
-    @emprestimo = Emprestimo.find(params[:id])
+    @emprestimo = Emprestimo.find_by_id(params[:id])
     @emprestimo.data_devolucao = Time.current
 
     if @emprestimo.update_attributes(params[:emprestimo])
@@ -143,7 +143,8 @@ class EmprestimosController < ApplicationController
   end
 
   def destroy
-    @emprestimo = Emprestimo.find(params[:id])
+    @emprestimo = Emprestimo.find_by_id(params[:id])
+    
     @emprestimo.destroy
 
     if !@emprestimo.reserva_origem_id.blank?

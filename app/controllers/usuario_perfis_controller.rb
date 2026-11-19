@@ -17,7 +17,7 @@ class UsuarioPerfisController < ApplicationController
   end
 
   def show
-    @usuario_perfil = UsuarioPerfil.find(params[:id])
+    @usuario_perfil = UsuarioPerfil.find_by_id(params[:id])
   end
 
   def new
@@ -45,11 +45,11 @@ class UsuarioPerfisController < ApplicationController
   end 
 
   def edit
-    @usuario_perfil = UsuarioPerfil.find(params[:id])
+    @usuario_perfil = UsuarioPerfil.find_by_id(params[:id])
   end
 
   def update
-    @usuario_perfil = UsuarioPerfil.find(params[:id])
+    @usuario_perfil = UsuarioPerfil.find_by_id(params[:id])
 
     if @usuario_perfil.update_attributes(params[:usuario_perfil])
       redirect_to usuario_perfil_path(@usuario_perfil)
@@ -59,7 +59,7 @@ class UsuarioPerfisController < ApplicationController
   end
 
   def destroy
-    @usuario_perfil = UsuarioPerfil.find(params[:id])
+    @usuario_perfil = UsuarioPerfil.find_by_id(params[:id])
 
     usado = Usuario.where(perfil_id: @usuario_perfil.id)
 
@@ -79,7 +79,7 @@ class UsuarioPerfisController < ApplicationController
   end
 
   def atualiza_padrao
-    @usuario_perfil = UsuarioPerfil.find(params[:usuario_perfil_id])
+    @usuario_perfil = UsuarioPerfil.find_by_id(params[:usuario_perfil_id])
 
     UsuarioPerfil.update_all(eh_padrao: false)
 

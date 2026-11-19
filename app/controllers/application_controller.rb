@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def usuario_logado
     if session[:usuario_id]
-      @usuario_logado = Usuario.find(session[:usuario_id]) 
+      @usuario_logado = Usuario.find_by_id(session[:usuario_id]) 
     end
   end
 

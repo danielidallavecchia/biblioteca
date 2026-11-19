@@ -9,7 +9,7 @@ class AutoresController < ApplicationController
   end
 
   def show
-    @autor = Autor.find(params[:id])
+    @autor = Autor.find_by_id(params[:id])
   end
 
   def new
@@ -37,11 +37,11 @@ class AutoresController < ApplicationController
   end
 
   def edit
-    @autor = Autor.find(params[:id])
+    @autor = Autor.find_by_id(params[:id])
   end
 
   def update
-    @autor = Autor.find(params[:id])
+    @autor = Autor.find_by_id(params[:id])
 
     if @autor.update_attributes(params[:autor])
       redirect_to autor_path(@autor)
@@ -51,7 +51,7 @@ class AutoresController < ApplicationController
   end
 
   def destroy
-    @autor = Autor.find(params[:id])
+    @autor = Autor.find_by_id(params[:id])
 
     if tem_vinculos(@autor.id)
       ## não permite excluir se estiver vinculado a um livro

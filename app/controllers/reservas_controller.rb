@@ -53,7 +53,7 @@ class ReservasController < ApplicationController
   end
 
   def show 
-    @reserva = Reserva.find(params[:id])
+    @reserva = Reserva.find_by_id(params[:id])
 
     @reservas_por_livro = Reserva.where(livro_id: @reserva.livro_id, data_expiracao: nil).order("posicao desc")
 
@@ -102,7 +102,7 @@ class ReservasController < ApplicationController
   end
 
   def destroy 
-    @reserva = Reserva.find(params[:id])
+    @reserva = Reserva.find_by_id(params[:id])
 
     if !@reserva.posicao.blank?
       reordena_posicao(@reserva.livro_id, @reserva.id)

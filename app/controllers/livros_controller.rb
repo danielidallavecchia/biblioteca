@@ -49,7 +49,7 @@ class LivrosController < ApplicationController
   end
 
   def show 
-    @livro = Livro.find(params[:id])
+    @livro = Livro.find_by_id(params[:id])
   end
 
   def new
@@ -78,11 +78,11 @@ class LivrosController < ApplicationController
   end
 
   def edit 
-    @livro = Livro.find(params[:id])
+    @livro = Livro.find_by_id(params[:id])
   end
 
   def update 
-    @livro = Livro.find(params[:id])
+    @livro = Livro.find_by_id(params[:id])
 
     if @livro.update_attributes(params[:livro])
       redirect_to info_livro_path(@livro)
@@ -92,7 +92,7 @@ class LivrosController < ApplicationController
   end
 
   def destroy 
-    @livro = Livro.find(params[:id])
+    @livro = Livro.find_by_id(params[:id])
 
     @livros_com_mesmo_autor = Livro.where(autor_id: @livro.autor_id).where("id <> ?", @livro.id).order("id asc")
 
@@ -127,7 +127,7 @@ class LivrosController < ApplicationController
   end
 
   def info 
-    @livro = Livro.find(params[:id]) 
+    @livro = Livro.find_by_id(params[:id]) 
     @livros_com_mesmo_autor = Livro.where(autor_id: @livro.autor_id).where("id <> ?", @livro.id).order("id asc")
   end
   
