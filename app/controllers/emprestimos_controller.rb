@@ -3,8 +3,8 @@ class EmprestimosController < ApplicationController
   before_filter :carregar_auxiliares, only: [:new, :edit, :create, :update, :index]
 
   def carregar_auxiliares
-    @usuarios = Usuario.order(:id)
-    @livros = Livro.order(:id) 
+    @usuarios = Usuario.ordena_select
+    @livros = Livro.ordena_select
     @configuracao = Configuracao.where("id > 0").first
   end
 
