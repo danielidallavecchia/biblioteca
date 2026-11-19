@@ -22,15 +22,12 @@ class EmprestimosController < ApplicationController
     if !params[:busca].blank?
       termo = "%#{params[:busca]}%"
 
-      @emprestimos = @emprestimos.joins(:usuario, :livro).where("
-        usuarios.id::TEXT LIKE ? OR usuarios.nome ILIKE ?
-        OR livros.id::TEXT LIKE ? OR livros.titulo ILIKE ?
-      ", termo, termo, termo, termo)
+      @emprestimos = @emprestimos.filtra_por_busca(params[:busca])
     end
 
     ## filtra somente emprestimos ativos
     if !params[:ativos].blank? && params[:ativos] == "true"
-      @emprestimos = @emprestimos.where(data_devolucao: nil)
+      @emprestimos = @emprestimos.ativos
     end
 
     ## filtra por livro_id, usado no show do livro
@@ -58,8 +55,7 @@ class EmprestimosController < ApplicationController
         render :index
       end 
 
-      @emprestimos = @emprestimos.where("(data_devolucao::date between ? and ?) or data_devolucao::date = ? or data_devolucao::date = ?", 
-        params[:data_devolucao_inicio], params[:data_devolucao_fim], params[:data_devolucao_inicio], params[:data_devolucao_fim])
+      @emprestimos = @emprestimos.filtra_por_range_data(params[:data_devolucao_inicio], params[:data_devolucao_fim])
     end
 
   end

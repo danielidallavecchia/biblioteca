@@ -10,6 +10,7 @@ class Autor < ActiveRecord::Base
 
   scope :ordena_lista, order("autores.id asc")
   scope :ordena_select, order("autores.nome")
+  scope :filtra_por_busca, ->( busca ) { where("nome ILIKE ? OR EXTRACT(YEAR FROM data_nasc)::text LIKE ?", "%#{busca}%", "%#{busca}%") }
 
   def valida_datas_futuro
     if !data_nasc.blank? && data_nasc > Date.today

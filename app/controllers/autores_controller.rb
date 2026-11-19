@@ -2,7 +2,7 @@ class AutoresController < ApplicationController
 
   def index
     if !params[:busca].blank?
-      @autores = Autor.where("nome ILIKE ? OR EXTRACT(YEAR FROM data_nasc)::text LIKE ?", "%#{params[:busca]}%", "%#{params[:busca]}%").ordena_lista
+      @autores = Autor.filtra_por_busca(params[:busca]).ordena_lista
     else
       @autores = Autor.ordena_lista
     end
