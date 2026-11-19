@@ -2,9 +2,9 @@ class AutoresController < ApplicationController
 
   def index
     if !params[:busca].blank?
-      @autores = Autor.where("nome ILIKE ? OR EXTRACT(YEAR FROM data_nasc)::text LIKE ?", "%#{params[:busca]}%", "%#{params[:busca]}%").order("id asc")
+      @autores = Autor.filtra_por_busca(params[:busca]).ordena_lista
     else
-      @autores = Autor.order("id asc")
+      @autores = Autor.ordena_lista
     end
   end
 
@@ -57,7 +57,7 @@ class AutoresController < ApplicationController
       ## não permite excluir se estiver vinculado a um livro
       flash.now[:error] = "autor_em_uso"
       
-      @autores = Autor.order("id asc")
+      @autores = Autor.ordena_lista
       render :index
     else
       @autor.destroy

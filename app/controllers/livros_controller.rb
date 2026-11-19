@@ -3,12 +3,12 @@ class LivrosController < ApplicationController
   before_filter :carregar_auxiliares, only: [:new, :edit, :create, :update]
 
   def carregar_auxiliares
-    @autores = Autor.order(:id)
-    @generos = Genero.order(:id) 
+    @autores = Autor.ordena_select
+    @generos = Genero.ordena_select
   end
 
   def index
-    @livros = Livro.joins(:autor, :genero).order("livros.id ASC")
+    @livros = Livro.joins(:autor, :genero).ordena_lista
 
     if !params[:autor_id].blank?
       @livros = @livros.where(autor_id: params[:autor_id])
@@ -31,17 +31,17 @@ class LivrosController < ApplicationController
 
     ## filtra somente livros que estão emprestados
     if !params[:emprestados].blank? && params[:emprestados] == "true"
-      @emps = Emprestimo.where(data_devolucao: nil)
+      @emprestimos = Emprestimo.ativos ## está usando scope aqui
 
-      if @emps.blank?
+      if @emprestimos.blank?
         @livros = []
       elsif
         ids = []
-        @emps.each do |e|
+        @emprestimos.each do |e|
           ids << e.livro_id
         end
 
-        @livros = @livros.where("livros.id in (?)", ids).order("livros.id asc")
+        @livros = @livros.where("livros.id in (?)", ids).ordena_lista
       end
     end
 
@@ -94,7 +94,7 @@ class LivrosController < ApplicationController
   def destroy 
     @livro = Livro.find(params[:id])
 
-    @livros_com_mesmo_autor = Livro.where(autor_id: @livro.autor_id).where("id <> ?", @livro.id).order("id asc")
+    @livros_com_mesmo_autor = Livro.where(autor_id: @livro.autor_id).where("id <> ?", @livro.id).ordena_lista
 
     if tem_vinculo_emprestimo(@livro.id)
       ## não permite excluir se estiver vinculado a emprestimo ativo
@@ -128,7 +128,7 @@ class LivrosController < ApplicationController
 
   def info 
     @livro = Livro.find(params[:id]) 
-    @livros_com_mesmo_autor = Livro.where(autor_id: @livro.autor_id).where("id <> ?", @livro.id).order("id asc")
+    @livros_com_mesmo_autor = Livro.where(autor_id: @livro.autor_id).where("id <> ?", @livro.id).ordena_lista
   end
   
    def exclui_emprestimos(id)

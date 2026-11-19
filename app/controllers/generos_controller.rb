@@ -2,9 +2,9 @@ class GenerosController < ApplicationController
 
   def index
     if !params[:busca].blank?
-      @generos = Genero.where("nome ILIKE ?", "%#{params[:busca]}%").order("id desc")
+      @generos = Genero.where("nome ILIKE ?", "%#{params[:busca]}%").ordena_lista
     else
-      @generos = Genero.order("id asc")
+      @generos = Genero.ordena_lista
     end
   end
 
@@ -57,7 +57,7 @@ class GenerosController < ApplicationController
       ## não permite excluir se estiver vinculado a um livro
       flash.now[:error] = "genero_em_uso"
       
-      @generos = Genero.order("id asc")
+      @generos = Genero.ordena_lista
       render :index
     else
       @genero.destroy

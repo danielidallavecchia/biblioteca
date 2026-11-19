@@ -6,8 +6,11 @@ class Autor < ActiveRecord::Base
 
   validates :nome, presence: { message: "é obrigatório" }, length: { maximum: 200, message: "não pode exceder 200 caracteres" }
   validates :data_nasc, presence: { message: "é obrigatória" }
-
   validate :valida_datas_futuro
+
+  scope :ordena_lista, order("autores.id asc")
+  scope :ordena_select, order("autores.nome")
+  scope :filtra_por_busca, ->( busca ) { where("nome ILIKE ? OR EXTRACT(YEAR FROM data_nasc)::text LIKE ?", "%#{busca}%", "%#{busca}%") }
 
   def valida_datas_futuro
     if !data_nasc.blank? && data_nasc > Date.today
@@ -24,10 +27,6 @@ class Autor < ActiveRecord::Base
       end
     end
 
-  end
-
-  def id_e_nome
-    "##{id} - #{nome}"
   end
 
 end

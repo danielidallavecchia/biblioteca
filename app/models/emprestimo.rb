@@ -11,6 +11,16 @@ class Emprestimo < ActiveRecord::Base
   validates :data_devolucao, presence: { message: "é obrigatória" }, on: :update
   validate :valida_criacao_com_reserva, on: :create
 
+  scope :ativos, where(data_devolucao: nil)
+
+  scope :filtra_por_busca, ->( busca ) {
+    joins(:usuario, :livro).
+    where("usuarios.id::TEXT LIKE ? OR usuarios.nome ILIKE ? OR livros.id::TEXT LIKE ? OR livros.titulo ILIKE ? ", 
+      "%#{busca}%", "%#{busca}%", "%#{busca}%", "%#{busca}%")
+  }
+
+  scope :filtra_por_range_data, ->( data_inicio, data_fim ) { where("data_devolucao::date >= ? AND data_devolucao::date <= ?", data_inicio, data_fim) }
+
   def valida_data_prevista
     if !data_prevista_devolucao.blank? && data_prevista_devolucao < Date.today 
       errors.add("Data de devolução prevista", "não pode ser no passado")

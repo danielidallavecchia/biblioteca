@@ -4,7 +4,6 @@ class Genero < ActiveRecord::Base
 
   validates :nome, presence: { message: "é obrigatório" }, length: { maximum: 200, message: "não pode exceder 200 caracteres" }
 
-  def id_e_nome
-    "##{id} - #{nome}"
-  end
+  scope :ordena_lista, order("id asc")
+  scope :ordena_select, order("generos.nome")
 end

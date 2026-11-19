@@ -11,6 +11,8 @@ class Reserva < ActiveRecord::Base
     validate :valida_reserva, on: :create
     validates :data_expiracao, presence: { message: "é obrigatória" }, on: :update
 
+    scope :ordena_lista, order("livro_id asc, posicao asc, id asc")
+
     def valida_data_reserva
         if !data_reserva.blank? && data_reserva > Date.today 
             errors.add("Data de início da reserva", "não pode ser no futuro")

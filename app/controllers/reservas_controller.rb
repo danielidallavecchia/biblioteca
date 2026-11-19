@@ -3,13 +3,13 @@ class ReservasController < ApplicationController
   before_filter :carregar_auxiliares, only: [:new, :edit, :create, :update, :index]
 
   def carregar_auxiliares 
-    @usuarios = Usuario.order(:id)
-    @livros = Livro.order(:id) 
+    @usuarios = Usuario.ordena_select
+    @livros = Livro.ordena_select
     if @livros.blank?
       @livros = []
     end
 
-    @livros_emprestados = Livro.joins(:emprestimos).where("emprestimos.livro_id = livros.id and emprestimos.data_devolucao is null")
+    @livros_emprestados = Livro.ordena_select.joins(:emprestimos).where("emprestimos.livro_id = livros.id and emprestimos.data_devolucao is null")
     if  @livros_emprestados.blank?
       @livros_emprestados = @livros
     end
@@ -17,9 +17,9 @@ class ReservasController < ApplicationController
 
   def index 
     if !pode_escrever?
-      @reservas = Reserva.where(usuario_id: session[:usuario_id]).order("livro_id asc, posicao asc, id asc")
+      @reservas = Reserva.where(usuario_id: session[:usuario_id]).ordena_lista 
     else 
-      @reservas = Reserva.order("livro_id asc, posicao asc, id asc")
+      @reservas = Reserva.ordena_lista
     end
 
     ## usado no index pra mostrar filtro ou nao
