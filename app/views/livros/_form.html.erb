@@ -59,7 +59,7 @@
                     <%= f.label :autor_id, "Autor" %>
                 </p>
 
-                <%= f.collection_select :autor_id, @autores, :id, :id_e_nome, {}, { class: "form-input" } %>
+                <%= f.collection_select :autor_id, @autores, :id, :nome, {}, { class: "form-input" } %>
             </div>
 
             <div class="form-campo">
@@ -67,7 +67,7 @@
                     <%= f.label :genero_id, "Gênero" %>
                 </p>
 
-                <%= f.collection_select :genero_id, @generos, :id, :id_e_nome, {}, { class: "form-input form" } %>
+                <%= f.collection_select :genero_id, @generos, :id, :nome, {}, { class: "form-input form" } %>
             </div>
         </div>
 
