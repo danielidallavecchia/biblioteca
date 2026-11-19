@@ -9,7 +9,7 @@ class GenerosController < ApplicationController
   end
 
   def show
-    @genero = Genero.find(params[:id])
+    @genero = Genero.find_by_id(params[:id])
   end
 
   def new
@@ -37,11 +37,11 @@ class GenerosController < ApplicationController
   end
 
   def edit
-    @genero = Genero.find(params[:id])
+    @genero = Genero.find_by_id(params[:id])
   end
 
   def update
-    @genero = Genero.find(params[:id])
+    @genero = Genero.find_by_id(params[:id])
 
     if @genero.update_attributes(params[:genero])
       redirect_to genero_path(@genero)
@@ -51,7 +51,7 @@ class GenerosController < ApplicationController
   end
 
   def destroy
-    @genero = Genero.find(params[:id])
+    @genero = Genero.find_by_id(params[:id])
 
     if tem_vinculos(@genero.id)
       ## não permite excluir se estiver vinculado a um livro

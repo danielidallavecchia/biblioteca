@@ -20,7 +20,7 @@ class UsuariosController < ApplicationController
   end
 
   def show
-    @usuario = Usuario.find(params[:id])
+    @usuario = Usuario.find_by_id(params[:id])
   end
 
   def create
@@ -67,7 +67,7 @@ class UsuariosController < ApplicationController
   end
 
   def destroy 
-    @usuario = Usuario.find(params[:id])
+    @usuario = Usuario.find_by_id(params[:id])
 
     if tem_vinculo_emprestimo(@usuario.id)
       flash.now[:error] = "usuario_com_emprestimo"
@@ -96,7 +96,7 @@ class UsuariosController < ApplicationController
   end
 
   def gera_senha
-    @usuario = Usuario.find(params[:id])
+    @usuario = Usuario.find_by_id(params[:id])
     
     @usuario_nova_senha = SecureRandom.hex(10)
 
@@ -126,7 +126,7 @@ class UsuariosController < ApplicationController
   end
 
   def carregar_usuario
-    @usuario = Usuario.find(params[:id])
+    @usuario = Usuario.find_by_id(params[:id])
   end
 
   def carregar_perfis
